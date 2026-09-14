@@ -1,7 +1,8 @@
 # Task: Sync my Zephyr test cases with JIRA (auto-execute or mark automated)
 
 ## Purpose
-Go through the Zephyr execution export CSV, find the rows that belong to me ("Paul"),
+Go through the Zephyr execution export CSV, find the rows assigned to me
+(column D = "Paul"),
 and for each one either:
 - confirm it already has a JIRA ticket and record that on the Zephyr execution, or
 - run the Zephyr test case myself and record the result on the Zephyr execution.
@@ -17,7 +18,7 @@ Every row processed gets logged to `CSV_LOGS` with a real automation status
 ## Env vars used (from `.env` at repo root)
 | Var | Meaning |
 |---|---|
-| `CSV_DATA_URL` | Local path to the Zephyr execution CSV (currently: `zeyphyr-automation/Zephr List of Assignments_2026_09-report - Sheet0.csv`) |
+| `CSV_DATA_URL` | Local path to the Zephyr execution CSV (currently: `zephyr-automation/Zephr List of Assignments_2026_09-report - All Assignments_List.csv`, tracked in this repo) |
 | `JIRA_URL` | The JIRA board to check/move tickets on (project `EI`, board 121) |
 | `ZEPHYR_URL` | Human-facing link to the Zephyr Essential app inside Jira. **Not an API endpoint** — do not call it directly. See "Zephyr Essential API" below for the real base URL. |
 | `CSV_LOGS` | Local log file to append processed rows to (`csv_logs.txt`) |
@@ -31,15 +32,19 @@ The file currently has 7 columns, no header row alias needed — use these posit
 | A | `Jira.Project` | JIRA project key (e.g. `EI`) |
 | B | `Execution.Key` | Zephyr execution id (e.g. `EI-E782`) — **this is what gets copied into the log** |
 | C | `Test Cycle.Key` | Zephyr test cycle id |
-| D | *(blank)* | unused |
+| D | *(header exports blank)* | **Assignee / execution owner** — e.g. `Gelo`, `Paul`, `Jim`, `Trishia`, `Khyne`, `Flor`, `Allan`, `Ysh`, `Arnold`, `Dr. Uzaka`. The column header is genuinely empty in this export (confirmed against the raw file), but the values are real names — don't treat this column as unused. |
 | E | `Test Cycle.Name` | Test cycle name |
 | F | `Test Case.Key` | Zephyr test case ticket number (e.g. `EI-T124`) — the one to execute in Zephyr |
 | G | `Test Case.Name` | Test case scenario description — used to check for an existing JIRA ticket |
 
-> Note: this CSV has no assignee/owner column. "My rows" are found by a plain
-> case-insensitive substring search for `Paul` across **all cells in the row**, not
-> a specific column. If the CSV format changes to add an assignee column, prefer
-> matching on that column instead.
+> "My rows" are rows where **column D (the assignee column) is exactly `Paul`**
+> (case-insensitive exact match on that column, not a substring search across the
+> whole row). Older versions of this task treated column D as blank/unused and
+> matched `Paul` as a substring anywhere in the row — that happened to select the
+> same 91 rows against the current CSV, but is fragile (a test case name or ticket
+> summary mentioning "Paul" would false-positive, and a row genuinely assigned to
+> someone else would never be excluded by name). Use column D directly now that
+> it's confirmed to be a real assignee field.
 
 ## Zephyr Essential API (read this before automating any Zephyr call)
 
@@ -188,8 +193,8 @@ results) — not from what you expect it to say.
 ## Steps
 
 1. **Load the CSV** from `CSV_DATA_URL`.
-2. **Filter to my rows**: keep only rows where the string `Paul` (case-insensitive)
-   appears anywhere in the row's cells.
+2. **Filter to my rows**: keep only rows where **column D (the assignee column)**
+   equals `Paul` (case-insensitive exact match).
 3. For each matching row, **check column G** (Test Case.Name) against the JIRA
    board at `JIRA_URL`:
    - Run a JQL search scoped to the board's project (e.g. `project = EI`) for an

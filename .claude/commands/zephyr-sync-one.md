@@ -7,7 +7,7 @@ Follow the workflow defined in `.claude/tasks/zephyr-jira-sync.md` in this repo,
 Steps:
 
 1. Read `.claude/tasks/zephyr-jira-sync.md` for the full spec (env vars, column map, JIRA/Zephyr logic).
-2. Load the CSV at `CSV_DATA_URL` and filter to rows where `Paul` appears (case-insensitive) anywhere in the row.
+2. Load the CSV at `CSV_DATA_URL` and filter to rows where column D (the assignee column, header exports blank but the values are real names) equals `Paul` (case-insensitive exact match).
 3. Read `CSV_LOGS` and collect the set of column-B (`Execution.Key`) values already logged, regardless of status (`PASSED`/`FAILED`/`SKIPPED`/`BLOCKED`/`NOT EXECUTED`).
 4. Pick the **first** matching row from step 2 whose column B is NOT yet in the log from step 3. This is the one row to process.
    - If no unprocessed matching row remains, report that and stop — do not process anything.
