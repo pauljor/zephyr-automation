@@ -1,0 +1,12 @@
+{
+    "mcpServers": {
+        "zephyr-scale": {
+            "command": "npx",
+            "args": ["-y", "mcp-zephyr-scale"],
+            "env": {
+                "ZEPHYR_API_TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjb250ZXh0Ijp7ImJhc2VVcmwiOiJodHRwczovL3NvZnR3YXJldGVzdGluZ2h1Yi5hdGxhc3NpYW4ubmV0IiwidXNlciI6eyJhY2NvdW50SWQiOiI2MTk0NWUwYWQ1OTg2YzAwNmE2YzM2NGQiLCJ0b2tlbklkIjoiYmU2ODExNGYtMTQxMy00NGUxLWIxNTEtYWI5MGUzMTgwYWVmIn0sImVudmlyb25tZW50SWQiOiIxZjE1NzBiNy0xODk2LTQzMzEtYTk5Ny02NmNkMDc2MjY0ZjEifSwiaXNzIjoiY29tLnRoZWQuemVwaHlyLmplIiwic3ViIjoiYWQyYzJmY2YtMjA3Yy0zMDZmLTljYTYtMDJmM2QwMzQwNGM1IiwiZXhwIjoxODIwNzQxMTI0LCJpYXQiOjE3ODkyMDUxMjR9.YW7YBCvto2IlxUGdnWmUFjc0iaB-ILfDXpUY7wXDTqY",
+                "JIRA_PROJECT_KEY": "EI"
+            }
+        }
+    }
+}
