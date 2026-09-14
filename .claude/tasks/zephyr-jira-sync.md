@@ -155,40 +155,46 @@ scenario.
 **When no matching JIRA ticket is found**, the `comment` body must cover
 exactly these three sections, in order, as literal HTML (no line
 breaks/indentation needed in the JSON string — it's rendered, not read as
-source):
+source). Write the content in plain, everyday language — as if explaining the
+test to a non-technical reader (a PM, a teacher, a ticket reviewer), not
+another engineer. This plain-language rule replaced an older, more technical
+wording (status codes, endpoint paths, pytest one-liners, file names inline)
+on 2026-09-14 — see git history if the old style is ever needed for reference:
 
 ```html
 <p><b>STEPS</b></p>
 <ol>
-<li><first action the automation takes, wrap literal values in code tags></li>
-<li><next action></li>
+<li><first thing that was tried, in plain terms - no endpoint paths, field
+    names, or code></li>
+<li><next thing that was tried></li>
 ...
 </ol>
 <p><b>EXPECTED</b></p>
 <ul>
-<li><first expected outcome, from column G / the test's own intent></li>
-<li><next expected outcome></li>
+<li><what should happen, in plain terms, from column G's own wording/intent></li>
+<li><next expected outcome, if any></li>
 ...
 </ul>
 <p><b>ACTUAL</b></p>
 <ul>
-<li>Test: <code>&lt;test file name&gt;</code></li>
 <li>Result: <b>PASSED</b> or <b>FAILED</b></li>
-<li><code>&lt;pytest one-line summary, e.g. "1 passed in 4.90s"&gt;</code></li>
-<li><what actually happened when it ran just now - status codes, key
-    response values, which assertions passed or failed, one bullet each></li>
+<li><what really happened, in one or two plain sentences - describe what the
+    system actually did and how that compares to what was expected, with no
+    status codes, file paths, pytest output, or other implementation detail></li>
 </ul>
 ```
 
-Wrap identifiers, filenames, and literal values (endpoints, status codes,
-field names, test file names) in `<code>` tags, and bold the PASSED/FAILED
-result with `<b>` — otherwise keep it plain ASCII prose inside the `<li>`/`<p>`
-text. A comment containing `::`, curly braces, or an em dash has triggered a
-`400 "Invalid Payload"` from this API before (see "Zephyr Essential API"
-above) — none of those appear in the HTML template above, so it's safe. Pull
-STEPS from the test's own docstring/body rather than re-deriving them, and
-ACTUAL from the just-completed run's real output (status codes, assertion
-results) — not from what you expect it to say.
+Keep it short — two or three bullets per section is usually enough. Use
+`<code>` sparingly, only around a value the reader genuinely needs to see
+verbatim (e.g. the exact malformed input that was tried), not around internal
+identifiers, file names, or endpoints — those belong in the test file itself,
+not the comment. Bold the PASSED/FAILED result with `<b>` — otherwise keep it
+plain ASCII prose inside the `<li>`/`<p>` text. A comment containing `::`,
+curly braces, or an em dash has triggered a `400 "Invalid Payload"` from this
+API before (see "Zephyr Essential API" above) — avoid those. Base STEPS on
+what the test actually does and ACTUAL on the just-completed run's real
+outcome (not on what you expect it to say) — just describe both in plain
+language rather than technical detail.
 
 ## Steps
 
