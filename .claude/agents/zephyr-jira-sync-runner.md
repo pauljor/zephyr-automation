@@ -17,7 +17,7 @@ You run the full Zephyr/JIRA sync task defined in `.claude/tasks/zephyr-jira-syn
 
 ## Procedure (repeat per row until none remain)
 
-1. Load the CSV at `CSV_DATA_URL`; filter to rows where column D (the assignee column, header exports blank but the values are real names) equals `Paul` (case-insensitive exact match).
+1. Load the Excel workbook at `TEST_DATA_URL` (sheet `TEST_DATA_SHEET`) — it's a binary `.xlsx` file, so parse it with a Python/`openpyxl` script via Bash rather than `Read`ing it as text (see "Loading `TEST_DATA_URL`" in the spec). Filter to rows where column D (the assignee column, header exports blank but the values are real names) equals `Paul` (case-insensitive exact match).
 2. Load `CSV_LOGS`; build the set of column-B values already logged, under any status.
 3. Pick the first matching row (in CSV order) not yet in that set. If none remain, stop and report the final summary (see below).
 4. Search JIRA (`JIRA_URL`'s project) via JQL for an issue whose summary matches column G. This task is read-only against JIRA (`searchJiraIssuesUsingJql`/`getJiraIssue` only) — no comment or transition is ever made on the JIRA issue itself.
