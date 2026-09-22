@@ -104,6 +104,37 @@ This lookup will almost always succeed cleanly here: a `FAILED` row only
 exists because the sync task already ran a real test for it, so the test
 file is expected to exist in exactly one of the two trees.
 
+## Finding the API name (BackEnd items only)
+
+A `BackEnd` bug ticket also names the underlying API endpoint(s) the
+scenario exercises, so triage doesn't have to go spelunking through the
+automation repo to find it. Skip this section entirely for `FrontEnd` items.
+
+1. In the `service/tests/` file found above, locate the specific test
+   function matching this item (same match used to confirm the category —
+   its docstring or name lines up with column G).
+2. Within that test function's body, find the Service Object Model method
+   call(s) it makes on a `*Service` instance — e.g. `student.grade_average(...)`,
+   `teacher.report_violation(...)`. These are the calls that actually hit the
+   backend; ignore fixture/setup helper calls that aren't part of the
+   scenario under test.
+3. For each distinct method name found, locate its definition under
+   `service/services/**/*.py` (`def <method_name>(...)`) and read the first
+   line of its docstring. This repo's own convention documents every service
+   method as `"""<HTTP METHOD> <path> — <description>"""` (e.g. `"""GET
+   /v1/student/assignment/{class_code}/grade/average/fetch — the student's
+   average grade..."""`). Take just the `<HTTP METHOD> <path>` portion —
+   don't paraphrase or shorten the path.
+4. If the test calls more than one endpoint (e.g. a setup call plus the call
+   actually under test), list every distinct one found in step 2/3 — don't
+   assume only one is "the" endpoint.
+5. If a method call can't be traced to a docstring following the `METHOD
+   path — ...` convention (e.g. the test calls `requests`/an HTTP client
+   directly instead of a Service Object Model method), don't guess a path —
+   omit the `**API**` line entirely for that ticket rather than putting an
+   unconfirmed endpoint on it. Unlike an unresolved category, this is not a
+   blocker for the rest of the ticket.
+
 ## The Zephyr test case URL
 
 Confirmed by opening a real test case in the browser (not guessed): clicking
@@ -142,8 +173,14 @@ equivalent) with `cloudId: "softwaretestinghub.atlassian.net"`.
 - **`description`** (Markdown), in this order:
   1. `**Reason**` heading, then the STEPS/EXPECTED/ACTUAL content converted
      from the Zephyr comment per above.
-  2. A `**Zephyr Test Case**` line: `[<Test Case.Key> — <Test Case.Name>](<zephyr test case URL>)`.
-  3. A `**Zephyr Execution**` line with the raw `Execution.Key` (e.g.
+  2. **BackEnd items only**: an `**API**` line per distinct endpoint found in
+     "Finding the API name" above, e.g. `**API**: `GET
+     /v1/student/assignment/{class_code}/grade/average/fetch`` (backtick-code
+     the `METHOD path`, one line per endpoint if there's more than one).
+     Omit this entirely for `FrontEnd` items, and omit it for a `BackEnd`
+     item where the endpoint couldn't be resolved (see step 5 there).
+  3. A `**Zephyr Test Case**` line: `[<Test Case.Key> — <Test Case.Name>](<zephyr test case URL>)`.
+  4. A `**Zephyr Execution**` line with the raw `Execution.Key` (e.g.
      `EI-E1033`) for traceability back to `CSV_LOGS` — plain text, not a
      link (executions have no confirmed deep-link URL, unlike test cases).
 - **`additional_fields`**: `{"customfield_10360": "<Test Case.Key>"}` — this

@@ -56,32 +56,41 @@ item has a bug ticket instead of stopping after one.
    `client/tests/` → `FrontEnd`. If matches land in both trees or neither,
    this is a blocker (see "Fail loud" above) — stop the run rather than
    guessing a category.
-5. Fetch the backing Zephyr execution's `comment` (`GET
+5. **BackEnd items only** (skip for FrontEnd): per the spec's "Finding the
+   API name" section, find the Service Object Model method call(s) the
+   matching test function makes, trace each to its `def <method>` under
+   `service/services/**/*.py`, and read the first line of its docstring
+   (`<HTTP METHOD> <path> — ...`) to get the real endpoint. Collect one
+   `METHOD path` per distinct endpoint found. If none can be traced this
+   way, don't guess — proceed without an API line; this is not a blocker.
+6. Fetch the backing Zephyr execution's `comment` (`GET
    https://prod-api.zephyr4jiracloud.com/v2/testexecutions/<Execution.Key>`
    with `ZEPHYR_API_TOKEN`) and convert its STEPS/EXPECTED/ACTUAL HTML into
    the Markdown description per the spec. If the comment is missing or
    doesn't parse into those three sections, treat as a blocker (see "Fail
    loud" above) rather than inventing a reason.
-6. Build the Zephyr test case URL: `<ZEPHYR_URL>#/v2/testCase/<Test
+7. Build the Zephyr test case URL: `<ZEPHYR_URL>#/v2/testCase/<Test
    Case.Key>?projectId=10121` per the spec.
-7. Run the JQL duplicate check from the spec. If a genuine pre-existing bug
+8. Run the JQL duplicate check from the spec. If a genuine pre-existing bug
    covers this scenario, log `<Test Case.Key>, EXEC:<Execution.Key>,
    JIRA:<existing key>, PREEXISTING` to `BUG_TICKET_LOGS` and move to the
    next item (step 3) — this is not a blocker, just a skip.
-8. Otherwise, create the Bug issue in project `EI`: summary `[BUG]
+9. Otherwise, create the Bug issue in project `EI`: summary `[BUG]
    [<Category>] <Test Case.Name>` (category from step 4), the Markdown
-   description from steps 5–6, `additional_fields` with `customfield_10360`
-   (Test Name = the Test Case.Key) and `customfield_10359` (Test Status =
-   FAILED, option id `10328`), and `transition: {"id": "8"}` to land directly
-   in "BUG - Blocked by Defect".
-9. `getJiraIssue` the new key and confirm `fields.status.name` is exactly
-   `"BUG - Blocked by Defect"`. If not, call `transitionJiraIssue` with
-   `transition: {"id": "8"}` on it and re-check once. If it still isn't in
-   that status, this is a blocker — per "Fail loud" above, stop the run
-   without logging this item.
-10. Append `<Test Case.Key>, EXEC:<Execution.Key>, JIRA:<new Bug ticket key>`
+   description built from steps 5–7 (Reason, then `**API**` line(s) if any
+   from step 5, then Zephyr Test Case, then Zephyr Execution),
+   `additional_fields` with `customfield_10360` (Test Name = the Test
+   Case.Key) and `customfield_10359` (Test Status = FAILED, option id
+   `10328`), and `transition: {"id": "8"}` to land directly in "BUG -
+   Blocked by Defect".
+10. `getJiraIssue` the new key and confirm `fields.status.name` is exactly
+    `"BUG - Blocked by Defect"`. If not, call `transitionJiraIssue` with
+    `transition: {"id": "8"}` on it and re-check once. If it still isn't in
+    that status, this is a blocker — per "Fail loud" above, stop the run
+    without logging this item.
+11. Append `<Test Case.Key>, EXEC:<Execution.Key>, JIRA:<new Bug ticket key>`
     to `BUG_TICKET_LOGS`.
-11. Go back to step 3 for the next item.
+12. Go back to step 3 for the next item.
 
 ## End of run
 
