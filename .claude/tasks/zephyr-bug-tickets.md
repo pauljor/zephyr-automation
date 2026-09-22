@@ -217,6 +217,58 @@ to confirm. If it still isn't in that status after the explicit transition,
 don't force it further — log the ticket as created but flag the column
 placement as unresolved (see "If something doesn't fit" below).
 
+## Getting the ticket onto the Board, not just into the right status
+
+Confirmed by direct investigation on 2026-09-22 (a user reported new tickets
+missing from the board even with the correct status, on two different
+computers, ruling out a browser-cache theory): this board (`EI board`, id
+`121`) has a **Backlog/Board split that is completely independent of
+status**. Every issue in the project sits in one of two buckets — "Backlog"
+or "Board" — determined by a rank-based cursor, not by which column its
+status maps to. A brand-new issue is ranked at the very end of the whole
+project (last-created = last-ranked), which puts it **past** that cursor, so
+it lands in the Backlog bucket no matter what its status is. Confirmed via
+the Agile REST API (`GET /rest/agile/1.0/board/121/issue?jql=...`) that a
+correctly-statused new ticket still would not appear on the Board tab until
+moved — the column mapping and the board's filter (`project = EI ORDER BY
+Rank ASC`) were both already correct; this bucket is the one thing that
+isn't captured by either.
+
+**There is no confirmed REST/MCP call for this** — it was done, and should
+keep being done, via the browser (`claude-in-chrome`), since that's the only
+mechanism verified to work:
+
+1. Load the browser tools if not already loaded: `ToolSearch` with
+   `select:mcp__claude-in-chrome__tabs_context_mcp,mcp__claude-in-chrome__navigate,mcp__claude-in-chrome__computer,mcp__claude-in-chrome__find,mcp__claude-in-chrome__get_page_text`.
+2. Navigate to
+   `https://softwaretestinghub.atlassian.net/jira/software/projects/EI/boards/121/backlog`.
+   Every newly created bug ticket from this task will be in the single
+   "Backlog" section there (not the "Board" section) until moved.
+3. Find the new ticket(s) in that list — for one ticket, the backlog search
+   box (`?jql=...issuekey = "<key>"...`) is fastest; for several from the
+   same run, they're usually ranked contiguously near the bottom of the
+   Backlog section since they were created back-to-back, so scrolling to
+   find them is enough. Check the checkbox for each one (hover over the
+   left edge of a row to reveal it).
+4. Right-click any one of the checked rows → **Move work item → Board**.
+   This applies to the whole current selection at once, so one click moves
+   every checked ticket.
+5. Verify: re-open (or refresh) the Board tab and confirm the "BUG - Blocked
+   by Defect" column's count increased by the number of tickets just moved,
+   or re-search the Backlog for the ticket key(s) and confirm they no longer
+   appear there.
+
+**Don't skip this step or assume the `transition` call in "Creating the bug
+ticket" already handles it** — status and board-bucket membership are
+unrelated in this project, and a ticket can have the exactly correct status
+while still being invisible on the Board tab until this move happens.
+
+If the "Board" option is ever missing from the "Move work item" menu (e.g.
+the board's backlog/board split gets disabled or reconfigured later), don't
+guess a workaround — treat it like any other unresolved item (see "If
+something doesn't fit" below) and report it rather than silently leaving new
+tickets stuck in the Backlog.
+
 ## Recording what was done (`BUG_TICKET_LOGS`)
 
 Append one line per bug ticket successfully created (not overwritten), space

@@ -1,7 +1,7 @@
 ---
 name: zephyr-bug-ticket-runner
 description: Creates JIRA bug tickets for every remaining failed Zephyr test case per .claude/tasks/zephyr-bug-tickets.md, applying the /zephyr-bug-one logic to each unticketed item, strictly one at a time, until nothing is left to process. Use when asked to "create bug tickets for all failed tests", "bulk-create bug tickets", or "finish the bug ticket backlog".
-tools: Read, Write, Edit, Bash, PowerShell, mcp__claude_ai_Atlassian_Rovo__searchJiraIssuesUsingJql, mcp__claude_ai_Atlassian_Rovo__getJiraIssue, mcp__claude_ai_Atlassian_Rovo__createJiraIssue, mcp__claude_ai_Atlassian_Rovo__editJiraIssue, mcp__claude_ai_Atlassian_Rovo__getTransitionsForJiraIssue, mcp__claude_ai_Atlassian_Rovo__transitionJiraIssue, mcp__claude_ai_Atlassian__searchJiraIssuesUsingJql, mcp__claude_ai_Atlassian__getJiraIssue, mcp__claude_ai_Atlassian__createJiraIssue, mcp__claude_ai_Atlassian__editJiraIssue, mcp__claude_ai_Atlassian__getTransitionsForJiraIssue, mcp__claude_ai_Atlassian__transitionJiraIssue
+tools: Read, Write, Edit, Bash, PowerShell, ToolSearch, Skill, mcp__claude_ai_Atlassian_Rovo__searchJiraIssuesUsingJql, mcp__claude_ai_Atlassian_Rovo__getJiraIssue, mcp__claude_ai_Atlassian_Rovo__createJiraIssue, mcp__claude_ai_Atlassian_Rovo__editJiraIssue, mcp__claude_ai_Atlassian_Rovo__getTransitionsForJiraIssue, mcp__claude_ai_Atlassian_Rovo__transitionJiraIssue, mcp__claude_ai_Atlassian__searchJiraIssuesUsingJql, mcp__claude_ai_Atlassian__getJiraIssue, mcp__claude_ai_Atlassian__createJiraIssue, mcp__claude_ai_Atlassian__editJiraIssue, mcp__claude_ai_Atlassian__getTransitionsForJiraIssue, mcp__claude_ai_Atlassian__transitionJiraIssue, mcp__claude-in-chrome__tabs_context_mcp, mcp__claude-in-chrome__tabs_create_mcp, mcp__claude-in-chrome__tabs_close_mcp, mcp__claude-in-chrome__navigate, mcp__claude-in-chrome__computer, mcp__claude-in-chrome__find, mcp__claude-in-chrome__get_page_text
 ---
 
 You run the full bug-ticket-creation task defined in
@@ -40,7 +40,11 @@ item has a bug ticket instead of stopping after one.
   Blocked by Defect" even after an explicit retry transition), do **not**
   write a `BUG_TICKET_LOGS` line for it, then stop the whole run and report
   exactly which item and what failed — do not skip it silently and continue
-  to the next item.
+  to the next item. Still perform the end-of-run board move (see below) for
+  whatever tickets were created before the blocker, so they don't get stuck.
+- **Track every new ticket key created this run** (not `PREEXISTING`
+  consolidations — those aren't new tickets) in a running list, to hand to
+  the end-of-run board move in one batch rather than per item.
 
 ## Procedure (repeat per item until none remain)
 
@@ -99,11 +103,36 @@ item has a bug ticket instead of stopping after one.
     that status, this is a blocker — per "Fail loud" above, stop the run
     without logging this item.
 11. Append `<Test Case.Key>, EXEC:<Execution.Key>, JIRA:<new Bug ticket key>`
-    to `BUG_TICKET_LOGS`.
+    to `BUG_TICKET_LOGS`, and add the new ticket key to this run's tracked
+    list (see "Track every new ticket key" rule above).
 12. Go back to step 3 for the next item.
 
 ## End of run
 
-Report a summary: total bug tickets created this run, any `PREEXISTING`
-skips (with the existing ticket key), and the item + reason if the run
-stopped early on a blocker.
+Before reporting, if this run's tracked list of new ticket keys is
+non-empty, move all of them onto the Board in one batch per the spec's
+"Getting the ticket onto the Board, not just into the right status" section
+— new tickets land in this project's Backlog regardless of status and won't
+appear on the Board tab until moved:
+
+1. Load the `claude-in-chrome` skill and browser tools if not already
+   loaded.
+2. Navigate to
+   `https://softwaretestinghub.atlassian.net/jira/software/projects/EI/boards/121/backlog`.
+   This run's new tickets will be ranked contiguously near the bottom of the
+   single "Backlog" section (created back-to-back), so scrolling to find
+   them is usually enough — no need to search one at a time.
+3. Check the checkbox for every tracked key from this run.
+4. Right-click any checked row → **Move work item → Board** — this applies
+   to the whole selection in one action.
+5. Verify: confirm none of the tracked keys still appear in the Backlog
+   section (re-search or re-scroll), and close the browser tab when done.
+
+If this move fails partway (e.g. a key can't be found in the Backlog list),
+don't leave it unreported — name exactly which keys were and weren't
+confirmed moved in the final summary; don't silently assume it worked.
+
+Report a summary: total bug tickets created this run, whether the board
+move succeeded (and for which keys, if partial), any `PREEXISTING` skips
+(with the existing ticket key), and the item + reason if the run stopped
+early on a blocker.
