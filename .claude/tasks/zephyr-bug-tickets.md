@@ -179,17 +179,25 @@ equivalent) with `cloudId: "softwaretestinghub.atlassian.net"`.
      the `METHOD path`, one line per endpoint if there's more than one).
      Omit this entirely for `FrontEnd` items, and omit it for a `BackEnd`
      item where the endpoint couldn't be resolved (see step 5 there).
-  3. A `**Zephyr Test Case**` line: `[<Test Case.Key> — <Test Case.Name>](<zephyr test case URL>)`.
-  4. A `**Zephyr Execution**` line with the raw `Execution.Key` (e.g.
-     `EI-E1033`) for traceability back to `CSV_LOGS` — plain text, not a
-     link (executions have no confirmed deep-link URL, unlike test cases).
+  3. A `**Zephyr Test Cases**` heading followed by a bulleted list, **even
+     when there's only one entry** — this list is what "Consolidating
+     duplicates" below appends to, so every ticket uses the list form from
+     creation rather than needing to be reshaped later. One bullet per
+     Zephyr test case backing this ticket:
+     `- [<Test Case.Key> — <Test Case.Name>](<zephyr test case URL>) — EXEC:<Execution.Key>`
+     (the raw `Execution.Key`, e.g. `EI-E1033`, stays plain text after the
+     link — executions have no confirmed deep-link URL, unlike test cases).
+     A freshly created ticket has exactly one bullet.
 - **`additional_fields`**: `{"customfield_10360": "<Test Case.Key>"}` — this
   is the **required** "Test Name" field on this project's Bug issue type
   (confirmed via `getJiraIssueTypeMetaWithFields`; every other field on the
   create screen is optional). Using the Zephyr key here is this task's own
   convention for traceability, not an existing documented standard — if a
   human reviewer says this field should hold something else, update this
-  spec rather than silently diverging per-ticket. Also set
+  spec rather than silently diverging per-ticket. On a fresh ticket this is
+  a single key; "Consolidating duplicates" below extends it to a
+  comma-separated list when more test cases are folded into the same
+  ticket. Also set
   `"customfield_10359": {"id": "10328"}` (the "Test Status" field's `FAILED`
   option) since it's directly relevant and already exists on this issue
   type.
@@ -235,8 +243,38 @@ column G>"`) and eyeball the hits — `BUG_TICKET_LOGS` is the authoritative
 record for *this task's own* idempotency, but a bug for the same scenario
 could already exist from manual triage outside this task entirely. If a
 clearly-matching bug ticket already exists and isn't in `BUG_TICKET_LOGS`,
-don't create a duplicate — log it as `<Test Case.Key>, EXEC:<Execution.Key>,
-JIRA:<existing key>, PREEXISTING` and move on.
+don't create a duplicate — instead consolidate into it, per "Consolidating
+duplicates" below.
+
+## Consolidating duplicates
+
+When a `FAILED` item turns out to be the same underlying defect as a bug
+ticket that already exists (whether found via `BUG_TICKET_LOGS` matching a
+different Test Case.Key to the same ticket, or via the JQL sanity check
+above), that ticket becomes the **one place** listing every Zephyr test case
+covering that defect — don't leave the duplicate as a bare log line with no
+trace on the ticket itself.
+
+1. `getJiraIssue` the existing ticket and read its current description.
+2. Append one bullet to its `**Zephyr Test Cases**` list (see "Creating the
+   bug ticket" above) for this item: `- [<Test Case.Key> — <Test
+   Case.Name>](<zephyr test case URL>) — EXEC:<Execution.Key>`. Keep every
+   existing bullet as-is — this is an append, not a rewrite of the list.
+3. Update `customfield_10360` ("Test Name") on that ticket to a
+   comma-separated list of every Test Case.Key now folded into it (e.g.
+   `EI-T356, EI-T708`), so the required field reflects all of them, not just
+   the original one.
+4. `editJiraIssue` with the updated `description` and `customfield_10360`.
+   Leave the summary, category bracket, API line(s), status, and everything
+   else on the ticket untouched — only the Zephyr Test Cases list and the
+   Test Name field grow.
+5. Then log it in `BUG_TICKET_LOGS` as `<Test Case.Key>,
+   EXEC:<Execution.Key>, JIRA:<existing key>, PREEXISTING` per above.
+
+If the `editJiraIssue` call fails, don't log the `PREEXISTING` line — treat
+it like any other unresolved item (see "If something doesn't fit") so a
+later run retries the consolidation instead of silently losing the
+cross-reference.
 
 ## If something doesn't fit
 

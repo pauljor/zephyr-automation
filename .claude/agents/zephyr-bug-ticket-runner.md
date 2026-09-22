@@ -1,7 +1,7 @@
 ---
 name: zephyr-bug-ticket-runner
 description: Creates JIRA bug tickets for every remaining failed Zephyr test case per .claude/tasks/zephyr-bug-tickets.md, applying the /zephyr-bug-one logic to each unticketed item, strictly one at a time, until nothing is left to process. Use when asked to "create bug tickets for all failed tests", "bulk-create bug tickets", or "finish the bug ticket backlog".
-tools: Read, Write, Edit, Bash, PowerShell, mcp__claude_ai_Atlassian_Rovo__searchJiraIssuesUsingJql, mcp__claude_ai_Atlassian_Rovo__getJiraIssue, mcp__claude_ai_Atlassian_Rovo__createJiraIssue, mcp__claude_ai_Atlassian_Rovo__getTransitionsForJiraIssue, mcp__claude_ai_Atlassian_Rovo__transitionJiraIssue, mcp__claude_ai_Atlassian__searchJiraIssuesUsingJql, mcp__claude_ai_Atlassian__getJiraIssue, mcp__claude_ai_Atlassian__createJiraIssue, mcp__claude_ai_Atlassian__getTransitionsForJiraIssue, mcp__claude_ai_Atlassian__transitionJiraIssue
+tools: Read, Write, Edit, Bash, PowerShell, mcp__claude_ai_Atlassian_Rovo__searchJiraIssuesUsingJql, mcp__claude_ai_Atlassian_Rovo__getJiraIssue, mcp__claude_ai_Atlassian_Rovo__createJiraIssue, mcp__claude_ai_Atlassian_Rovo__editJiraIssue, mcp__claude_ai_Atlassian_Rovo__getTransitionsForJiraIssue, mcp__claude_ai_Atlassian_Rovo__transitionJiraIssue, mcp__claude_ai_Atlassian__searchJiraIssuesUsingJql, mcp__claude_ai_Atlassian__getJiraIssue, mcp__claude_ai_Atlassian__createJiraIssue, mcp__claude_ai_Atlassian__editJiraIssue, mcp__claude_ai_Atlassian__getTransitionsForJiraIssue, mcp__claude_ai_Atlassian__transitionJiraIssue
 ---
 
 You run the full bug-ticket-creation task defined in
@@ -29,15 +29,18 @@ item has a bug ticket instead of stopping after one.
   for visibility, but don't wait on a response before continuing.
 - **Duplicate check before creating**: run the JQL sanity check from the spec
   and eyeball the hits. If a real pre-existing bug ticket covers the same
-  scenario and isn't yet in `BUG_TICKET_LOGS`, log it as `PREEXISTING`
-  instead of creating a new ticket.
+  scenario and isn't yet in `BUG_TICKET_LOGS`, consolidate into it per the
+  spec's "Consolidating duplicates" section (append a bullet to its `**Zephyr
+  Test Cases**` list, extend `customfield_10360`, `editJiraIssue`) instead of
+  creating a new ticket, then log it as `PREEXISTING`.
 - **Fail loud, don't skip silently**: if an item errors out (JIRA API error,
   missing/unparseable Zephyr comment, the bug category can't be resolved to
-  exactly one of FrontEnd/BackEnd, the required custom field is rejected, or
-  the ticket never lands in "BUG - Blocked by Defect" even after an explicit
-  retry transition), do **not** write a `BUG_TICKET_LOGS` line for it, then
-  stop the whole run and report exactly which item and what failed — do not
-  skip it silently and continue to the next item.
+  exactly one of FrontEnd/BackEnd, the required custom field is rejected, the
+  consolidation `editJiraIssue` fails, or the ticket never lands in "BUG -
+  Blocked by Defect" even after an explicit retry transition), do **not**
+  write a `BUG_TICKET_LOGS` line for it, then stop the whole run and report
+  exactly which item and what failed — do not skip it silently and continue
+  to the next item.
 
 ## Procedure (repeat per item until none remain)
 
@@ -72,13 +75,20 @@ item has a bug ticket instead of stopping after one.
 7. Build the Zephyr test case URL: `<ZEPHYR_URL>#/v2/testCase/<Test
    Case.Key>?projectId=10121` per the spec.
 8. Run the JQL duplicate check from the spec. If a genuine pre-existing bug
-   covers this scenario, log `<Test Case.Key>, EXEC:<Execution.Key>,
+   covers this scenario, follow "Consolidating duplicates" in the spec:
+   `getJiraIssue` the existing ticket, append `- [<Test Case.Key> — <Test
+   Case.Name>](<zephyr test case URL>) — EXEC:<Execution.Key>` to its
+   `**Zephyr Test Cases**` list, extend `customfield_10360` to a
+   comma-separated list including this Test Case.Key, `editJiraIssue` with
+   the updated description and field (leave everything else on the ticket
+   untouched), then log `<Test Case.Key>, EXEC:<Execution.Key>,
    JIRA:<existing key>, PREEXISTING` to `BUG_TICKET_LOGS` and move to the
-   next item (step 3) — this is not a blocker, just a skip.
+   next item (step 3). If the `editJiraIssue` call fails, this is a blocker
+   (see "Fail loud" above) — don't log the line.
 9. Otherwise, create the Bug issue in project `EI`: summary `[BUG]
    [<Category>] <Test Case.Name>` (category from step 4), the Markdown
    description built from steps 5–7 (Reason, then `**API**` line(s) if any
-   from step 5, then Zephyr Test Case, then Zephyr Execution),
+   from step 5, then the `**Zephyr Test Cases**` list with this one bullet),
    `additional_fields` with `customfield_10360` (Test Name = the Test
    Case.Key) and `customfield_10359` (Test Status = FAILED, option id
    `10328`), and `transition: {"id": "8"}` to land directly in "BUG -
