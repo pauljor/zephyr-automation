@@ -14,9 +14,18 @@ This task does **not** resolve/close the ticket — only a human should make tha
 "In Progress" just signals a fix attempt has been made and recorded; if the re-run still
 fails, that's logged honestly too (see "Logging" below), not silently hidden.
 
-Scope: one ticket per invocation, via `/zephyr-bug-fix-one`. No bulk agent yet (unlike
-the other two tasks) — add one later the same way `zephyr-bug-bulk.md` was added after
-`zephyr-bug-one.md` was proven, if this needs to run over many tickets at once.
+Scope: one ticket per invocation. Two ways to pick which one:
+- `/zephyr-bug-fix-one` — walks `BUG_TICKET_LOGS`, the record of tickets
+  [[zephyr-bug-tickets]] itself created.
+- `/zephyr-bug-fix-mine` — walks the JIRA board directly (`status = "BUG - Blocked by
+  Defect"`, `assignee = me`), for tickets in that column regardless of how they got
+  there (including ones created manually, outside [[zephyr-bug-tickets]] entirely).
+
+Everything from "Reading the ticket" onward is identical either way — only "Picking
+which ticket to fix" differs, and it says which command it's for. No bulk agent yet for
+either entry point (unlike the other two tasks) — add one later the same way
+`zephyr-bug-bulk.md` was added after `zephyr-bug-one.md` was proven, if this needs to
+run over many tickets at once.
 
 ## Env vars used (from `.env` at repo root)
 
@@ -31,7 +40,7 @@ the other two tasks) — add one later the same way `zephyr-bug-bulk.md` was add
 is used the same way as the other two tasks — direct REST calls to
 `https://prod-api.zephyr4jiracloud.com/v2`, never through the `zephyr-scale` MCP tools.
 
-## Picking which ticket to fix
+## Picking which ticket to fix — via `BUG_TICKET_LOGS` (`/zephyr-bug-fix-one`)
 
 1. Read `BUG_TICKET_LOGS`. Each line is `<Test Case.Key>, EXEC:<Execution.Key>,
    JIRA:<Bug ticket key>[, PREEXISTING]`.
@@ -51,6 +60,27 @@ is used the same way as the other two tasks — direct REST calls to
    first JIRA key (in `BUG_TICKET_LOGS` order) not yet in `BUG_FIX_LOGS`. If none
    remain, report that everything already has a logged fix attempt and stop.
 
+## Picking which ticket to fix — via board status + assignee (`/zephyr-bug-fix-mine`)
+
+This entry point doesn't read `BUG_TICKET_LOGS` at all — it goes straight to JIRA, so it
+also catches bug tickets that landed in the column by some path other than
+[[zephyr-bug-tickets]] (created manually, or via the consolidation path in that task's
+own spec).
+
+1. `$ARGUMENTS` (optional): a JIRA bug ticket key. If given, `getJiraIssue` it directly
+   and confirm `fields.status.name` is exactly `"BUG - Blocked by Defect"` and
+   `fields.assignee.accountId` is you — if either isn't true, report that and stop
+   without doing anything (this command only ever touches tickets already assigned to
+   you; it doesn't claim, unlike `/zephyr-bug-fix-one`).
+2. If omitted: `searchJiraIssuesUsingJql` with
+   `project = EI AND status = "BUG - Blocked by Defect" AND assignee = currentUser()
+   ORDER BY created ASC` against `cloudId: "softwaretestinghub.atlassian.net"`.
+3. Read `BUG_FIX_LOGS` (create it if it doesn't exist yet) and collect every JIRA key
+   already logged there — same idempotency rule as the other entry point. Walk the JQL
+   results in order and pick the first key not yet in `BUG_FIX_LOGS`. If none remain,
+   report that every ticket assigned to you in that column already has a logged fix
+   attempt and stop.
+
 ## Reading the ticket
 
 `getJiraIssue` the target key and parse it per the shape [[zephyr-bug-tickets]] creates:
@@ -63,13 +93,23 @@ is used the same way as the other two tasks — direct REST calls to
   - `**API**` line(s), BackEnd tickets only — one `METHOD path` per endpoint involved.
   - `**Zephyr Test Cases**` bulleted list — one or more
     `[<Test Case.Key> — <Test Case.Name>](<url>) — EXEC:<Execution.Key>` entries. This
-    is the **authoritative** list of every execution to re-run once fixed — prefer it
-    over the rows found in "Picking which ticket to fix" step 2 above, in case the
-    ticket was consolidated more recently than `BUG_TICKET_LOGS` reflects.
+    is the **authoritative** list of every execution to re-run once fixed. For
+    `/zephyr-bug-fix-one`, prefer it over the rows found in that entry point's step 2,
+    in case the ticket was consolidated more recently than `BUG_TICKET_LOGS` reflects.
 - **Assignee** — `fields.assignee` comes back by default (it's one of `getJiraIssue`'s
   default fields, no need to request it explicitly).
 
+If the description doesn't match this shape at all (no `**Reason**`/`**API**`/
+`**Zephyr Test Cases**` sections — most likely for a ticket picked via
+`/zephyr-bug-fix-mine` that was created by hand rather than by [[zephyr-bug-tickets]]),
+don't guess a structure that isn't there. Treat it like any other unparseable ticket —
+see "If something doesn't fit" below.
+
 ## Claiming the ticket
+
+**Skip this entirely for `/zephyr-bug-fix-mine`** — its own "Picking which ticket to
+fix" step already filters to tickets assigned to you, so there's nothing to claim; go
+straight to "Checking whether it's already fixed" below. For `/zephyr-bug-fix-one`:
 
 If `fields.assignee` is `null` (unassigned), assign the ticket to yourself before doing
 anything else with it: get your own `accountId` via `atlassianUserInfo` (cache it for

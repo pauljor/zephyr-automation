@@ -23,7 +23,7 @@ row needs a fresh test, one gets written/run there following that repo's own con
 |---|---|---|---|
 | Sync Zephyr executions with JIRA | `.claude/tasks/zephyr-jira-sync.md` | `/zephyr-sync-one` (one row), `/zephyr-sync-all` | `zephyr-jira-sync-runner` |
 | Turn `FAILED` rows into JIRA bug tickets | `.claude/tasks/zephyr-bug-tickets.md` | `/zephyr-bug-one [key]` (one ticket), `/zephyr-bug-bulk` | `zephyr-bug-ticket-runner` |
-| Fix a bug ticket's underlying defect | `.claude/tasks/zephyr-bug-fixes.md` | `/zephyr-bug-fix-one [ticket key]` (one ticket) | *(none yet)* |
+| Fix a bug ticket's underlying defect | `.claude/tasks/zephyr-bug-fixes.md` | `/zephyr-bug-fix-one [key]` (via `BUG_TICKET_LOGS`), `/zephyr-bug-fix-mine [key]` (via JIRA: status `"BUG - Blocked by Defect"` + assignee = me) | *(none yet)* |
 
 Each task is downstream of the one before it: bug-ticket creation only *reads* `CSV_LOGS`
 (never mutates it or re-runs anything from the sync spec) and only acts on rows the sync
@@ -37,8 +37,12 @@ test and records whatever the honest result is (even if the fix didn't fully tak
 
 Both bulk agents (sync and bug-ticket) process **one row/item at a time, never in
 parallel** — that constraint is in the agent definitions themselves (`.claude/agents/*.md`),
-not just the spec prose. The bug-fix task has no bulk agent yet — it's single-item
-(`/zephyr-bug-fix-one`) only for now.
+not just the spec prose. The bug-fix task has no bulk agent yet — it's single-item only for
+now, via either of its two entry points: `/zephyr-bug-fix-one` (walks `BUG_TICKET_LOGS`) or
+`/zephyr-bug-fix-mine` (walks the JIRA board directly, so it also catches bug tickets that
+landed in "BUG - Blocked by Defect" some other way — e.g. created by hand). Both share the
+same close-out logic (`zephyr-bug-fixes.md`, "Reading the ticket" onward) and the same
+`BUG_FIX_LOGS` idempotency; only how the target ticket gets picked differs.
 
 ## Key facts that matter across all three tasks
 
