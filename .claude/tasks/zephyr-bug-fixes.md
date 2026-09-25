@@ -3,11 +3,12 @@
 ## Purpose
 
 Close the loop that [[zephyr-bug-tickets]] opens: take a bug ticket that task already
-created (logged in `BUG_TICKET_LOGS`), write the actual code fix in the app repo it
-belongs to (`eruditiontx-client-mvp` for FrontEnd, `eruditiontx-services-mvp` for
-BackEnd), confirm the fix by re-running the real Zephyr test case(s) that originally
-failed, then record what happened: comment on the ticket, move it to **In Progress**,
-and log it locally.
+created (logged in `BUG_TICKET_LOGS`), check whether it's already fixed by re-running
+the real Zephyr test case(s) live, and — only if it's still actually broken — write the
+code fix in the app repo it belongs to (`eruditiontx-client-mvp` for FrontEnd,
+`eruditiontx-services-mvp` for BackEnd). Either way, confirm the real current result and
+record what happened: comment on the ticket, move it to **In Progress**, and log it
+locally.
 
 This task does **not** resolve/close the ticket — only a human should make that call.
 "In Progress" just signals a fix attempt has been made and recorded; if the re-run still
@@ -90,7 +91,75 @@ Unlike a JIRA comment/transition or a Zephyr status write, an unconfirmed assign
 isn't part of what `BUG_FIX_LOGS`/idempotency tracks, so there's nothing to leave in a
 bad state by moving on.
 
+## Checking whether it's already fixed
+
+**Before touching any code, re-run every execution's automated test right now, for
+real, against the live QA host.** Confirmed happening on `EI-3456` (2026-09-25): its
+"excessively long class code" scenario was already resolved live, as a side effect of
+`EI-3455`'s fix for a *different* ticket on the same endpoint — before this task had
+looked at `EI-3456`'s code at all. The same can happen from a developer fixing it
+independently, or from a shared validator/handler that several tickets happen to route
+through. Don't assume a ticket's `FAILED` history from `BUG_TICKET_LOGS` still reflects
+reality; check it live first.
+
+For each execution in the ticket's `**Zephyr Test Cases**` list: re-run its matching
+automated test for real against the live QA host, and record the real result.
+
+- **If every execution already passes**: no code change is needed. Skip "Locating and
+  fixing the code" below entirely (and everything in "Confirming the fix" about
+  drift-checking/committing/deploying — none of that applies either). Go straight to
+  `PUT`-ing each execution's confirmed Pass status (per "Confirming the fix" steps 2–3
+  below — that part still applies, since the *Zephyr execution's own status* may not
+  yet reflect the pass even though the live test does), then find the responsible PR
+  (see "Finding the responsible PR/commit" below) before "Closing the loop".
+- **If some executions still fail**: only "Locating and fixing the code" for those —
+  reproduce with one of the still-failing tests. The already-passing execution(s) don't
+  need to be re-run again in "Confirming the fix" (nothing before their result would
+  change) — carry that confirmed result straight into the `PUT`/log/comment steps
+  alongside whatever gets newly fixed, and still find the responsible PR for those
+  already-passing ones specifically (the newly-fixed ones already have their own
+  Solution content from "Locating and fixing the code").
+- **If every execution still fails**: proceed exactly as before — "Locating and fixing
+  the code," then "Confirming the fix" covers all of them. Nothing to find a PR for.
+
+### Finding the responsible PR/commit (when already fixed)
+
+Don't just write "already fixed" in the ticket comment — trace it to the actual PR, the
+same way `EI-3456`'s comment cited commit `fdcbb5ff` for `EI-3455`. A vague "it passes
+now" comment is much less useful to a reviewer than a link to what actually changed.
+
+1. Locate the relevant file(s) the same way "Locating and fixing the code" step 1/2
+   would (BackEnd: trace the `**API**` line's `METHOD path` to its route handler;
+   FrontEnd: trace the failing-test-turned-passing to its component/hook/page) — even
+   though nothing needs editing, you still need to know where to look.
+2. In that repo (`eruditiontx-services-mvp` or `eruditiontx-client-mvp`), run
+   `git log --oneline -n 30 -- <file(s)>` and skim for a commit whose subject plausibly
+   explains this scenario — matching keywords from the ticket's summary/Reason, dated
+   after the ticket's own `created` field (from `getJiraIssue`'s default fields), and
+   (in `eruditiontx-services-mvp`) often carrying a trailing `(#<PR number>)` from a
+   squash-merged PR. `git show <commit>` to confirm the diff actually touches the
+   behavior in question before citing it — don't cite a commit on title-match alone.
+3. If a local checkout is behind `origin/DEVELOPMENT` (check `git fetch` +
+   `git rev-list HEAD..origin/DEVELOPMENT --count`, same drift check as "Confirming the
+   fix" below), the responsible commit may only be visible on the remote branch —
+   search `git log --oneline -n 30 origin/DEVELOPMENT -- <file(s)>` too, or fast-forward
+   first per that section, rather than concluding "no commit found" from a stale
+   history.
+4. If found, build a PR URL from the commit's trailing `(#<N>)` and the repo's real
+   `github.com` org/repo (`Eruditiontx/eruditiontx-services-mvp` or
+   `Eruditiontx/eruditiontx-client-mvp` — note the remote's `git fetch` output may show
+   a custom SSH host alias like `plongzx.github.com`, but the actual PR lives at
+   `github.com/<org>/<repo>/pull/<N>`, not that alias). Carry the commit hash, PR
+   number/URL, author, and a plain-language paraphrase of what the commit changed into
+   the "Closing the loop" comment's **Solution** section.
+5. If nothing plausible turns up after a real search (not just one `git log` glance),
+   don't force an attribution — fall back to noting it was already passing with the
+   cause untraced, same as before this refactor. Don't guess a commit just to have
+   something to cite.
+
 ## Locating and fixing the code
+
+For each execution that's still failing per the check above:
 
 1. **BackEnd** (`eruditiontx-services-mvp`): start from the `**API**` line's
    `METHOD path` — grep for that route across the service's route definitions to find
@@ -143,7 +212,11 @@ than assuming.
 For **every** execution listed in the ticket's `**Zephyr Test Cases**` section (not
 just the row that was used to pick the ticket, if it had more than one):
 
-1. Re-run the matching automated test for real against the live QA host.
+1. Re-run the matching automated test for real against the live QA host — **unless**
+   this execution already passed in "Checking whether it's already fixed" above and
+   nothing since then could have changed its result (no code touched anything it
+   depends on). In that case reuse that result instead of re-running the same test
+   twice; go straight to step 2 below.
 2. `PUT https://prod-api.zephyr4jiracloud.com/v2/testexecutions/<Execution.Key>` with
    `{"statusName": "Pass"|"Fail", "comment": "<STEPS/EXPECTED/ACTUAL HTML per
    zephyr-jira-sync.md's template, ACTUAL reflecting this re-run's real outcome>"}`
@@ -158,6 +231,24 @@ If some executions on the ticket now pass and others still fail, record each one
 real result independently in "Logging" below — don't round up to "fixed" just because
 some passed.
 
+### When the gap is a deliberate design decision, not a bug
+
+Sometimes a still-failing execution isn't unfixed because the code is broken — it's
+because the ticket's expected behavior conflicts with a deliberate, documented decision
+made elsewhere in the codebase (confirmed on `EI-3456`: the "well-formed but unknown
+class code" scenario conflicts with `class_code_validator.py`'s documented anti-
+enumeration-oracle design, added after the ticket was filed). This is **not** a process
+failure — it's a confirmed, honest `Fail` result with a well-understood reason, and it
+still goes through the normal flow below: `PUT` the real `Fail` status (per steps 1–3
+above, with the comment explaining *why*, not just *that*, it failed), then "Closing
+the loop" — comment, **transition to In Progress**, and log `FAILED` — exactly like any
+other still-broken execution. Don't route this into "If something doesn't fit"; that
+section is for genuine process failures (can't parse the ticket, can't trace the code,
+an API call errors, a write won't confirm), not for a legitimate reason not to change
+the code. The human decision this surfaces (override the design decision, or accept the
+ticket's expectation is wrong) belongs in the comment's **Remarks**, not in whether this
+task closes the loop.
+
 ## Closing the loop on the JIRA ticket
 
 Once every execution on the ticket has been re-run and its real result confirmed
@@ -165,8 +256,16 @@ Once every execution on the ticket has been re-run and its real result confirmed
 
 1. **Comment** on the ticket (`addCommentToJiraIssue`/equivalent), covering:
    - **Issue** — what was actually wrong (root cause), in your own words.
-   - **Solution** — what code change was made (file(s) touched, in plain terms), or,
-     if any re-run still fails, what was tried and what's still broken.
+   - **Solution** — one of: what code change was made (file(s) touched, in plain
+     terms); that no change was needed because it was **already fixed** — in this case
+     cite the actual PR/commit found in "Finding the responsible PR/commit" above
+     (link, commit hash, author, one-line paraphrase of the change) rather than just
+     saying "already passing," and only fall back to a generic note if that search
+     genuinely turned up nothing; that it conflicts with a **deliberate design
+     decision** elsewhere in the codebase (per "When the gap is a deliberate design
+     decision, not a bug" above) — cite what that decision is, where it's documented,
+     and why; or, if any re-run still fails for an ordinary unresolved reason, what was
+     tried and what's still broken.
    - **Remarks** — anything a reviewer should know: edge cases considered, follow-ups,
      why this approach, which re-runs (if any) still failed.
 2. **Transition** the ticket to **In Progress**: call `getTransitionsForJiraIssue` on
@@ -212,6 +311,12 @@ summary/description shape, the code location can't be confidently traced from th
 re-`GET`, or the JIRA comment/transition calls error out — stop processing that ticket,
 report exactly what happened (JIRA key, which execution(s), what failed), and do
 **not** write a `BUG_FIX_LOGS` line for it, so a later run doesn't skip it.
+
+This section is for genuine process failures only. A confirmed `Fail` result that
+conflicts with a deliberate design decision (see "When the gap is a deliberate design
+decision, not a bug" above) is **not** one of these — that case still gets a `PUT`, a
+comment, a transition to In Progress, and a `FAILED` log line, same as any other
+confirmed result.
 
 ## Resolved (previously "open items to confirm")
 
