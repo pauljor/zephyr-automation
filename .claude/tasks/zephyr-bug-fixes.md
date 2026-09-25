@@ -93,17 +93,38 @@ bad state by moving on.
 
 ## Checking whether it's already fixed
 
-**Before touching any code, re-run every execution's automated test right now, for
-real, against the live QA host.** Confirmed happening on `EI-3456` (2026-09-25): its
-"excessively long class code" scenario was already resolved live, as a side effect of
-`EI-3455`'s fix for a *different* ticket on the same endpoint — before this task had
-looked at `EI-3456`'s code at all. The same can happen from a developer fixing it
-independently, or from a shared validator/handler that several tickets happen to route
-through. Don't assume a ticket's `FAILED` history from `BUG_TICKET_LOGS` still reflects
-reality; check it live first.
+**Before touching any code — or re-running anything — `GET` each execution's current
+Zephyr status and comment first.** Confirmed on `EI-3457` (2026-09-25): the Zephyr
+execution `EI-E1049` was already `testExecutionStatus.id: 14539939` (Pass), with an
+extensive, dated investigation trail from a real developer already on it — a shipped
+PR, an explicitly-raised product-owner decision, and a recorded ruling — while the
+*local* automated test in `teacher-student-automation` still asserted the ticket's
+**original, now-superseded** expectation and still failed. Treating that stale local
+test as authoritative here would have meant re-investigating a question someone already
+answered, and risked clobbering their detailed Zephyr comment with a generic one. **The
+Zephyr execution's own current status/comment is the more authoritative signal when it
+already carries a human's dated reasoning — don't let a stale local test override it.**
+If a `GET` shows Pass with real investigation content (not just a leftover default),
+treat that as the confirmed result directly; skip re-running the local test for that
+execution (it may legitimately still be red against an intentionally-revised contract,
+same as `EI-3457`'s did) and go straight to "Finding the responsible PR/commit" (to
+credit whoever actually did the work) and "Closing the loop." If the developer's
+comment references other test cases/tickets sharing the same root cause and ruling
+(confirmed on `EI-3457`: it named `EI-T722`/`EI-3464`), flag that ticket in this one's
+**Remarks** rather than silently leaving it to rediscover the same investigation later.
 
-For each execution in the ticket's `**Zephyr Test Cases**` list: re-run its matching
-automated test for real against the live QA host, and record the real result.
+**Only if the Zephyr execution doesn't already show a confirmed, reasoned result**,
+re-run every execution's matching automated test right now, for real, against the live
+QA host. Confirmed happening on `EI-3456` (2026-09-25): its "excessively long class
+code" scenario was already resolved live, as a side effect of `EI-3455`'s fix for a
+*different* ticket on the same endpoint — before this task had looked at `EI-3456`'s
+code at all. The same can happen from a developer fixing it independently, or from a
+shared validator/handler that several tickets happen to route through. Don't assume a
+ticket's `FAILED` history from `BUG_TICKET_LOGS` still reflects reality; check it live.
+
+For each execution in the ticket's `**Zephyr Test Cases**` list (skipping any already
+resolved via the Zephyr-execution check above): re-run its matching automated test for
+real against the live QA host, and record the real result.
 
 - **If every execution already passes**: no code change is needed. Skip "Locating and
   fixing the code" below entirely (and everything in "Confirming the fix" about
@@ -127,6 +148,12 @@ automated test for real against the live QA host, and record the real result.
 Don't just write "already fixed" in the ticket comment — trace it to the actual PR, the
 same way `EI-3456`'s comment cited commit `fdcbb5ff` for `EI-3455`. A vague "it passes
 now" comment is much less useful to a reviewer than a link to what actually changed.
+
+**If the Zephyr execution's own comment already names the commit/PR** (per "Checking
+whether it's already fixed" above — confirmed on `EI-3457`, where the developer's own
+comment named PR `#358` directly), use that instead of re-deriving it from `git log`;
+it's both faster and more authoritative than a keyword/date guess. Only fall back to
+steps 1–3 below when the Zephyr comment doesn't already say.
 
 1. Locate the relevant file(s) the same way "Locating and fixing the code" step 1/2
    would (BackEnd: trace the `**API**` line's `METHOD path` to its route handler;
