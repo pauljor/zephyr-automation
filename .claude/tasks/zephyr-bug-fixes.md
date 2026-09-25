@@ -65,6 +65,30 @@ is used the same way as the other two tasks — direct REST calls to
     is the **authoritative** list of every execution to re-run once fixed — prefer it
     over the rows found in "Picking which ticket to fix" step 2 above, in case the
     ticket was consolidated more recently than `BUG_TICKET_LOGS` reflects.
+- **Assignee** — `fields.assignee` comes back by default (it's one of `getJiraIssue`'s
+  default fields, no need to request it explicitly).
+
+## Claiming the ticket
+
+If `fields.assignee` is `null` (unassigned), assign the ticket to yourself before doing
+anything else with it: get your own `accountId` via `atlassianUserInfo` (cache it for
+the rest of the session/run rather than calling this once per ticket), then
+`editJiraIssue` with `fields: {"assignee": {"accountId": "<your accountId>"}}`.
+`getJiraIssue` again and confirm `fields.assignee.accountId` matches before moving on —
+same "don't trust a write without re-checking" rule as every other JIRA/Zephyr mutation
+in this repo.
+
+If the ticket is **already assigned to someone else**, don't reassign it — that's a
+human call, not this task's. Note the existing assignee in the final summary and
+continue fixing it anyway (the ticket being someone else's doesn't block the fix), but
+flag it so the user knows before this task's comment/transition land on someone else's
+ticket.
+
+If the `editJiraIssue` assignment call itself errors out, don't treat that as a blocker
+for the rest of the ticket — note it in the final summary and continue with the fix.
+Unlike a JIRA comment/transition or a Zephyr status write, an unconfirmed assignment
+isn't part of what `BUG_FIX_LOGS`/idempotency tracks, so there's nothing to leave in a
+bad state by moving on.
 
 ## Locating and fixing the code
 
@@ -89,8 +113,32 @@ is used the same way as the other two tasks — direct REST calls to
    push it automatically — this environment's standing rule is to only commit when the
    user explicitly asks, and a fix here should get a human look at the diff first. Name
    the exact file(s) changed in the final summary so that's easy.
+6. **If the user does approve committing/pushing** (e.g. to deploy a BackEnd fix for
+   live re-verification, see "Confirming the fix" below): the commit message does
+   **not** get a `Co-Authored-By: Claude ...` attribution line, for this task or any
+   future commit in this repo/workflow — that's a standing instruction for this
+   project, not a one-off. Everything else about the commit (message content, style,
+   not force-pushing, not skipping hooks) follows the environment's normal git rules.
 
 ## Confirming the fix
+
+**A local-only edit in `eruditiontx-services-mvp` does not change what the live QA host
+returns.** Confirmed on `EI-3455` (2026-09-25): the local checkout was 135 commits
+behind `origin/DEVELOPMENT` (unrelated to this task — check for this drift before
+assuming a local fix is even built on current code; `git fetch` + compare, fast-forward
+if it's a clean behind-only gap, 0 local commits ahead). The QA host only picks up new
+code from a push to `DEVELOPMENT` — its CI/CD pipeline (`.github/workflows/
+ci-cd-pipeline.yml`) does `git reset --hard origin/DEVELOPMENT` + restart on push to
+`main`/`DEVELOPMENT`. So for a BackEnd fix, re-running the test immediately after
+editing will just reproduce the original failure again — that's not a re-run of a
+blocked/failed fix, it's re-running against unfixed code. Get the commit onto
+`DEVELOPMENT` first (see "If the user does approve committing/pushing" above — this
+needs the user's explicit go-ahead, it's a shared branch with an auto-deploy attached),
+then poll the live host for the deploy to land (re-run the test every ~20s; a few
+minutes is normal) before trusting a still-red result. FrontEnd fixes in
+`eruditiontx-client-mvp` may have the same constraint if that app is also served from a
+deployed build rather than picked up live — check its own deploy story if unsure rather
+than assuming.
 
 For **every** execution listed in the ticket's `**Zephyr Test Cases**` section (not
 just the row that was used to pick the ticket, if it had more than one):
@@ -167,10 +215,14 @@ report exactly what happened (JIRA key, which execution(s), what failed), and do
 
 ## Resolved (previously "open items to confirm")
 
-- **"In Progress" transition id**: not yet confirmed against a real ticket — the first
-  live run of this task should look it up via `getTransitionsForJiraIssue`, use it, and
-  this line should be updated with the confirmed id (the way `zephyr-bug-tickets.md`
-  documents `id: "8"` for "BUG - Blocked by Defect") once verified.
+- **"In Progress" transition id**: confirmed as `id: "3"` (target status `"IN
+  PROGRESS"`, status id `10526`) via `getTransitionsForJiraIssue` against `EI-3455`
+  on 2026-09-25 — still look it up live each run rather than hardcoding it, since
+  this board has a second, confusingly-named transition (`id: "21"`, labeled "In
+  Progress" but actually targeting status `"TO DO (Exclude SKIPPED, INFRA)"`, id
+  `10527`) that would silently move a ticket to the wrong status if matched by
+  transition label instead of target status name. Always match on `to.name`, never
+  on the transition's own `name`.
 
 ## Notes
 
@@ -179,6 +231,11 @@ report exactly what happened (JIRA key, which execution(s), what failed), and do
 - Downstream of [[zephyr-jira-sync]] by extension, for the same reason
   `zephyr-bug-tickets.md` is: `FAILED` rows there are what eventually produce the
   tickets this task fixes.
-- Committing/pushing the code fix is a separate, explicit step for the user to ask for
-  once they've reviewed the diff — this task's job stops once the fix is verified
-  (or honestly recorded as still failing) and the ticket is updated.
+- Committing/pushing the code fix always needs the user's explicit go-ahead — this
+  task never does it silently. Usually that's a separate step the user takes after
+  reviewing the diff, once this task's job is otherwise done. But for a BackEnd fix,
+  reaching a real "Confirming the fix" result requires the code to actually be on
+  `DEVELOPMENT` first (see that section above), so asking for that go-ahead can happen
+  *mid*-task rather than only at the end — that's fine, just don't skip asking. When
+  a commit does happen, per this project's standing instruction it never carries a
+  `Co-Authored-By: Claude ...` line.
