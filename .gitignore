@@ -1,0 +1,4 @@
+gsheet-service-account.json
+__pycache__/
+.env.local
+gsheet_webapp.gs
