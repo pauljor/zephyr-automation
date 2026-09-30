@@ -8,6 +8,7 @@ and skips rows already showing the same result. Safe to re-run.
   python gsheet_sync.py --watch    # sync now, then again every time csv_logs.txt changes
   python gsheet_sync.py --dry-run  # print the plan, write nothing
   python gsheet_sync.py --reformat # re-apply colors to rows already written (text/date kept)
+  python gsheet_sync.py --redate   # fix dates on rows already written to match the log's commit dates
   python gsheet_sync.py EI-E1033   # only that Execution.Key
 
 Setup (one time): pip install requests; paste gsheet_webapp.gs into the sheet (Extensions ->
@@ -20,6 +21,7 @@ import datetime
 import json
 import os
 import re
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -49,17 +51,43 @@ def load_env():
     return env
 
 
+def line_dates(path):
+    """1-based line number -> commit date (the day the line's last commit was made, in that commit's
+    own timezone). Lines not committed yet are absent, so callers fall back to today."""
+    path = Path(path)
+    try:
+        out = subprocess.run(["git", "blame", "--line-porcelain", "--", path.name], cwd=path.parent,
+                             capture_output=True, text=True, encoding="utf-8", check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return {}  # not a git checkout / file untracked: everything falls back to today
+    dates, line_no, ts, tz = {}, None, None, "+0000"
+    for raw in out.splitlines():
+        if raw.startswith("	"):  # content line closes the entry
+            if line_no is not None and ts is not None and not set(sha) <= {"0"}:
+                sign = -1 if tz.startswith("-") else 1
+                offset = datetime.timedelta(hours=int(tz[1:3]), minutes=int(tz[3:5])) * sign
+                dates[line_no] = (datetime.datetime.fromtimestamp(ts, datetime.timezone.utc) + offset).date()
+            line_no, ts = None, None
+        elif line_no is None:
+            sha, _, line_no = raw.split()[:3]
+            line_no = int(line_no)
+        elif raw.startswith("committer-time "):
+            ts = int(raw.split()[1])
+        elif raw.startswith("committer-tz "):
+            tz = raw.split()[1]
+    return dates
+
+
 def read_log(path):
-    """Execution.Key -> 'Passed'/'Failed' (last line for a key wins; other statuses ignored)."""
-    result = {}
-    for line in Path(path).read_text(encoding="utf-8").splitlines():
+    """Execution.Key -> ('Passed'/'Failed', commit date) (last line for a key wins; other statuses
+    ignored). The date is when that line was committed, or today if it isn't committed yet."""
+    result, dates, today = {}, line_dates(path), datetime.date.today()
+    for n, line in enumerate(Path(path).read_text(encoding="utf-8").splitlines(), 1):
         parts = [p.strip() for p in line.split(",")]
         if len(parts) < 2:
             continue
-        if parts[1] == "PASSED":
-            result[parts[0]] = "Passed"
-        elif parts[1] == "FAILED":
-            result[parts[0]] = "Failed"
+        if parts[1] in ("PASSED", "FAILED"):
+            result[parts[0]] = (parts[1].capitalize(), dates.get(n, today))
         else:
             result.pop(parts[0], None)  # e.g. SKIPPED: nothing to write
     return result
@@ -105,12 +133,10 @@ class Sheet:
         return resp
 
 
-def plan(results, rows, only=None, today=None, reformat=False):
-    today = today or datetime.date.today()
-    date = f"{today.month}/{today.day}/{today.year}"
+def plan(results, rows, only=None, reformat=False, redate=False):
     key_row = {r[KEY_COL].strip(): n for n, r in enumerate(rows, 1) if len(r) > KEY_COL}
     out = dict(write=[], skipped=0, missing=[], left_alone=[])
-    for key, word in results.items():
+    for key, (word, day) in results.items():
         if only and key != only:
             continue
         n = key_row.get(key)
@@ -119,20 +145,26 @@ def plan(results, rows, only=None, today=None, reformat=False):
             continue
         row = rows[n - 1]
         cur = (row[STATUS_COL] if len(row) > STATUS_COL else "").strip()
+        text = f"{word} {day.month}/{day.day}/{day.year}"
         if cur.startswith(word):
-            if reformat:  # re-apply colors only, keep the existing text/date
+            if redate:  # same result but stale date: rewrite only cells that differ from the commit date
+                if cur == text:
+                    out["skipped"] += 1
+                else:
+                    out["write"].append((n, text, STYLE[word], key))
+            elif reformat:  # re-apply colors only, keep the existing text/date
                 out["write"].append((n, cur, STYLE[word], key))
             else:
                 out["skipped"] += 1
         elif cur and not re.match(r"(Passed|Failed)\b", cur):
             out["left_alone"].append((key, cur))
         else:
-            out["write"].append((n, f"{word} {date}", STYLE[word], key))
+            out["write"].append((n, text, STYLE[word], key))
     return out
 
 
-def sync(sheet, log_path, only=None, dry=False, reformat=False):
-    p = plan(read_log(log_path), sheet.read(), only, reformat=reformat)
+def sync(sheet, log_path, only=None, dry=False, reformat=False, redate=False):
+    p = plan(read_log(log_path), sheet.read(), only, reformat=reformat, redate=redate)
     n_pass = sum(1 for _, t, *_ in p["write"] if t.startswith("Passed"))
     print(f"{time.strftime('%H:%M:%S')} write {len(p['write'])} ({n_pass} passed, "
           f"{len(p['write']) - n_pass} failed); already set {p['skipped']}; "
@@ -155,13 +187,15 @@ def main():
     ap.add_argument("--watch", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--reformat", action="store_true", help="re-apply colors to already-set rows (text unchanged)")
+    ap.add_argument("--redate", action="store_true",
+                    help="rewrite already-set rows whose date differs from the csv_logs.txt commit date")
     ap.add_argument("--interval", type=float, default=5.0, help="watch poll seconds")
     args = ap.parse_args()
     env = load_env()
     log = Path(env["CSV_LOGS"])
     log = log if log.is_absolute() else ROOT / log
     sheet = Sheet(env)
-    sync(sheet, log, args.key, args.dry_run, args.reformat)
+    sync(sheet, log, args.key, args.dry_run, args.reformat, args.redate)
     if not args.watch:
         return
     print(f"watching {log} (Ctrl+C to stop)")
