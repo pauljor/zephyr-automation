@@ -46,10 +46,11 @@ same close-out logic (`zephyr-bug-fixes.md`, "Reading the ticket" onward) and th
 
 ## Key facts that matter across all three tasks
 
-- **Source data**: `test_cases.xlsx` (binary Excel, `TEST_DATA_URL`/`TEST_DATA_SHEET` env
-  vars, sheet `All Assignments_List`). Never `Read` it as text — load it via a short Python
-  + `openpyxl` script through Bash. Column D (assignee) header exports blank but holds real
-  names; "my rows" means column D exactly `Paul` (case-insensitive).
+- **Source data**: `test_cases.csv` (plain CSV in this repo, `TEST_DATA_URL` env var) — a copy
+  of the shared Google Sheet and the source of truth for all tasks; refresh it by overwriting
+  it with the sheet's CSV export (last refreshed 2026-09-30). Parse it with Python's `csv`
+  module. Column D (assignee) header is blank but holds real names; "my rows" means column D
+  exactly `Paul` (case-insensitive). Column I holds results written back by `/zephyr-gsheet-update`.
 - **Zephyr Essential has no MCP support.** Neither the community `mcp-zephyr-scale` package
   nor SmartBear's official one works against this Jira site (it's Zephyr Essential, not
   Zephyr Scale/Standard/Advanced). Call the real REST API directly instead:

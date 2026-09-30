@@ -1,7 +1,7 @@
 # Task: Sync my Zephyr test cases with JIRA (auto-execute or mark automated)
 
 ## Purpose
-Go through the Zephyr execution export workbook, find the rows assigned to me
+Go through the Zephyr execution export (`test_cases.csv`), find the rows assigned to me
 (column D = "Paul"),
 and for each one either:
 - confirm it already has a JIRA ticket and record that on the Zephyr execution, or
@@ -18,54 +18,46 @@ Every row processed gets logged to `CSV_LOGS` with a real automation status
 ## Env vars used (from `.env` at repo root)
 | Var | Meaning |
 |---|---|
-| `TEST_DATA_URL` | Local path to the Zephyr execution export (currently: `zephyr-automation/test_cases.xlsx`, tracked in this repo). **This is a binary Excel workbook, not a CSV** — as of 2026-09-21 this replaced the old `CSV_DATA_URL` CSV export (`Zephr List of Assignments_2026_09-report - All Assignments_List.csv`, since deleted). Don't try to `Read` it as text; see "Loading `TEST_DATA_URL`" below. |
-| `TEST_DATA_SHEET` | The worksheet name inside `TEST_DATA_URL` to read (currently `All Assignments_List`) — the workbook may contain other sheets, don't assume the first/active one is correct. |
+| `TEST_DATA_URL` | Local path to the test-case export, `zephyr-automation/test_cases.csv` (tracked in this repo) — a plain CSV copy of the shared Google Sheet, and **the source of truth for this task**. Refresh it by overwriting it with the sheet's CSV export (`https://docs.google.com/spreadsheets/d/<GSHEET_ID>/export?format=csv&gid=<GSHEET_GID>`, last refreshed 2026-09-30). Replaced the old `test_cases.xlsx` workbook and its `TEST_DATA_SHEET` var (both gone). |
 | `JIRA_URL` | The JIRA board to check/move tickets on (project `EI`, board 121) |
 | `ZEPHYR_URL` | Human-facing link to the Zephyr Essential app inside Jira. **Not an API endpoint** — do not call it directly. See "Zephyr Essential API" below for the real base URL. |
-| `CSV_LOGS` | Local log file to append processed rows to (`csv_logs.txt`) — plain text, unaffected by the `TEST_DATA_URL` format change. |
+| `CSV_LOGS` | Local log file to append processed rows to (`csv_logs.txt`) — plain text. |
 | `ZEPHYR_API_TOKEN` | Bearer token for the real Zephyr Essential REST API. Currently stored in `.mcp.json` (env for the now-unused `zephyr-scale` MCP entry — see note below). Generate a fresh one via Jira profile picture → **"Zephyr Essential API keys"** if it's missing/expired. |
 
 ## Loading `TEST_DATA_URL`
-The workbook is a binary `.xlsx` file — the `Read` tool (and anything else that
-expects text) cannot open it directly and will error. Load it with a short
-Python script via Bash instead (Python + `openpyxl` are available in this
-environment; no repo venv needed for this):
+`test_cases.csv` is plain UTF-8 CSV. Parse it with Python's `csv` module via
+Bash — don't hand-split on commas, since test case names can contain
+quotes/commas:
 
 ```python
-import openpyxl
-wb = openpyxl.load_workbook(r"<TEST_DATA_URL>", data_only=True)
-ws = wb["<TEST_DATA_SHEET>"]
-for row in ws.iter_rows(min_row=2, values_only=True):  # row 1 is the header, skip it
-    ...  # row[0]=A, row[1]=B, row[2]=C, row[3]=D, row[4]=E, row[5]=F, row[6]=G
+import csv
+with open(r"<TEST_DATA_URL>", newline="", encoding="utf-8-sig") as f:
+    rows = list(csv.reader(f))[1:]  # row 0 is the header, skip it
+    # row[0]=A, row[1]=B, row[2]=C, row[3]=D, row[4]=E, row[5]=F, row[6]=G
 ```
 
 Dump whatever subset you need (e.g. Paul's unprocessed rows) to a scratchpad
-JSON/text file if it's easier to work from across multiple tool calls, rather
-than re-parsing the workbook from scratch each time.
+JSON/text file if it's easier to work from across multiple tool calls.
 
-## Test data column map (`TEST_DATA_URL`, sheet `TEST_DATA_SHEET`)
-The sheet has a header row (row 1) followed by data rows, 7 columns — use
-these positions (column D's header cell is genuinely blank in the export,
-same as the header names below):
+## Test data column map (`TEST_DATA_URL`)
+The file has a header row followed by data rows, 9 columns — use these
+positions (column D's and column H's header cells are genuinely blank):
 
 | Col | Header | Meaning |
 |---|---|---|
 | A | `Jira.Project` | JIRA project key (e.g. `EI`) |
 | B | `Execution.Key` | Zephyr execution id (e.g. `EI-E782`) — **this is what gets copied into the log** |
 | C | `Test Cycle.Key` | Zephyr test cycle id |
-| D | *(header exports blank)* | **Assignee / execution owner** — e.g. `Gelo`, `Paul`, `Jim`, `Trishia`, `Khyne`, `Flor`, `Allan`, `Ysh`, `Arnold`, `Dr. Uzaka`. The column header is genuinely empty in this export (confirmed against the raw file), but the values are real names — don't treat this column as unused. |
+| D | *(header blank)* | **Assignee / execution owner** — e.g. `Gelo`, `Paul`, `Jim`, `Trishia`, `Khyne`, `Flor`, `Allan`, `Ysh`, `Arnold`, `Dr. Uzaka`. The header is empty but the values are real names — don't treat this column as unused. |
 | E | `Test Cycle.Name` | Test cycle name |
 | F | `Test Case.Key` | Zephyr test case ticket number (e.g. `EI-T124`) — the one to execute in Zephyr |
 | G | `Test Case.Name` | Test case scenario description — used to check for an existing JIRA ticket |
+| H | *(header blank)* | Free-form notes (e.g. `Reassigned 9/27/2026`); ignore |
+| I | `STATUS (Pass / Fail / Not Executed)` | Result written back by `/zephyr-gsheet-update` (`Passed <date>` / `Failed <date>`). Ignore here — `CSV_LOGS` is this task's idempotency source. |
 
 > "My rows" are rows where **column D (the assignee column) is exactly `Paul`**
 > (case-insensitive exact match on that column, not a substring search across the
-> whole row). Older versions of this task treated column D as blank/unused and
-> matched `Paul` as a substring anywhere in the row — that happened to select the
-> same 91 rows against the current CSV, but is fragile (a test case name or ticket
-> summary mentioning "Paul" would false-positive, and a row genuinely assigned to
-> someone else would never be excluded by name). Use column D directly now that
-> it's confirmed to be a real assignee field.
+> whole row).
 
 ## Zephyr Essential API (read this before automating any Zephyr call)
 
@@ -219,8 +211,7 @@ language rather than technical detail.
 
 ## Steps
 
-1. **Load the workbook** from `TEST_DATA_URL` (sheet `TEST_DATA_SHEET`) — see
-   "Loading `TEST_DATA_URL`" above, it's binary, not text.
+1. **Load the CSV** from `TEST_DATA_URL` — see "Loading `TEST_DATA_URL`" above.
 2. **Filter to my rows**: keep only rows where **column D (the assignee column)**
    equals `Paul` (case-insensitive exact match).
 3. For each matching row, **check column G** (Test Case.Name) against the JIRA
@@ -266,7 +257,7 @@ language rather than technical detail.
         that already exists.** The same Test Case.Key (column F) can appear
         across multiple rows/executions (e.g. re-run in a later test cycle) —
         cross-reference the Execution.Keys already logged (any status) in `CSV_LOGS`
-        back against the workbook to see if any of them share this row's column F
+        back against the CSV to see if any of them share this row's column F
         value. If one does, a test was very likely already authored for it
         during that earlier row (check the comment left on its Zephyr
         execution, or just re-search the automation repo for column F's key

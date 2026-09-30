@@ -24,8 +24,7 @@ Every bug ticket created by this task:
 
 | Var | Meaning |
 |---|---|
-| `TEST_DATA_URL` | The Zephyr execution export workbook (binary `.xlsx`) — same file the sync task reads. See "Loading `TEST_DATA_URL`" in `zephyr-jira-sync.md`. |
-| `TEST_DATA_SHEET` | Worksheet name inside `TEST_DATA_URL` (`All Assignments_List`). |
+| `TEST_DATA_URL` | The test-case export `test_cases.csv` — same file the sync task reads. See "Loading `TEST_DATA_URL`" in `zephyr-jira-sync.md`. |
 | `CSV_LOGS` | The sync task's log (`csv_logs.txt`) — this is where `FAILED` rows are found. This task never writes to `CSV_LOGS`; it only reads it. |
 | `JIRA_URL` | The board bug tickets get created against (project `EI`, board 121). |
 | `ZEPHYR_URL` | Base URL of the Zephyr Essential panel inside Jira — used to build the test case deep link (see "Zephyr test case URL" below). |
@@ -36,9 +35,8 @@ Every bug ticket created by this task:
 1. Read `CSV_LOGS`. Collect every line whose status field is exactly `FAILED`
    — first field is the `Execution.Key` (column B), e.g. `EI-E1033, FAILED,
    JIRA:NONE`.
-2. Load the workbook (`TEST_DATA_URL` / `TEST_DATA_SHEET`) the same way
-   `zephyr-jira-sync.md` does (binary `.xlsx`, parse with `openpyxl` via a
-   Python script, don't `Read` it as text). Build a lookup from column B
+2. Load the CSV (`TEST_DATA_URL`) the same way `zephyr-jira-sync.md` does
+   (Python `csv` module via Bash). Build a lookup from column B
    (`Execution.Key`) to the full row, so each `FAILED` key from step 1 maps to
    its `Test Cycle.Key` (C), `Test Case.Key` (F), and `Test Case.Name` (G).
 3. **Dedupe by Test Case.Key (column F), not by Execution.Key.** The same
@@ -281,7 +279,7 @@ after each comma, labeled fields in this order:
 e.g. `EI-T356, EXEC:EI-E1033, JIRA:EI-3455`. If a test case had more than one
 `FAILED` execution row (see dedupe above), the log line still lists only the
 one execution key that triggered the ticket — that's enough to trace back
-into `CSV_LOGS`/the workbook. This mirrors the labeled-field style
+into `CSV_LOGS`/the CSV. This mirrors the labeled-field style
 `CSV_LOGS` already uses (`<key>, <STATUS>, JIRA:<ticket key>`).
 
 **Idempotency**: before creating a ticket for a Test Case.Key, check whether

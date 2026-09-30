@@ -50,11 +50,10 @@ item has a bug ticket instead of stopping after one.
 
 1. Read `CSV_LOGS`; collect every row logged `FAILED` (column B =
    `Execution.Key`).
-2. Load the workbook at `TEST_DATA_URL` (sheet `TEST_DATA_SHEET`) — binary
-   `.xlsx`, parse with `openpyxl` via a Python script, not `Read`. Map each
+2. Load the CSV at `TEST_DATA_URL` (`test_cases.csv`) with Python's `csv` module via Bash. Map each
    `FAILED` `Execution.Key` to its row (columns C, F, G); group by column F.
 3. Read `BUG_TICKET_LOGS` (create if missing); build the set of `Test
-   Case.Key` values already logged. Pick the first group (in workbook row
+   Case.Key` values already logged. Pick the first group (in CSV row
    order) not yet in that set. If none remain, stop and report the final
    summary (see below).
 4. Determine the bug category per the spec's "Determining the bug category"
