@@ -58,30 +58,30 @@ EI,EI-E837,EI-R8,Paul,Negative_Teacher_Classes,EI-T169,Fetching a class gradeboo
 EI,EI-E838,EI-R8,Paul,Negative_Teacher_Classes,EI-T168,Fetching a class gradebook with the class code omitted is rejected,Reassigned 9/27/2026,Passed 9/29/2026
 EI,EI-E839,EI-R8,Paul,Negative_Teacher_Classes,EI-T170,Fetching a class roster with a malformed class identifier is rejected,Reassigned 9/27/2026,Passed 9/29/2026
 EI,EI-E840,EI-R8,Paul,Negative_Teacher_Classes,EI-T172,Fetching a class roster with an excessively long or unknown class identifier is rejected,Reassigned 9/27/2026,Failed 9/29/2026
-EI,EI-E841,EI-R8,Paul,Negative_Teacher_Classes,EI-T171,Fetching a class roster with the class identifier omitted is rejected,Reassigned 9/27/2026,
-EI,EI-E842,EI-R8,Paul,Negative_Teacher_Classes,EI-T153,Fetching all classes with non-numeric and out-of-range pagination values is rejected,Reassigned 9/27/2026,
-EI,EI-E843,EI-R8,Paul,Negative_Teacher_Classes,EI-T157,Fetching class announcements with a malformed class identifier is rejected,Reassigned 9/27/2026,
-EI,EI-E844,EI-R8,Paul,Negative_Teacher_Classes,EI-T159,Fetching class announcements with an excessively long or unknown class identifier is rejected,Reassigned 9/27/2026,
-EI,EI-E845,EI-R8,Paul,Negative_Teacher_Classes,EI-T158,Fetching class announcements with the class identifier omitted is rejected,Reassigned 9/27/2026,
-EI,EI-E846,EI-R8,Paul,Negative_Teacher_Classes,EI-T204,Fetching class assignments with a malformed class identifier is rejected,Reassigned 9/27/2026,
-EI,EI-E847,EI-R8,Paul,Negative_Teacher_Classes,EI-T206,Fetching class assignments with an excessively long or unknown class identifier is rejected,Reassigned 9/27/2026,
-EI,EI-E848,EI-R8,Paul,Negative_Teacher_Classes,EI-T205,Fetching class assignments with the class identifier omitted is rejected,Reassigned 9/27/2026,
-EI,EI-E849,EI-R8,Paul,Negative_Teacher_Classes,EI-T163,Posting a class announcement with a malformed class identifier is rejected,Reassigned 9/27/2026,
-EI,EI-E850,EI-R8,Paul,Negative_Teacher_Classes,EI-T162,Posting a class announcement with an empty or over-length content value is rejected,Reassigned 9/27/2026,
-EI,EI-E851,EI-R8,Paul,Negative_Teacher_Classes,EI-T161,Posting a class announcement with content supplied as the wrong data type is rejected,Reassigned 9/27/2026,
-EI,EI-E852,EI-R8,Paul,Negative_Teacher_Classes,EI-T160,Posting a class announcement without the required content field is rejected,Reassigned 9/27/2026,
-EI,EI-E853,EI-R8,Paul,Negative_Teacher_Classes,EI-T197,Removing a student from a class with a malformed student identifier is rejected,Reassigned 9/27/2026,
-EI,EI-E854,EI-R8,Paul,Negative_Teacher_Classes,EI-T199,Removing a student from a class with an excessively long or unknown student identifier is rejected,Reassigned 9/28/2026,
-EI,EI-E855,EI-R8,Paul,Negative_Teacher_Classes,EI-T198,Removing a student from a class with the student identifier omitted is rejected,Reassigned 9/28/2026,
-EI,EI-E856,EI-R8,Paul,Negative_Teacher_Classes,EI-T191,Restoring a soft-deleted class with a malformed class identifier is rejected,Reassigned 9/28/2026,
-EI,EI-E857,EI-R8,Paul,Negative_Teacher_Classes,EI-T193,Restoring a soft-deleted class with an excessively long or unknown class identifier is rejected,Reassigned 9/28/2026,
-EI,EI-E858,EI-R8,Paul,Negative_Teacher_Classes,EI-T192,Restoring a soft-deleted class with the class identifier omitted is rejected,Reassigned 9/28/2026,
-EI,EI-E859,EI-R8,Paul,Negative_Teacher_Classes,EI-T187,Updating a class cover photo with a malformed class identifier is rejected,Reassigned 9/28/2026,
-EI,EI-E860,EI-R8,Paul,Negative_Teacher_Classes,EI-T186,Updating a class cover photo with an empty file and with an oversized file is rejected,Reassigned 9/28/2026,
-EI,EI-E861,EI-R8,Paul,Negative_Teacher_Classes,EI-T185,Updating a class cover photo with an unsupported file type is rejected,Reassigned 9/28/2026,
-EI,EI-E862,EI-R8,Paul,Negative_Teacher_Classes,EI-T184,Updating a class cover photo with no file attached is rejected,Reassigned 9/28/2026,
-EI,EI-E863,EI-R8,Paul,Negative_Teacher_Classes,EI-T176,Updating class details with a malformed class identifier is rejected,Reassigned 9/28/2026,
-EI,EI-E864,EI-R8,Paul,Negative_Teacher_Classes,EI-T175,Updating class details with an unsupported semester value is rejected,Reassigned 9/28/2026,
+EI,EI-E841,EI-R8,Paul,Negative_Teacher_Classes,EI-T171,Fetching a class roster with the class identifier omitted is rejected,Reassigned 9/27/2026,Passed 9/30/2026
+EI,EI-E842,EI-R8,Paul,Negative_Teacher_Classes,EI-T153,Fetching all classes with non-numeric and out-of-range pagination values is rejected,Reassigned 9/27/2026,Passed 9/30/2026
+EI,EI-E843,EI-R8,Paul,Negative_Teacher_Classes,EI-T157,Fetching class announcements with a malformed class identifier is rejected,Reassigned 9/27/2026,Passed 9/30/2026
+EI,EI-E844,EI-R8,Paul,Negative_Teacher_Classes,EI-T159,Fetching class announcements with an excessively long or unknown class identifier is rejected,Reassigned 9/27/2026,Passed 9/30/2026
+EI,EI-E845,EI-R8,Paul,Negative_Teacher_Classes,EI-T158,Fetching class announcements with the class identifier omitted is rejected,Reassigned 9/27/2026,Passed 9/30/2026
+EI,EI-E846,EI-R8,Paul,Negative_Teacher_Classes,EI-T204,Fetching class assignments with a malformed class identifier is rejected,Reassigned 9/27/2026,Passed 9/30/2026
+EI,EI-E847,EI-R8,Paul,Negative_Teacher_Classes,EI-T206,Fetching class assignments with an excessively long or unknown class identifier is rejected,Reassigned 9/27/2026,Passed 9/30/2026
+EI,EI-E848,EI-R8,Paul,Negative_Teacher_Classes,EI-T205,Fetching class assignments with the class identifier omitted is rejected,Reassigned 9/27/2026,Passed 9/30/2026
+EI,EI-E849,EI-R8,Paul,Negative_Teacher_Classes,EI-T163,Posting a class announcement with a malformed class identifier is rejected,Reassigned 9/27/2026,Passed 9/30/2026
+EI,EI-E850,EI-R8,Paul,Negative_Teacher_Classes,EI-T162,Posting a class announcement with an empty or over-length content value is rejected,Reassigned 9/27/2026,Passed 9/30/2026
+EI,EI-E851,EI-R8,Paul,Negative_Teacher_Classes,EI-T161,Posting a class announcement with content supplied as the wrong data type is rejected,Reassigned 9/27/2026,Passed 9/30/2026
+EI,EI-E852,EI-R8,Paul,Negative_Teacher_Classes,EI-T160,Posting a class announcement without the required content field is rejected,Reassigned 9/27/2026,Passed 9/30/2026
+EI,EI-E853,EI-R8,Paul,Negative_Teacher_Classes,EI-T197,Removing a student from a class with a malformed student identifier is rejected,Reassigned 9/27/2026,Failed 9/30/2026
+EI,EI-E854,EI-R8,Paul,Negative_Teacher_Classes,EI-T199,Removing a student from a class with an excessively long or unknown student identifier is rejected,Reassigned 9/28/2026,Failed 9/30/2026
+EI,EI-E855,EI-R8,Paul,Negative_Teacher_Classes,EI-T198,Removing a student from a class with the student identifier omitted is rejected,Reassigned 9/28/2026,Passed 9/30/2026
+EI,EI-E856,EI-R8,Paul,Negative_Teacher_Classes,EI-T191,Restoring a soft-deleted class with a malformed class identifier is rejected,Reassigned 9/28/2026,Passed 9/30/2026
+EI,EI-E857,EI-R8,Paul,Negative_Teacher_Classes,EI-T193,Restoring a soft-deleted class with an excessively long or unknown class identifier is rejected,Reassigned 9/28/2026,Passed 9/30/2026
+EI,EI-E858,EI-R8,Paul,Negative_Teacher_Classes,EI-T192,Restoring a soft-deleted class with the class identifier omitted is rejected,Reassigned 9/28/2026,Passed 9/30/2026
+EI,EI-E859,EI-R8,Paul,Negative_Teacher_Classes,EI-T187,Updating a class cover photo with a malformed class identifier is rejected,Reassigned 9/28/2026,Passed 9/30/2026
+EI,EI-E860,EI-R8,Paul,Negative_Teacher_Classes,EI-T186,Updating a class cover photo with an empty file and with an oversized file is rejected,Reassigned 9/28/2026,Passed 9/30/2026
+EI,EI-E861,EI-R8,Paul,Negative_Teacher_Classes,EI-T185,Updating a class cover photo with an unsupported file type is rejected,Reassigned 9/28/2026,Passed 9/30/2026
+EI,EI-E862,EI-R8,Paul,Negative_Teacher_Classes,EI-T184,Updating a class cover photo with no file attached is rejected,Reassigned 9/28/2026,Passed 9/30/2026
+EI,EI-E863,EI-R8,Paul,Negative_Teacher_Classes,EI-T176,Updating class details with a malformed class identifier is rejected,Reassigned 9/28/2026,Failed 9/30/2026
+EI,EI-E864,EI-R8,Paul,Negative_Teacher_Classes,EI-T175,Updating class details with an unsupported semester value is rejected,Reassigned 9/28/2026,Failed 9/30/2026
 EI,EI-E865,EI-R8,Paul,Negative_Teacher_Classes,EI-T174,Updating class details with section supplied as the wrong data type is rejected,Reassigned 9/28/2026,
 EI,EI-E866,EI-R8,Paul,Negative_Teacher_Classes,EI-T173,Updating class details without the required title field is rejected,Reassigned 9/28/2026,
 EI,EI-E867,EI-R9,Paul,Negative_Teacher_Question,EI-T223,Clearing question filters with malformed request parameters returns no server error,Reassigned 9/28/2026,
@@ -146,10 +146,10 @@ EI,EI-E925,EI-R11,Jim,Negative_Teacher_Assignments,EI-T417,Deleting an assignmen
 EI,EI-E926,EI-R11,Jim,Negative_Teacher_Assignments,EI-T268,Deleting an assignment with a malformed assignment identifier is rejected,,Passed 9/29/2026
 EI,EI-E927,EI-R11,Jim,Negative_Teacher_Assignments,EI-T270,Deleting an assignment with an excessively long or unknown assignment identifier is rejected,,Passed 9/29/2026
 EI,EI-E928,EI-R11,Jim,Negative_Teacher_Assignments,EI-T269,Deleting an assignment with the assignment identifier omitted is rejected,,Passed 9/29/2026
-EI,EI-E929,EI-R11,Jim,Negative_Teacher_Assignments,EI-T255,Fetching a staff assignment with a malformed assignment identifier is rejected,,
-EI,EI-E930,EI-R11,Jim,Negative_Teacher_Assignments,EI-T257,Fetching a staff assignment with an excessively long or unknown assignment identifier is rejected,,
-EI,EI-E931,EI-R11,Jim,Negative_Teacher_Assignments,EI-T256,Fetching a staff assignment with the assignment identifier omitted is rejected,,
-EI,EI-E932,EI-R11,Jim,Negative_Teacher_Assignments,EI-T277,Fetching a student submission with a malformed student identifier is rejected,,
+EI,EI-E929,EI-R11,Jim,Negative_Teacher_Assignments,EI-T255,Fetching a staff assignment with a malformed assignment identifier is rejected,,Passed 9/30/2026
+EI,EI-E930,EI-R11,Jim,Negative_Teacher_Assignments,EI-T257,Fetching a staff assignment with an excessively long or unknown assignment identifier is rejected,,Passed 9/30/2026
+EI,EI-E931,EI-R11,Jim,Negative_Teacher_Assignments,EI-T256,Fetching a staff assignment with the assignment identifier omitted is rejected,,Passed 9/30/2026
+EI,EI-E932,EI-R11,Jim,Negative_Teacher_Assignments,EI-T277,Fetching a student submission with a malformed student identifier is rejected,,Passed 9/30/2026
 EI,EI-E933,EI-R11,Jim,Negative_Teacher_Assignments,EI-T279,Fetching a student submission with an excessively long or unknown student identifier is rejected,,
 EI,EI-E934,EI-R11,Jim,Negative_Teacher_Assignments,EI-T278,Fetching a student submission with the student identifier omitted is rejected,,
 EI,EI-E935,EI-R11,Jim,Negative_Teacher_Assignments,EI-T258,Fetching a teacher assignment with a malformed assignment identifier is rejected,,
@@ -212,21 +212,21 @@ EI,EI-E991,EI-R13,Allan,Negative_Teacher_Features,EI-T313,Fetching a teacher dis
 EI,EI-E992,EI-R13,Allan,Negative_Teacher_Features,EI-T307,Fetching teacher feature flags with malformed request parameters returns no server error,Reassigned 9/27/2026,
 EI,EI-E993,EI-R13,Allan,Negative_Teacher_Features,EI-T311,Fetching teacher organisation details with malformed request parameters returns no server error,Reassigned 9/27/2026,
 EI,EI-E994,EI-R13,Allan,Negative_Teacher_Features,EI-T312,Fetching teacher school details with malformed request parameters returns no server error,Reassigned 9/27/2026,
-EI,EI-E995,EI-R14,Trishia,Negative_Student_Accounts,EI-T322,Adding a student profile picture with an empty file and with an oversized file is rejected,,
-EI,EI-E996,EI-R14,Trishia,Negative_Student_Accounts,EI-T321,Adding a student profile picture with an unsupported file type is rejected,,
-EI,EI-E997,EI-R14,Trishia,Negative_Student_Accounts,EI-T320,Adding a student profile picture with no file attached is rejected,,
-EI,EI-E998,EI-R14,Trishia,Negative_Student_Accounts,EI-T329,Changing a student password with an empty or over-length new_password value is rejected,,
-EI,EI-E999,EI-R14,Trishia,Negative_Student_Accounts,EI-T328,Changing a student password with new_password supplied as the wrong data type is rejected,,
-EI,EI-E1000,EI-R14,Trishia,Negative_Student_Accounts,EI-T327,Changing a student password without the required current_password field is rejected,,
-EI,EI-E1001,EI-R14,Trishia,Negative_Student_Accounts,EI-T326,Deleting a student profile picture with malformed request parameters returns no server error,,
-EI,EI-E1002,EI-R14,Trishia,Negative_Student_Accounts,EI-T315,Fetching a student account with a malformed id value is rejected,,
-EI,EI-E1003,EI-R14,Trishia,Negative_Student_Accounts,EI-T316,Searching for teachers with non-numeric and out-of-range pagination values is rejected,,
-EI,EI-E1004,EI-R14,Trishia,Negative_Student_Accounts,EI-T325,Updating a student profile picture with an empty file and with an oversized file is rejected,,
-EI,EI-E1005,EI-R14,Trishia,Negative_Student_Accounts,EI-T324,Updating a student profile picture with an unsupported file type is rejected,,
-EI,EI-E1006,EI-R14,Trishia,Negative_Student_Accounts,EI-T323,Updating a student profile picture with no file attached is rejected,,
-EI,EI-E1007,EI-R14,Jim,Negative_Student_Accounts,EI-T319,Updating student contact person details with an empty or over-length first_name value is rejected,Reassigned,
-EI,EI-E1008,EI-R14,Jim,Negative_Student_Accounts,EI-T318,Updating student contact person details with phone_number supplied as the wrong data type is rejected,,
-EI,EI-E1009,EI-R14,Jim,Negative_Student_Accounts,EI-T317,Updating student contact person details without the required relationship field is rejected,,
+EI,EI-E995,EI-R14,Trishia,Negative_Student_Accounts,EI-T322,Adding a student profile picture with an empty file and with an oversized file is rejected,,Passed 9/21/2026
+EI,EI-E996,EI-R14,Trishia,Negative_Student_Accounts,EI-T321,Adding a student profile picture with an unsupported file type is rejected,,Passed 10/1/2026
+EI,EI-E997,EI-R14,Trishia,Negative_Student_Accounts,EI-T320,Adding a student profile picture with no file attached is rejected,,Passed 9/20/2026
+EI,EI-E998,EI-R14,Trishia,Negative_Student_Accounts,EI-T329,Changing a student password with an empty or over-length new_password value is rejected,,Passed 9/20/2026
+EI,EI-E999,EI-R14,Trishia,Negative_Student_Accounts,EI-T328,Changing a student password with new_password supplied as the wrong data type is rejected,,Passed 9/20/2026
+EI,EI-E1000,EI-R14,Trishia,Negative_Student_Accounts,EI-T327,Changing a student password without the required current_password field is rejected,,Passed 9/20/2026
+EI,EI-E1001,EI-R14,Trishia,Negative_Student_Accounts,EI-T326,Deleting a student profile picture with malformed request parameters returns no server error,,Passed 10/1/2026
+EI,EI-E1002,EI-R14,Trishia,Negative_Student_Accounts,EI-T315,Fetching a student account with a malformed id value is rejected,,Passed 9/20/2026
+EI,EI-E1003,EI-R14,Trishia,Negative_Student_Accounts,EI-T316,Searching for teachers with non-numeric and out-of-range pagination values is rejected,,Passed 9/20/2026
+EI,EI-E1004,EI-R14,Trishia,Negative_Student_Accounts,EI-T325,Updating a student profile picture with an empty file and with an oversized file is rejected,,Passed 9/20/2026
+EI,EI-E1005,EI-R14,Trishia,Negative_Student_Accounts,EI-T324,Updating a student profile picture with an unsupported file type is rejected,,Passed 9/20/2026
+EI,EI-E1006,EI-R14,Trishia,Negative_Student_Accounts,EI-T323,Updating a student profile picture with no file attached is rejected,,Passed 9/20/2026
+EI,EI-E1007,EI-R14,Jim,Negative_Student_Accounts,EI-T319,Updating student contact person details with an empty or over-length first_name value is rejected,Reassigned,Passed 9/24/2026
+EI,EI-E1008,EI-R14,Jim,Negative_Student_Accounts,EI-T318,Updating student contact person details with phone_number supplied as the wrong data type is rejected,,Passed 9/24/2026
+EI,EI-E1009,EI-R14,Jim,Negative_Student_Accounts,EI-T317,Updating student contact person details without the required relationship field is rejected,,Passed 9/24/2026
 EI,EI-E1010,EI-R15,Gelo,Negative_Student_Dashboard,EI-T331,Fetching a grade distribution with malformed request parameters returns no server error,,
 EI,EI-E1011,EI-R15,Gelo,Negative_Student_Dashboard,EI-T332,Fetching a student GPA with malformed request parameters returns no server error,,
 EI,EI-E1012,EI-R15,Gelo,Negative_Student_Dashboard,EI-T330,Fetching achievement badges with malformed request parameters returns no server error,,
@@ -234,22 +234,22 @@ EI,EI-E1013,EI-R15,Gelo,Negative_Student_Dashboard,EI-T335,Fetching student assi
 EI,EI-E1014,EI-R15,Gelo,Negative_Student_Dashboard,EI-T334,Fetching student class statistics with malformed request parameters returns no server error,,
 EI,EI-E1015,EI-R15,Gelo,Negative_Student_Dashboard,EI-T336,Fetching student submission statistics with malformed request parameters returns no server error,,
 EI,EI-E1016,EI-R15,Gelo,Negative_Student_Dashboard,EI-T333,Fetching upcoming assignments with an out-of-range limit value is rejected,,
-EI,EI-E1017,EI-R16,Jim,Negative_Student_Classes,EI-T347,Cancelling a pending join request with a malformed class code is rejected,,
-EI,EI-E1018,EI-R16,Jim,Negative_Student_Classes,EI-T349,Cancelling a pending join request with an excessively long or unknown class code is rejected,,
-EI,EI-E1019,EI-R16,Jim,Negative_Student_Classes,EI-T348,Cancelling a pending join request with the class code omitted is rejected,,
-EI,EI-E1020,EI-R16,Jim,Negative_Student_Classes,EI-T338,Fetching an enrolled class by code with a malformed class code is rejected,,
-EI,EI-E1021,EI-R16,Jim,Negative_Student_Classes,EI-T340,Fetching an enrolled class by code with an excessively long or unknown class code is rejected,,
-EI,EI-E1022,EI-R16,Jim,Negative_Student_Classes,EI-T339,Fetching an enrolled class by code with the class code omitted is rejected,,
-EI,EI-E1023,EI-R16,Jim,Negative_Student_Classes,EI-T350,Fetching class announcements as a student with a malformed class identifier is rejected,,
-EI,EI-E1024,EI-R16,Jim,Negative_Student_Classes,EI-T352,Fetching class announcements as a student with an excessively long or unknown class identifier is rejected,,
-EI,EI-E1025,EI-R16,Jim,Negative_Student_Classes,EI-T351,Fetching class announcements as a student with the class identifier omitted is rejected,,
-EI,EI-E1026,EI-R16,Jim,Negative_Student_Classes,EI-T337,Fetching enrolled classes with non-numeric and out-of-range pagination values is rejected,,
-EI,EI-E1027,EI-R16,Jim,Negative_Student_Classes,EI-T341,Joining a class with a malformed class code is rejected,,
-EI,EI-E1028,EI-R16,Jim,Negative_Student_Classes,EI-T343,Joining a class with an excessively long or unknown class code is rejected,,
-EI,EI-E1029,EI-R16,Jim,Negative_Student_Classes,EI-T342,Joining a class with the class code omitted is rejected,,
-EI,EI-E1030,EI-R16,Jim,Negative_Student_Classes,EI-T344,Requesting to leave a class with a malformed class code is rejected,,
-EI,EI-E1031,EI-R16,Jim,Negative_Student_Classes,EI-T346,Requesting to leave a class with an excessively long or unknown class code is rejected,,
-EI,EI-E1032,EI-R16,Jim,Negative_Student_Classes,EI-T345,Requesting to leave a class with the class code omitted is rejected,,
+EI,EI-E1017,EI-R16,Jim,Negative_Student_Classes,EI-T347,Cancelling a pending join request with a malformed class code is rejected,,Passed 9/12/2026
+EI,EI-E1018,EI-R16,Jim,Negative_Student_Classes,EI-T349,Cancelling a pending join request with an excessively long or unknown class code is rejected,,Passed 9/12/2026
+EI,EI-E1019,EI-R16,Jim,Negative_Student_Classes,EI-T348,Cancelling a pending join request with the class code omitted is rejected,,Passed 9/12/2026
+EI,EI-E1020,EI-R16,Jim,Negative_Student_Classes,EI-T338,Fetching an enrolled class by code with a malformed class code is rejected,,Passed 9/12/2026
+EI,EI-E1021,EI-R16,Jim,Negative_Student_Classes,EI-T340,Fetching an enrolled class by code with an excessively long or unknown class code is rejected,,Passed 9/12/2026
+EI,EI-E1022,EI-R16,Jim,Negative_Student_Classes,EI-T339,Fetching an enrolled class by code with the class code omitted is rejected,,Passed 9/12/2026
+EI,EI-E1023,EI-R16,Jim,Negative_Student_Classes,EI-T350,Fetching class announcements as a student with a malformed class identifier is rejected,,Passed 9/13/2026
+EI,EI-E1024,EI-R16,Jim,Negative_Student_Classes,EI-T352,Fetching class announcements as a student with an excessively long or unknown class identifier is rejected,,Passed 9/13/2026
+EI,EI-E1025,EI-R16,Jim,Negative_Student_Classes,EI-T351,Fetching class announcements as a student with the class identifier omitted is rejected,,Passed 9/13/2026
+EI,EI-E1026,EI-R16,Jim,Negative_Student_Classes,EI-T337,Fetching enrolled classes with non-numeric and out-of-range pagination values is rejected,,Passed 9/13/2026
+EI,EI-E1027,EI-R16,Jim,Negative_Student_Classes,EI-T341,Joining a class with a malformed class code is rejected,,Passed 9/13/2026
+EI,EI-E1028,EI-R16,Jim,Negative_Student_Classes,EI-T343,Joining a class with an excessively long or unknown class code is rejected,,Passed 9/14/2026
+EI,EI-E1029,EI-R16,Jim,Negative_Student_Classes,EI-T342,Joining a class with the class code omitted is rejected,,Passed 9/14/2026
+EI,EI-E1030,EI-R16,Jim,Negative_Student_Classes,EI-T344,Requesting to leave a class with a malformed class code is rejected,,Passed 9/14/2026
+EI,EI-E1031,EI-R16,Jim,Negative_Student_Classes,EI-T346,Requesting to leave a class with an excessively long or unknown class code is rejected,,Passed 9/14/2026
+EI,EI-E1032,EI-R16,Jim,Negative_Student_Classes,EI-T345,Requesting to leave a class with the class code omitted is rejected,,Passed 9/14/2026
 EI,EI-E1033,EI-R17,Paul,Negative_Student_Assignments,EI-T356,Fetching a class average grade with a malformed class code is rejected,,Failed 9/15/2026
 EI,EI-E1034,EI-R17,Paul,Negative_Student_Assignments,EI-T358,Fetching a class average grade with an excessively long or unknown class code is rejected,,Failed 9/15/2026
 EI,EI-E1035,EI-R17,Paul,Negative_Student_Assignments,EI-T357,Fetching a class average grade with the class code omitted is rejected,,Passed 9/15/2026
@@ -353,39 +353,40 @@ EI,EI-E1132,EI-R24,Paul,Edge_Teacher_Dashboard,EI-T468,[Dashboard] Expired beare
 EI,EI-E1133,EI-R24,Paul,Edge_Teacher_Dashboard,EI-T464,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for classes,,Passed 9/18/2026
 EI,EI-E1134,EI-R24,Paul,Edge_Teacher_Dashboard,EI-T466,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for students,,Passed 9/18/2026
 EI,EI-E1135,EI-R24,Paul,Edge_Teacher_Dashboard,EI-T470,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for submissions,,Passed 9/18/2026
-EI,EI-E1136,EI-R25,Trishia,Edge_Teacher_Classes,EI-T473,[Classes] Duplicate submission does not create a duplicate classe,,
-EI,EI-E1137,EI-R25,Trishia,Edge_Teacher_Classes,EI-T516,[Classes] Expired bearer token is rejected when attempting to accept a student's request to join a class,,
-EI,EI-E1138,EI-R25,Trishia,Edge_Teacher_Classes,EI-T522,[Classes] Expired bearer token is rejected when attempting to accept a student's request to leave a class,,
-EI,EI-E1139,EI-R25,Trishia,Edge_Teacher_Classes,EI-T484,[Classes] Expired bearer token is rejected when attempting to create a class announcement,,
-EI,EI-E1140,EI-R25,Trishia,Edge_Teacher_Classes,EI-T474,[Classes] Expired bearer token is rejected when attempting to create a new class,,
-EI,EI-E1141,EI-R25,Trishia,Edge_Teacher_Classes,EI-T499,[Classes] Expired bearer token is rejected when attempting to delete a class,,
-EI,EI-E1142,EI-R25,Trishia,Edge_Teacher_Classes,EI-T488,[Classes] Expired bearer token is rejected when attempting to delete a class announcement,,
-EI,EI-E1143,EI-R25,Trishia,Edge_Teacher_Classes,EI-T510,[Classes] Expired bearer token is rejected when attempting to delete a class cover photo,,
-EI,EI-E1144,EI-R25,Trishia,Edge_Teacher_Classes,EI-T477,[Classes] Expired bearer token is rejected when attempting to fetch all classes,,
-EI,EI-E1145,EI-R25,Trishia,Edge_Teacher_Classes,EI-T519,[Classes] Expired bearer token is rejected when attempting to remove a student from a class,,
-EI,EI-E1146,EI-R25,Trishia,Edge_Teacher_Classes,EI-T513,[Classes] Expired bearer token is rejected when attempting to restore a soft-deleted class,,
-EI,EI-E1147,EI-R25,Trishia,Edge_Teacher_Classes,EI-T506,[Classes] Expired bearer token is rejected when attempting to update a class cover photo,,
-EI,EI-E1148,EI-R25,Trishia,Edge_Teacher_Classes,EI-T495,[Classes] Expired bearer token is rejected when attempting to update a class details,,
-EI,EI-E1149,EI-R25,Trishia,Edge_Teacher_Classes,EI-T502,[Classes] Expired bearer token is rejected when attempting to upload a class cover photo,,
-EI,EI-E1150,EI-R25,Trishia,Edge_Teacher_Classes,EI-T505,[Classes] Interrupted upload leaves no orphaned asset when attempting to update a class cover photo,,
-EI,EI-E1151,EI-R25,Trishia,Edge_Teacher_Classes,EI-T501,[Classes] Interrupted upload leaves no orphaned asset when attempting to upload a class cover photo,,
-EI,EI-E1152,EI-R25,Trishia,Edge_Teacher_Classes,EI-T478,[Classes] Malformed class code identifier is rejected when attempting to fetch a class by its code,,
-EI,EI-E1153,EI-R25,Trishia,Edge_Teacher_Classes,EI-T489,[Classes] Malformed class code identifier is rejected when attempting to fetch the gradebook for a specific class,,
-EI,EI-E1154,EI-R25,Trishia,Edge_Teacher_Classes,EI-T514,[Classes] Malformed class identifier is rejected when attempting to accept a student's request to join a class,Reassigned back to Trishia 9/27/2026,
-EI,EI-E1155,EI-R25,Trishia,Edge_Teacher_Classes,EI-T497,[Classes] Malformed class identifier is rejected when attempting to delete a class,Reassigned back to Trishia 9/27/2027,
-EI,EI-E1156,EI-R25,Trishia,Edge_Teacher_Classes,EI-T486,[Classes] Malformed class identifier is rejected when attempting to delete a class announcement,Reassigned back to Trishia 9/27/2028,
-EI,EI-E1157,EI-R25,Trishia,Edge_Teacher_Classes,EI-T508,[Classes] Malformed class identifier is rejected when attempting to delete a class cover photo,Reassigned back to Trishia 9/27/2029,
-EI,EI-E1158,EI-R25,Trishia,Edge_Teacher_Classes,EI-T524,[Classes] Malformed class identifier is rejected when attempting to fetch the assignments for a specific class,Reassigned back to Trishia 9/27/2030,
-EI,EI-E1159,EI-R25,Trishia,Edge_Teacher_Classes,EI-T480,[Classes] Malformed class identifier is rejected when attempting to fetch the messages for a specific class,Reassigned back to Trishia 9/27/2031,
-EI,EI-E1160,EI-R25,Trishia,Edge_Teacher_Classes,EI-T491,[Classes] Malformed class identifier is rejected when attempting to fetch the roster of students for a specific class,Reassigned back to Trishia 9/27/2032,
-EI,EI-E1161,EI-R25,Trishia,Edge_Teacher_Classes,EI-T517,[Classes] Malformed class identifier is rejected when attempting to remove a student from a class,Reassigned back to Trishia 9/27/2033,
-EI,EI-E1162,EI-R25,Trishia,Edge_Teacher_Classes,EI-T511,[Classes] Malformed class identifier is rejected when attempting to restore a soft-deleted class,Reassigned back to Trishia 9/27/2034,
-EI,EI-E1163,EI-R25,Trishia,Edge_Teacher_Classes,EI-T482,[Classes] Omitting the required field 'content' is rejected when attempting to create a class announcement,Reassigned back to Trishia 9/27/2035,
-EI,EI-E1164,EI-R25,Trishia,Edge_Teacher_Classes,EI-T504,[Classes] Omitting the required field 'file' is rejected when attempting to update a class cover photo,Reassigned back to Trishia 9/27/2036,
-EI,EI-E1165,EI-R25,Trishia,Edge_Teacher_Classes,EI-T500,[Classes] Omitting the required field 'file' is rejected when attempting to upload a class cover photo,Reassigned back to Trishia 9/27/2037,
-EI,EI-E1166,EI-R25,Trishia,Edge_Teacher_Classes,EI-T520,[Classes] Omitting the required field 'is_granted' is rejected when attempting to accept a student's request to leave a class,Reassigned back to Trishia 9/27/2038,
-EI,EI-E1167,EI-R25,Trishia,Edge_Teacher_Classes,EI-T472,[Classes] Omitting the required field 'title' is rejected when attempting to create a new class,Reassigned back to Trishia 9/27/2039,
-EI,EI-E1168,EI-R25,Trishia,Edge_Teacher_Classes,EI-T493,[Classes] Omitting the required field 'title' is rejected when attempting to update a class details,Reassigned back to Trishia 9/27/2040,
+EI,EI-E1136,EI-R25,Trishia,Edge_Teacher_Classes,EI-T473,[Classes] Duplicate submission does not create a duplicate classe,,Passed 9/27/2026
+EI,EI-E1137,EI-R25,Trishia,Edge_Teacher_Classes,EI-T516,[Classes] Expired bearer token is rejected when attempting to accept a student's request to join a class,,Passed 9/27/2026
+EI,EI-E1138,EI-R25,Trishia,Edge_Teacher_Classes,EI-T522,[Classes] Expired bearer token is rejected when attempting to accept a student's request to leave a class,,Passed 9/27/2026
+EI,EI-E1139,EI-R25,Trishia,Edge_Teacher_Classes,EI-T484,[Classes] Expired bearer token is rejected when attempting to create a class announcement,,Passed 9/27/2026
+EI,EI-E1140,EI-R25,Trishia,Edge_Teacher_Classes,EI-T474,[Classes] Expired bearer token is rejected when attempting to create a new class,,Passed 9/27/2026
+EI,EI-E1141,EI-R25,Allan,Edge_Teacher_Classes,EI-T499,[Classes] Expired bearer token is rejected when attempting to delete a class,Reassigned to Allan 9/21/2026,Passed 9/21/2026
+EI,EI-E1142,EI-R25,Allan,Edge_Teacher_Classes,EI-T488,[Classes] Expired bearer token is rejected when attempting to delete a class announcement,Reassigned to Allan 9/21/2027,Passed 9/21/2026
+EI,EI-E1143,EI-R25,Allan,Edge_Teacher_Classes,EI-T510,[Classes] Expired bearer token is rejected when attempting to delete a class cover photo,Reassigned to Allan 9/21/2028,Passed 9/21/2026
+EI,EI-E1144,EI-R25,Allan,Edge_Teacher_Classes,EI-T477,[Classes] Expired bearer token is rejected when attempting to fetch all classes,Reassigned to Allan 9/21/2029,Passed 9/21/2026
+EI,EI-E1145,EI-R25,Allan,Edge_Teacher_Classes,EI-T519,[Classes] Expired bearer token is rejected when attempting to remove a student from a class,Reassigned to Allan 9/21/2030,Passed 9/21/2026
+EI,EI-E1146,EI-R25,Allan,Edge_Teacher_Classes,EI-T513,[Classes] Expired bearer token is rejected when attempting to restore a soft-deleted class,Reassigned to Allan 9/21/2031,Passed 9/21/2026
+EI,EI-E1147,EI-R25,Allan,Edge_Teacher_Classes,EI-T506,[Classes] Expired bearer token is rejected when attempting to update a class cover photo,Reassigned to Allan 9/21/2032,Passed 9/21/2026
+EI,EI-E1148,EI-R25,Allan,Edge_Teacher_Classes,EI-T495,[Classes] Expired bearer token is rejected when attempting to update a class details,Reassigned to Allan 9/21/2033,Passed 9/21/2026
+EI,EI-E1149,EI-R25,Allan,Edge_Teacher_Classes,EI-T502,[Classes] Expired bearer token is rejected when attempting to upload a class cover photo,Reassigned to Allan 9/21/2034,Passed 9/21/2026
+EI,EI-E1150,EI-R25,Trishia,Edge_Teacher_Classes,EI-T505,[Classes] Interrupted upload leaves no orphaned asset when attempting to update a class cover photo,,Passed 9/27/2026
+EI,EI-E1151,EI-R25,Trishia,Edge_Teacher_Classes,EI-T501,[Classes] Interrupted upload leaves no orphaned asset when attempting to upload a class cover photo,,Passed 9/27/2026
+EI,EI-E1152,EI-R25,Trishia,Edge_Teacher_Classes,EI-T478,[Classes] Malformed class code identifier is rejected when attempting to fetch a class by its code,,Passed 9/27/2026
+EI,EI-E1153,EI-R25,Trishia,Edge_Teacher_Classes,EI-T489,[Classes] Malformed class code identifier is rejected when attempting to fetch the gradebook for a specific class,,Passed 9/27/2026
+EI,EI-E1154,EI-R25,Trishia,Edge_Teacher_Classes,EI-T514,[Classes] Malformed class identifier is rejected when attempting to accept a student's request to join a class,Reassigned back to Trishia 9/27/2026,Passed 9/30/2026
+EI,EI-E1155,EI-R25,Trishia,Edge_Teacher_Classes,EI-T497,[Classes] Malformed class identifier is rejected when attempting to delete a class,Reassigned back to Trishia 9/27/2027,Passed 9/30/2026
+EI,EI-E1156,EI-R25,Trishia,Edge_Teacher_Classes,EI-T486,[Classes] Malformed class identifier is rejected when attempting to delete a class announcement,Reassigned back to Trishia 9/27/2028,Passed 9/30/2026
+EI,EI-E1157,EI-R25,Trishia,Edge_Teacher_Classes,EI-T508,[Classes] Malformed class identifier is rejected when attempting to delete a class cover photo,Reassigned back to Trishia 9/27/2029,Passed 9/30/2026
+EI,EI-E1158,EI-R25,Trishia,Edge_Teacher_Classes,EI-T524,[Classes] Malformed class identifier is rejected when attempting to fetch the assignments for a specific class,Reassigned back to Trishia 9/27/2030,Passed 9/30/2026
+EI,EI-E1159,EI-R25,Trishia,Edge_Teacher_Classes,EI-T480,[Classes] Malformed class identifier is rejected when attempting to fetch the messages for a specific class,Reassigned back to Trishia 9/27/2031,Passed 9/30/2026
+EI,EI-E1160,EI-R25,Trishia,Edge_Teacher_Classes,EI-T491,[Classes] Malformed class identifier is rejected when attempting to fetch the roster of students for a specific class,Reassigned back to Trishia 9/27/2032,Passed 9/30/2026
+EI,EI-E1161,EI-R25,Trishia,Edge_Teacher_Classes,EI-T517,[Classes] Malformed class identifier is rejected when attempting to remove a student from a class,Reassigned back to Trishia 9/27/2033,Failed 9/30/2026
+EI,EI-E1162,EI-R25,Trishia,Edge_Teacher_Classes,EI-T511,[Classes] Malformed class identifier is rejected when attempting to restore a soft-deleted class,Reassigned back to Trishia 9/27/2034,"Passed 9/30/2026
+"
+EI,EI-E1163,EI-R25,Trishia,Edge_Teacher_Classes,EI-T482,[Classes] Omitting the required field 'content' is rejected when attempting to create a class announcement,Reassigned back to Trishia 9/27/2035,Passed 9/30/2026
+EI,EI-E1164,EI-R25,Trishia,Edge_Teacher_Classes,EI-T504,[Classes] Omitting the required field 'file' is rejected when attempting to update a class cover photo,Reassigned back to Trishia 9/27/2036,Passed 9/30/2026
+EI,EI-E1165,EI-R25,Trishia,Edge_Teacher_Classes,EI-T500,[Classes] Omitting the required field 'file' is rejected when attempting to upload a class cover photo,Reassigned back to Trishia 9/27/2037,Passed 9/30/2026
+EI,EI-E1166,EI-R25,Trishia,Edge_Teacher_Classes,EI-T520,[Classes] Omitting the required field 'is_granted' is rejected when attempting to accept a student's request to leave a class,Reassigned back to Trishia 9/27/2038,Passed 9/30/2026
+EI,EI-E1167,EI-R25,Trishia,Edge_Teacher_Classes,EI-T472,[Classes] Omitting the required field 'title' is rejected when attempting to create a new class,Reassigned back to Trishia 9/27/2039,Passed 9/30/2026
+EI,EI-E1168,EI-R25,Trishia,Edge_Teacher_Classes,EI-T493,[Classes] Omitting the required field 'title' is rejected when attempting to update a class details,Reassigned back to Trishia 9/27/2040,Passed 9/30/2026
 EI,EI-E1169,EI-R25,Gelo,Edge_Teacher_Classes,EI-T476,[Classes] Out-of-range 'page_num' value is handled safely when attempting to fetch all classes,Reassigned,
 EI,EI-E1170,EI-R25,Gelo,Edge_Teacher_Classes,EI-T485,[Classes] Script payload in 'content' is neutralised when attempting to create a class announcement,Reassigned,
 EI,EI-E1171,EI-R25,Gelo,Edge_Teacher_Classes,EI-T507,[Classes] Script payload in 'file' is neutralised when attempting to update a class cover photo,Reassigned,
@@ -448,73 +449,73 @@ EI,EI-E1227,EI-R27,Paul,Edge_Teacher_Question-Import,EI-T558,"[Question-Import] 
 EI,EI-E1228,EI-R27,Paul,Edge_Teacher_Question-Import,EI-T564,[Question-Import] Unknown job identifier returns not found when attempting to approve a reviewed import and create the questions,,Passed 9/18/2026
 EI,EI-E1229,EI-R27,Paul,Edge_Teacher_Question-Import,EI-T560,[Question-Import] Unknown job identifier returns not found when attempting to retrieve progress and per-row errors for an import job,,Passed 9/18/2026
 EI,EI-E1230,EI-R27,Paul,Edge_Teacher_Question-Import,EI-T562,[Question-Import] Unknown job identifier returns not found when attempting to retrieve proposed questions for review,,Passed 9/18/2026
-EI,EI-E1325,EI-R29,Jim,Edge_Teacher_Assignments,EI-T616,[Assignments] Another account's submission cannot be reached when attempting to approve a pending late submission,,
-EI,EI-E1326,EI-R29,Jim,Edge_Teacher_Assignments,EI-T568,[Assignments] Duplicate submission does not create a duplicate assignment,,
-EI,EI-E1327,EI-R29,Jim,Edge_Teacher_Assignments,EI-T574,[Assignments] Duplicate submission does not create a duplicate assignment (2),,
-EI,EI-E1328,EI-R29,Jim,Edge_Teacher_Assignments,EI-T578,[Assignments] Empty result set is returned correctly when attempting to fetch all staff created assignments,,
-EI,EI-E1329,EI-R29,Jim,Edge_Teacher_Assignments,EI-T602,[Assignments] Expired bearer token is rejected when attempting to add a new comment on a student's answer to a specific question,,
-EI,EI-E1330,EI-R29,Jim,Edge_Teacher_Assignments,EI-T615,[Assignments] Expired bearer token is rejected when attempting to approve a pending late submission,,
-EI,EI-E1331,EI-R29,Jim,Edge_Teacher_Assignments,EI-T569,[Assignments] Expired bearer token is rejected when attempting to create a new assignment,,
-EI,EI-E1332,EI-R29,Jim,Edge_Teacher_Assignments,EI-T575,[Assignments] Expired bearer token is rejected when attempting to create a new assignment on behalf of staff,,
-EI,EI-E1333,EI-R29,Jim,Edge_Teacher_Assignments,EI-T593,[Assignments] Expired bearer token is rejected when attempting to delete a specific assignment,,
-EI,EI-E1334,EI-R29,Jim,Edge_Teacher_Assignments,EI-T610,[Assignments] Expired bearer token is rejected when attempting to delete my comment on a student's answer to a specific question,,
-EI,EI-E1335,EI-R29,Jim,Edge_Teacher_Assignments,EI-T577,[Assignments] Expired bearer token is rejected when attempting to fetch all staff created assignments,,
-EI,EI-E1336,EI-R29,Jim,Edge_Teacher_Assignments,EI-T589,[Assignments] Expired bearer token is rejected when attempting to override a question's point value for this assignment only,,
-EI,EI-E1337,EI-R29,Jim,Edge_Teacher_Assignments,EI-T619,[Assignments] Expired bearer token is rejected when attempting to reject a pending late submission,,
-EI,EI-E1338,EI-R29,Jim,Edge_Teacher_Assignments,EI-T585,[Assignments] Expired bearer token is rejected when attempting to update an existing assignment's details,,
-EI,EI-E1339,EI-R29,Jim,Edge_Teacher_Assignments,EI-T606,[Assignments] Expired bearer token is rejected when attempting to update my existing comment on a student's answer to a specific question,,
-EI,EI-E1340,EI-R29,Jim,Edge_Teacher_Assignments,EI-T591,[Assignments] Malformed assignment identifier is rejected when attempting to delete a specific assignment,,
-EI,EI-E1341,EI-R29,Jim,Edge_Teacher_Assignments,EI-T579,[Assignments] Malformed assignment identifier is rejected when attempting to fetch all staff created assignments,,
-EI,EI-E1342,EI-R29,Jim,Edge_Teacher_Assignments,EI-T581,[Assignments] Malformed assignment identifier is rejected when attempting to fetch my created assignment,,
-EI,EI-E1343,EI-R29,Jim,Edge_Teacher_Assignments,EI-T611,[Assignments] Malformed assignment identifier is rejected when attempting to list pending late submissions for a given assignment,,
-EI,EI-E1344,EI-R29,Jim,Edge_Teacher_Assignments,EI-T608,[Assignments] Malformed class code identifier is rejected when attempting to delete my comment on a student's answer to a specific question,,
-EI,EI-E1345,EI-R29,Jim,Edge_Teacher_Assignments,EI-T598,[Assignments] Malformed class code identifier is rejected when attempting to fetch a specific student's submission for an assignment,,
-EI,EI-E1346,EI-R29,Jim,Edge_Teacher_Assignments,EI-T571,[Assignments] Malformed class code identifier is rejected when attempting to fetch all my created assignments,,
-EI,EI-E1347,EI-R29,Jim,Edge_Teacher_Assignments,EI-T594,[Assignments] Malformed class code identifier is rejected when attempting to get analytics for a specific assignment,,
-EI,EI-E1348,EI-R29,Jim,Edge_Teacher_Assignments,EI-T596,[Assignments] Malformed class code identifier is rejected when attempting to get item analysis analytics for a specific assignment,,
-EI,EI-E1349,EI-R29,Jim,Edge_Teacher_Assignments,EI-T613,[Assignments] Malformed submission identifier is rejected when attempting to approve a pending late submission,,
-EI,EI-E1350,EI-R29,Jim,Edge_Teacher_Assignments,EI-T600,[Assignments] Omitting the required field 'comment' is rejected when attempting to add a new comment on a student's answer to a specific question,,
-EI,EI-E1351,EI-R29,Jim,Edge_Teacher_Assignments,EI-T604,[Assignments] Omitting the required field 'comment' is rejected when attempting to update my existing comment on a student's answer to a specific question,,
-EI,EI-E1352,EI-R29,Jim,Edge_Teacher_Assignments,EI-T587,[Assignments] Omitting the required field 'points' is rejected when attempting to override a question's point value for this assignment only,,
-EI,EI-E1353,EI-R29,Jim,Edge_Teacher_Assignments,EI-T617,[Assignments] Omitting the required field 'reason' is rejected when attempting to reject a pending late submission,,
-EI,EI-E1354,EI-R29,Jim,Edge_Teacher_Assignments,EI-T567,[Assignments] Omitting the required field 'semester' is rejected when attempting to create a new assignment,,
-EI,EI-E1355,EI-R29,Jim,Edge_Teacher_Assignments,EI-T573,[Assignments] Omitting the required field 'semester' is rejected when attempting to create a new assignment on behalf of staff,,
-EI,EI-E1356,EI-R29,Jim,Edge_Teacher_Assignments,EI-T583,[Assignments] Omitting the required field 'semester' is rejected when attempting to update an existing assignment's details,,
-EI,EI-E1357,EI-R29,Jim,Edge_Teacher_Assignments,EI-T603,[Assignments] Script payload in 'comment' is neutralised when attempting to add a new comment on a student's answer to a specific question,,
-EI,EI-E1358,EI-R29,Jim,Edge_Teacher_Assignments,EI-T607,[Assignments] Script payload in 'comment' is neutralised when attempting to update my existing comment on a student's answer to a specific question,,
-EI,EI-E1359,EI-R29,Jim,Edge_Teacher_Assignments,EI-T590,[Assignments] Script payload in 'points' is neutralised when attempting to override a question's point value for this assignment only,,
-EI,EI-E1360,EI-R29,Jim,Edge_Teacher_Assignments,EI-T620,[Assignments] Script payload in 'reason' is neutralised when attempting to reject a pending late submission,,
-EI,EI-E1361,EI-R29,Jim,Edge_Teacher_Assignments,EI-T570,[Assignments] Script payload in 'semester' is neutralised when attempting to create a new assignment,,
-EI,EI-E1362,EI-R29,Jim,Edge_Teacher_Assignments,EI-T576,[Assignments] Script payload in 'semester' is neutralised when attempting to create a new assignment on behalf of staff,,
-EI,EI-E1363,EI-R29,Jim,Edge_Teacher_Assignments,EI-T586,[Assignments] Script payload in 'semester' is neutralised when attempting to update an existing assignment's details,,
-EI,EI-E1364,EI-R29,Jim,Edge_Teacher_Assignments,EI-T592,[Assignments] Unknown assignment identifier returns not found when attempting to delete a specific assignment,,
-EI,EI-E1365,EI-R29,Jim,Edge_Teacher_Assignments,EI-T580,[Assignments] Unknown assignment identifier returns not found when attempting to fetch all staff created assignments,,
-EI,EI-E1366,EI-R29,Jim,Edge_Teacher_Assignments,EI-T582,[Assignments] Unknown assignment identifier returns not found when attempting to fetch my created assignment,,
-EI,EI-E1367,EI-R29,Jim,Edge_Teacher_Assignments,EI-T612,[Assignments] Unknown assignment identifier returns not found when attempting to list pending late submissions for a given assignment,,
-EI,EI-E1368,EI-R29,Jim,Edge_Teacher_Assignments,EI-T588,[Assignments] Unknown assignment identifier returns not found when attempting to override a question's point value for this assignment only,,
-EI,EI-E1369,EI-R29,Jim,Edge_Teacher_Assignments,EI-T584,[Assignments] Unknown assignment identifier returns not found when attempting to update an existing assignment's details,,
-EI,EI-E1370,EI-R29,Jim,Edge_Teacher_Assignments,EI-T601,[Assignments] Unknown class code identifier returns not found when attempting to add a new comment on a student's answer to a specific question,,
-EI,EI-E1371,EI-R29,Jim,Edge_Teacher_Assignments,EI-T609,[Assignments] Unknown class code identifier returns not found when attempting to delete my comment on a student's answer to a specific question,,
-EI,EI-E1372,EI-R29,Jim,Edge_Teacher_Assignments,EI-T599,[Assignments] Unknown class code identifier returns not found when attempting to fetch a specific student's submission for an assignment,,
-EI,EI-E1373,EI-R29,Jim,Edge_Teacher_Assignments,EI-T572,[Assignments] Unknown class code identifier returns not found when attempting to fetch all my created assignments,,
-EI,EI-E1374,EI-R29,Jim,Edge_Teacher_Assignments,EI-T595,[Assignments] Unknown class code identifier returns not found when attempting to get analytics for a specific assignment,,
-EI,EI-E1375,EI-R29,Jim,Edge_Teacher_Assignments,EI-T597,[Assignments] Unknown class code identifier returns not found when attempting to get item analysis analytics for a specific assignment,,
-EI,EI-E1376,EI-R29,Jim,Edge_Teacher_Assignments,EI-T605,[Assignments] Unknown class code identifier returns not found when attempting to update my existing comment on a student's answer to a specific question,,
-EI,EI-E1377,EI-R29,Jim,Edge_Teacher_Assignments,EI-T614,[Assignments] Unknown submission identifier returns not found when attempting to approve a pending late submission,,
-EI,EI-E1378,EI-R29,Jim,Edge_Teacher_Assignments,EI-T618,[Assignments] Unknown submission identifier returns not found when attempting to reject a pending late submission,,
-EI,EI-E1379,EI-R30,Jim,Edge_Teacher_Theme,EI-T624,[Theme] Duplicate submission does not create a duplicate theme,,
-EI,EI-E1380,EI-R30,Jim,Edge_Teacher_Theme,EI-T622,[Theme] Empty result set is returned correctly when attempting to get current profile theme information,,
-EI,EI-E1381,EI-R30,Jim,Edge_Teacher_Theme,EI-T625,[Theme] Expired bearer token is rejected when attempting to apply a new theme to profile,,
-EI,EI-E1382,EI-R30,Jim,Edge_Teacher_Theme,EI-T632,[Theme] Expired bearer token is rejected when attempting to delete theme and revert to default,,
-EI,EI-E1383,EI-R30,Jim,Edge_Teacher_Theme,EI-T621,[Theme] Expired bearer token is rejected when attempting to get current profile theme information,,
-EI,EI-E1384,EI-R30,Jim,Edge_Teacher_Theme,EI-T629,[Theme] Expired bearer token is rejected when attempting to update current theme settings,,
-EI,EI-E1385,EI-R30,Jim,Edge_Teacher_Theme,EI-T623,[Theme] Omitting the required field 'theme_id' is rejected when attempting to apply a new theme to profile,,
-EI,EI-E1386,EI-R30,Jim,Edge_Teacher_Theme,EI-T627,[Theme] Omitting the required field 'theme_name' is rejected when attempting to update current theme settings,,
-EI,EI-E1387,EI-R30,Jim,Edge_Teacher_Theme,EI-T633,[Theme] Removing a theme with dependent records leaves no orphaned data,,
-EI,EI-E1388,EI-R30,Jim,Edge_Teacher_Theme,EI-T631,[Theme] Repeating the removal of an already deleted theme is handled safely,,
-EI,EI-E1389,EI-R30,Jim,Edge_Teacher_Theme,EI-T626,[Theme] Script payload in 'theme_id' is neutralised when attempting to apply a new theme to profile,,
-EI,EI-E1390,EI-R30,Jim,Edge_Teacher_Theme,EI-T630,[Theme] Script payload in 'theme_name' is neutralised when attempting to update current theme settings,,
-EI,EI-E1391,EI-R30,Jim,Edge_Teacher_Theme,EI-T628,[Theme] Simultaneous updates to one theme resolve deterministically,,
+EI,EI-E1325,EI-R29,Jim,Edge_Teacher_Assignments,EI-T616,[Assignments] Another account's submission cannot be reached when attempting to approve a pending late submission,,Passed 9/19/2026
+EI,EI-E1326,EI-R29,Jim,Edge_Teacher_Assignments,EI-T568,[Assignments] Duplicate submission does not create a duplicate assignment,,Passed 9/19/2026
+EI,EI-E1327,EI-R29,Jim,Edge_Teacher_Assignments,EI-T574,[Assignments] Duplicate submission does not create a duplicate assignment (2),,Passed 9/19/2026
+EI,EI-E1328,EI-R29,Jim,Edge_Teacher_Assignments,EI-T578,[Assignments] Empty result set is returned correctly when attempting to fetch all staff created assignments,,Passed 9/19/2026
+EI,EI-E1329,EI-R29,Jim,Edge_Teacher_Assignments,EI-T602,[Assignments] Expired bearer token is rejected when attempting to add a new comment on a student's answer to a specific question,,Passed 9/19/2026
+EI,EI-E1330,EI-R29,Jim,Edge_Teacher_Assignments,EI-T615,[Assignments] Expired bearer token is rejected when attempting to approve a pending late submission,,Passed 9/19/2026
+EI,EI-E1331,EI-R29,Jim,Edge_Teacher_Assignments,EI-T569,[Assignments] Expired bearer token is rejected when attempting to create a new assignment,,Passed 9/20/2026
+EI,EI-E1332,EI-R29,Jim,Edge_Teacher_Assignments,EI-T575,[Assignments] Expired bearer token is rejected when attempting to create a new assignment on behalf of staff,,Passed 9/20/2026
+EI,EI-E1333,EI-R29,Jim,Edge_Teacher_Assignments,EI-T593,[Assignments] Expired bearer token is rejected when attempting to delete a specific assignment,,Passed 9/20/2026
+EI,EI-E1334,EI-R29,Jim,Edge_Teacher_Assignments,EI-T610,[Assignments] Expired bearer token is rejected when attempting to delete my comment on a student's answer to a specific question,,Passed 9/20/2026
+EI,EI-E1335,EI-R29,Jim,Edge_Teacher_Assignments,EI-T577,[Assignments] Expired bearer token is rejected when attempting to fetch all staff created assignments,,Passed 9/20/2026
+EI,EI-E1336,EI-R29,Jim,Edge_Teacher_Assignments,EI-T589,[Assignments] Expired bearer token is rejected when attempting to override a question's point value for this assignment only,,Passed 9/20/2026
+EI,EI-E1337,EI-R29,Jim,Edge_Teacher_Assignments,EI-T619,[Assignments] Expired bearer token is rejected when attempting to reject a pending late submission,,Passed 9/21/2026
+EI,EI-E1338,EI-R29,Jim,Edge_Teacher_Assignments,EI-T585,[Assignments] Expired bearer token is rejected when attempting to update an existing assignment's details,,Passed 9/21/2026
+EI,EI-E1339,EI-R29,Jim,Edge_Teacher_Assignments,EI-T606,[Assignments] Expired bearer token is rejected when attempting to update my existing comment on a student's answer to a specific question,,Passed 9/21/2026
+EI,EI-E1340,EI-R29,Jim,Edge_Teacher_Assignments,EI-T591,[Assignments] Malformed assignment identifier is rejected when attempting to delete a specific assignment,,Passed 9/21/2026
+EI,EI-E1341,EI-R29,Jim,Edge_Teacher_Assignments,EI-T579,[Assignments] Malformed assignment identifier is rejected when attempting to fetch all staff created assignments,,Passed 9/21/2026
+EI,EI-E1342,EI-R29,Jim,Edge_Teacher_Assignments,EI-T581,[Assignments] Malformed assignment identifier is rejected when attempting to fetch my created assignment,,Passed 9/21/2026
+EI,EI-E1343,EI-R29,Jim,Edge_Teacher_Assignments,EI-T611,[Assignments] Malformed assignment identifier is rejected when attempting to list pending late submissions for a given assignment,,Passed 9/22/2026
+EI,EI-E1344,EI-R29,Jim,Edge_Teacher_Assignments,EI-T608,[Assignments] Malformed class code identifier is rejected when attempting to delete my comment on a student's answer to a specific question,,Passed 9/22/2026
+EI,EI-E1345,EI-R29,Jim,Edge_Teacher_Assignments,EI-T598,[Assignments] Malformed class code identifier is rejected when attempting to fetch a specific student's submission for an assignment,,Passed 9/22/2026
+EI,EI-E1346,EI-R29,Jim,Edge_Teacher_Assignments,EI-T571,[Assignments] Malformed class code identifier is rejected when attempting to fetch all my created assignments,,Passed 9/22/2026
+EI,EI-E1347,EI-R29,Jim,Edge_Teacher_Assignments,EI-T594,[Assignments] Malformed class code identifier is rejected when attempting to get analytics for a specific assignment,,Passed 9/22/2026
+EI,EI-E1348,EI-R29,Jim,Edge_Teacher_Assignments,EI-T596,[Assignments] Malformed class code identifier is rejected when attempting to get item analysis analytics for a specific assignment,,Passed 9/22/2026
+EI,EI-E1349,EI-R29,Jim,Edge_Teacher_Assignments,EI-T613,[Assignments] Malformed submission identifier is rejected when attempting to approve a pending late submission,,Passed 9/22/2026
+EI,EI-E1350,EI-R29,Jim,Edge_Teacher_Assignments,EI-T600,[Assignments] Omitting the required field 'comment' is rejected when attempting to add a new comment on a student's answer to a specific question,,Passed 9/23/2026
+EI,EI-E1351,EI-R29,Jim,Edge_Teacher_Assignments,EI-T604,[Assignments] Omitting the required field 'comment' is rejected when attempting to update my existing comment on a student's answer to a specific question,,Passed 9/23/2026
+EI,EI-E1352,EI-R29,Jim,Edge_Teacher_Assignments,EI-T587,[Assignments] Omitting the required field 'points' is rejected when attempting to override a question's point value for this assignment only,,Passed 9/23/2026
+EI,EI-E1353,EI-R29,Jim,Edge_Teacher_Assignments,EI-T617,[Assignments] Omitting the required field 'reason' is rejected when attempting to reject a pending late submission,,Passed 9/23/2026
+EI,EI-E1354,EI-R29,Jim,Edge_Teacher_Assignments,EI-T567,[Assignments] Omitting the required field 'semester' is rejected when attempting to create a new assignment,,Passed 9/23/2026
+EI,EI-E1355,EI-R29,Jim,Edge_Teacher_Assignments,EI-T573,[Assignments] Omitting the required field 'semester' is rejected when attempting to create a new assignment on behalf of staff,,Passed 9/23/2026
+EI,EI-E1356,EI-R29,Jim,Edge_Teacher_Assignments,EI-T583,[Assignments] Omitting the required field 'semester' is rejected when attempting to update an existing assignment's details,,Passed 9/24/2026
+EI,EI-E1357,EI-R29,Jim,Edge_Teacher_Assignments,EI-T603,[Assignments] Script payload in 'comment' is neutralised when attempting to add a new comment on a student's answer to a specific question,,Passed 9/24/2026
+EI,EI-E1358,EI-R29,Jim,Edge_Teacher_Assignments,EI-T607,[Assignments] Script payload in 'comment' is neutralised when attempting to update my existing comment on a student's answer to a specific question,,Passed 9/24/2026
+EI,EI-E1359,EI-R29,Jim,Edge_Teacher_Assignments,EI-T590,[Assignments] Script payload in 'points' is neutralised when attempting to override a question's point value for this assignment only,,Passed 9/24/2026
+EI,EI-E1360,EI-R29,Jim,Edge_Teacher_Assignments,EI-T620,[Assignments] Script payload in 'reason' is neutralised when attempting to reject a pending late submission,,Passed 9/24/2026
+EI,EI-E1361,EI-R29,Jim,Edge_Teacher_Assignments,EI-T570,[Assignments] Script payload in 'semester' is neutralised when attempting to create a new assignment,,Passed 9/24/2026
+EI,EI-E1362,EI-R29,Jim,Edge_Teacher_Assignments,EI-T576,[Assignments] Script payload in 'semester' is neutralised when attempting to create a new assignment on behalf of staff,,Passed 9/25/2026
+EI,EI-E1363,EI-R29,Jim,Edge_Teacher_Assignments,EI-T586,[Assignments] Script payload in 'semester' is neutralised when attempting to update an existing assignment's details,,Passed 9/25/2026
+EI,EI-E1364,EI-R29,Jim,Edge_Teacher_Assignments,EI-T592,[Assignments] Unknown assignment identifier returns not found when attempting to delete a specific assignment,,Passed 9/25/2026
+EI,EI-E1365,EI-R29,Jim,Edge_Teacher_Assignments,EI-T580,[Assignments] Unknown assignment identifier returns not found when attempting to fetch all staff created assignments,,Passed 9/25/2026
+EI,EI-E1366,EI-R29,Jim,Edge_Teacher_Assignments,EI-T582,[Assignments] Unknown assignment identifier returns not found when attempting to fetch my created assignment,,Passed 9/25/2026
+EI,EI-E1367,EI-R29,Jim,Edge_Teacher_Assignments,EI-T612,[Assignments] Unknown assignment identifier returns not found when attempting to list pending late submissions for a given assignment,,Passed 9/25/2026
+EI,EI-E1368,EI-R29,Jim,Edge_Teacher_Assignments,EI-T588,[Assignments] Unknown assignment identifier returns not found when attempting to override a question's point value for this assignment only,,Passed 9/26/2026
+EI,EI-E1369,EI-R29,Jim,Edge_Teacher_Assignments,EI-T584,[Assignments] Unknown assignment identifier returns not found when attempting to update an existing assignment's details,,Passed 9/26/2026
+EI,EI-E1370,EI-R29,Jim,Edge_Teacher_Assignments,EI-T601,[Assignments] Unknown class code identifier returns not found when attempting to add a new comment on a student's answer to a specific question,,Passed 9/26/2026
+EI,EI-E1371,EI-R29,Jim,Edge_Teacher_Assignments,EI-T609,[Assignments] Unknown class code identifier returns not found when attempting to delete my comment on a student's answer to a specific question,,Passed 9/26/2026
+EI,EI-E1372,EI-R29,Jim,Edge_Teacher_Assignments,EI-T599,[Assignments] Unknown class code identifier returns not found when attempting to fetch a specific student's submission for an assignment,,Passed 9/26/2026
+EI,EI-E1373,EI-R29,Jim,Edge_Teacher_Assignments,EI-T572,[Assignments] Unknown class code identifier returns not found when attempting to fetch all my created assignments,,Passed 9/26/2026
+EI,EI-E1374,EI-R29,Jim,Edge_Teacher_Assignments,EI-T595,[Assignments] Unknown class code identifier returns not found when attempting to get analytics for a specific assignment,,Passed 9/26/2026
+EI,EI-E1375,EI-R29,Jim,Edge_Teacher_Assignments,EI-T597,[Assignments] Unknown class code identifier returns not found when attempting to get item analysis analytics for a specific assignment,,Passed 9/26/2026
+EI,EI-E1376,EI-R29,Jim,Edge_Teacher_Assignments,EI-T605,[Assignments] Unknown class code identifier returns not found when attempting to update my existing comment on a student's answer to a specific question,,Passed 9/26/2026
+EI,EI-E1377,EI-R29,Jim,Edge_Teacher_Assignments,EI-T614,[Assignments] Unknown submission identifier returns not found when attempting to approve a pending late submission,,Passed 9/26/2026
+EI,EI-E1378,EI-R29,Jim,Edge_Teacher_Assignments,EI-T618,[Assignments] Unknown submission identifier returns not found when attempting to reject a pending late submission,,Passed 9/26/2026
+EI,EI-E1379,EI-R30,Jim,Edge_Teacher_Theme,EI-T624,[Theme] Duplicate submission does not create a duplicate theme,,Passed 9/26/2026
+EI,EI-E1380,EI-R30,Jim,Edge_Teacher_Theme,EI-T622,[Theme] Empty result set is returned correctly when attempting to get current profile theme information,,Passed 9/26/2026
+EI,EI-E1381,EI-R30,Jim,Edge_Teacher_Theme,EI-T625,[Theme] Expired bearer token is rejected when attempting to apply a new theme to profile,,Passed 9/24/2026
+EI,EI-E1382,EI-R30,Jim,Edge_Teacher_Theme,EI-T632,[Theme] Expired bearer token is rejected when attempting to delete theme and revert to default,,Passed 9/24/2026
+EI,EI-E1383,EI-R30,Jim,Edge_Teacher_Theme,EI-T621,[Theme] Expired bearer token is rejected when attempting to get current profile theme information,,Passed 9/24/2026
+EI,EI-E1384,EI-R30,Jim,Edge_Teacher_Theme,EI-T629,[Theme] Expired bearer token is rejected when attempting to update current theme settings,,Passed 9/24/2026
+EI,EI-E1385,EI-R30,Jim,Edge_Teacher_Theme,EI-T623,[Theme] Omitting the required field 'theme_id' is rejected when attempting to apply a new theme to profile,,Passed 9/24/2026
+EI,EI-E1386,EI-R30,Jim,Edge_Teacher_Theme,EI-T627,[Theme] Omitting the required field 'theme_name' is rejected when attempting to update current theme settings,,Passed 9/24/2026
+EI,EI-E1387,EI-R30,Jim,Edge_Teacher_Theme,EI-T633,[Theme] Removing a theme with dependent records leaves no orphaned data,,Passed 9/24/2026
+EI,EI-E1388,EI-R30,Jim,Edge_Teacher_Theme,EI-T631,[Theme] Repeating the removal of an already deleted theme is handled safely,,Passed 9/24/2026
+EI,EI-E1389,EI-R30,Jim,Edge_Teacher_Theme,EI-T626,[Theme] Script payload in 'theme_id' is neutralised when attempting to apply a new theme to profile,,Passed 9/24/2026
+EI,EI-E1390,EI-R30,Jim,Edge_Teacher_Theme,EI-T630,[Theme] Script payload in 'theme_name' is neutralised when attempting to update current theme settings,,Passed 9/24/2026
+EI,EI-E1391,EI-R30,Jim,Edge_Teacher_Theme,EI-T628,[Theme] Simultaneous updates to one theme resolve deterministically,,Passed 9/24/2026
 EI,EI-E1392,EI-R31,Paul,Edge_Teacher_Students,EI-T639,[Students] Deprecated operation to bulk student creation moved to Staff-Admin API no longer mutates data,,Passed 9/18/2026
 EI,EI-E1393,EI-R31,Paul,Edge_Teacher_Students,EI-T634,[Students] Deprecated operation to submit student creation moved to Staff-Admin API no longer mutates data,,Passed 9/18/2026
 EI,EI-E1394,EI-R31,Paul,Edge_Teacher_Students,EI-T636,[Students] Duplicate submission does not create a duplicate student,,Passed 9/18/2026
@@ -632,24 +633,24 @@ EI,EI-E1505,EI-R38,Allan,Edge_Student_Features,EI-T745,[Features] Expired bearer
 EI,EI-E1506,EI-R38,Allan,Edge_Student_Features,EI-T747,[Features] Expired bearer token is rejected when attempting to retrieve school details for the authenticated student,,
 EI,EI-E1507,EI-R38,Allan,Edge_Student_Features,EI-T743,[Features] Malformed feature name identifier is rejected when attempting to get effective status for a single feature (2),,
 EI,EI-E1508,EI-R38,Allan,Edge_Student_Features,EI-T744,[Features] Unknown feature name identifier returns not found when attempting to get effective status for a single feature (2),,
-EI,EI-E1509,EI-R39,Khyne,Edge_Shared_Assignments,EI-T752,[Assignments] Duplicate submission does not create a duplicate assignment (3),,
-EI,EI-E1510,EI-R39,Khyne,Edge_Shared_Assignments,EI-T760,[Assignments] Duplicate submission does not create a duplicate assignment (4),,
-EI,EI-E1511,EI-R39,Khyne,Edge_Shared_Assignments,EI-T766,[Assignments] Duplicate submission does not create a duplicate assignment (5),,
+EI,EI-E1509,EI-R39,Khyne,Edge_Shared_Assignments,EI-T752,[Assignments] Duplicate submission does not create a duplicate assignment (3),,Passed 9/30/2026
+EI,EI-E1510,EI-R39,Khyne,Edge_Shared_Assignments,EI-T760,[Assignments] Duplicate submission does not create a duplicate assignment (4),,Passed 9/30/2026
+EI,EI-E1511,EI-R39,Khyne,Edge_Shared_Assignments,EI-T766,[Assignments] Duplicate submission does not create a duplicate assignment (5),,Passed 9/30/2026
 EI,EI-E1512,EI-R39,Allan,Edge_Shared_Assignments,EI-T761,[Assignments] Expired bearer token is rejected when attempting to answer assignment,,
 EI,EI-E1513,EI-R39,Allan,Edge_Shared_Assignments,EI-T753,[Assignments] Expired bearer token is rejected when attempting to create new assignment,,
 EI,EI-E1514,EI-R39,Allan,Edge_Shared_Assignments,EI-T777,[Assignments] Expired bearer token is rejected when attempting to delete assignment by ID,,
 EI,EI-E1515,EI-R39,Allan,Edge_Shared_Assignments,EI-T767,[Assignments] Expired bearer token is rejected when attempting to share assignment,,
 EI,EI-E1516,EI-R39,Allan,Edge_Shared_Assignments,EI-T773,[Assignments] Expired bearer token is rejected when attempting to update assignment details,,
-EI,EI-E1517,EI-R39,Khyne,Edge_Shared_Assignments,EI-T775,[Assignments] Malformed assignment identifier is rejected when attempting to delete assignment by ID,,
-EI,EI-E1518,EI-R39,Khyne,Edge_Shared_Assignments,EI-T755,[Assignments] Malformed assignment identifier is rejected when attempting to get specific assignment by ID,,
+EI,EI-E1517,EI-R39,Khyne,Edge_Shared_Assignments,EI-T775,[Assignments] Malformed assignment identifier is rejected when attempting to delete assignment by ID,,Passed 9/30/2026
+EI,EI-E1518,EI-R39,Khyne,Edge_Shared_Assignments,EI-T755,[Assignments] Malformed assignment identifier is rejected when attempting to get specific assignment by ID,,Passed 9/30/2026
 EI,EI-E1519,EI-R39,Allan,Edge_Shared_Assignments,EI-T757,[Assignments] Malformed assignment identifier is rejected when attempting to retrieve adoptive Next Item,,
-EI,EI-E1520,EI-R39,Khyne,Edge_Shared_Assignments,EI-T769,[Assignments] Malformed assignment identifier is rejected when attempting to show assignment analytics,,
-EI,EI-E1521,EI-R39,Khyne,Edge_Shared_Assignments,EI-T763,[Assignments] Malformed submission identifier is rejected when attempting to review submission,,
-EI,EI-E1522,EI-R39,Khyne,Edge_Shared_Assignments,EI-T759,[Assignments] Omitting the required field 'assignment_id' is rejected when attempting to answer assignment,,
-EI,EI-E1523,EI-R39,Khyne,Edge_Shared_Assignments,EI-T751,[Assignments] Omitting the required field 'semester' is rejected when attempting to create new assignment,,
-EI,EI-E1524,EI-R39,Khyne,Edge_Shared_Assignments,EI-T771,[Assignments] Omitting the required field 'semester' is rejected when attempting to update assignment details,,
-EI,EI-E1525,EI-R39,Khyne,Edge_Shared_Assignments,EI-T765,[Assignments] Omitting the required field 'type' is rejected when attempting to share assignment,,
-EI,EI-E1526,EI-R39,Khyne,Edge_Shared_Assignments,EI-T762,[Assignments] Script payload in 'assignment_id' is neutralised when attempting to answer assignment,,
+EI,EI-E1520,EI-R39,Khyne,Edge_Shared_Assignments,EI-T769,[Assignments] Malformed assignment identifier is rejected when attempting to show assignment analytics,,Passed 9/30/2026
+EI,EI-E1521,EI-R39,Khyne,Edge_Shared_Assignments,EI-T763,[Assignments] Malformed submission identifier is rejected when attempting to review submission,,Passed 9/30/2026
+EI,EI-E1522,EI-R39,Khyne,Edge_Shared_Assignments,EI-T759,[Assignments] Omitting the required field 'assignment_id' is rejected when attempting to answer assignment,,Passed 9/30/2026
+EI,EI-E1523,EI-R39,Khyne,Edge_Shared_Assignments,EI-T751,[Assignments] Omitting the required field 'semester' is rejected when attempting to create new assignment,,Passed 9/30/2026
+EI,EI-E1524,EI-R39,Khyne,Edge_Shared_Assignments,EI-T771,[Assignments] Omitting the required field 'semester' is rejected when attempting to update assignment details,,Passed 9/30/2026
+EI,EI-E1525,EI-R39,Khyne,Edge_Shared_Assignments,EI-T765,[Assignments] Omitting the required field 'type' is rejected when attempting to share assignment,,Passed 9/30/2026
+EI,EI-E1526,EI-R39,Khyne,Edge_Shared_Assignments,EI-T762,[Assignments] Script payload in 'assignment_id' is neutralised when attempting to answer assignment,,Passed 9/30/2026
 EI,EI-E1527,EI-R39,Jim,Edge_Shared_Assignments,EI-T754,[Assignments] Script payload in 'semester' is neutralised when attempting to create new assignment,,
 EI,EI-E1528,EI-R39,Jim,Edge_Shared_Assignments,EI-T774,[Assignments] Script payload in 'semester' is neutralised when attempting to update assignment details,,
 EI,EI-E1529,EI-R39,Jim,Edge_Shared_Assignments,EI-T768,[Assignments] Script payload in 'type' is neutralised when attempting to share assignment,,
