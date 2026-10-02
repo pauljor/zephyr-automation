@@ -10,7 +10,7 @@ and skips rows already showing the same result. Safe to re-run.
   python gsheet_sync.py --reformat # re-apply colors to rows already written (text/date kept)
   python gsheet_sync.py --redate   # fix dates on rows already written to match the log's commit dates
   python gsheet_sync.py EI-E1033   # only that Execution.Key
-  python gsheet_sync.py --fixed EI-E1033  # write "Fixed <today>" into column J of that row (used by /zephyr-bug-fix-one)
+  python gsheet_sync.py --fixed EI-E1033  # write "Bug fixed <today>" into column J of that row (used by /zephyr-bug-fix-one)
 
 Setup (one time): pip install requests; paste gsheet_webapp.gs into the sheet (Extensions ->
 Apps Script), deploy it as a web app (Execute as: Me, Access: Anyone) and put the URL in
@@ -34,8 +34,9 @@ import requests
 
 ROOT = Path(__file__).resolve().parent
 # (font color, background) per result: black text on a green / red fill (matches the hand-made cells)
+FIXED_STYLE = ("#000000", "#ff9900")  # column J "Bug fixed <date>": black text on an orange fill
 STYLE = {"Passed": ("#000000", "#00ff00"), "Failed": ("#000000", "#ff0000")}
-WEBAPP_VERSION = 3  # must match VERSION in gsheet_webapp.gs
+WEBAPP_VERSION = 4  # must match VERSION in gsheet_webapp.gs
 KEY_COL, STATUS_COL, FIX_COL = 1, 8, 9  # zero-based: column B, column I, column J
 
 
@@ -125,9 +126,10 @@ class Sheet:
             for row, key, text, (fg, bg) in updates]}
         return self.post(body)
 
-    def write_fixed(self, row, key, text):  # column J: text only, no styling
+    def write_fixed(self, row, key, text):  # column J: text + orange fill
+        fg, bg = FIXED_STYLE
         return self.post({"token": self.token, "gid": int(self.gid),
-                          "updates": [{"row": row, "key": key, "text": text, "col": 10}]})
+                          "updates": [{"row": row, "key": key, "text": text, "col": 10, "color": fg, "background": bg}]})
 
     def post(self, body):
         r = requests.post(self.url, data=json.dumps(body), timeout=300)
@@ -190,16 +192,16 @@ def sync(sheet, log_path, only=None, dry=False, reformat=False, redate=False):
 
 
 def mark_fixed(sheet, key, dry=False):
-    """Write "Fixed M/D/YYYY" (today) into column J of the row whose column B is `key`. Column I is untouched."""
+    """Write "Bug fixed M/D/YYYY" (today) into column J of the row whose column B is `key`. Column I is untouched."""
     rows = sheet.read()
     n = next((i for i, r in enumerate(rows, 1) if len(r) > KEY_COL and r[KEY_COL].strip() == key), None)
     if n is None:
         sys.exit(f"{key} is not in the sheet (column B).")
     today = datetime.date.today()
-    text = f"Fixed {today.month}/{today.day}/{today.year}"
+    text = f"Bug fixed {today.month}/{today.day}/{today.year}"
     cur = (rows[n - 1][FIX_COL] if len(rows[n - 1]) > FIX_COL else "").strip()
     print(f"{key}: row {n}, column J {cur!r} -> {text!r}")
-    if dry or cur == text:
+    if dry:  # always (re)write: text may be unchanged while the fill is new
         return
     sheet.check_webapp()
     got = sheet.write_fixed(n, key, text).get("values", {}).get(f"{n}:10")
@@ -209,7 +211,7 @@ def mark_fixed(sheet, key, dry=False):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("key", nargs="?", help="only this Execution.Key")
-    ap.add_argument("--fixed", action="store_true", help='write "Fixed <today>" into column J for KEY instead of syncing results')
+    ap.add_argument("--fixed", action="store_true", help='write "Bug fixed <today>" into column J for KEY instead of syncing results')
     ap.add_argument("--watch", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--reformat", action="store_true", help="re-apply colors to already-set rows (text unchanged)")

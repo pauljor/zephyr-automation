@@ -17,7 +17,7 @@ fails, that's logged honestly too (see "Logging" below), not silently hidden.
 Scope: one ticket per invocation. Two ways to pick which one:
 - `/zephyr-bug-fix-one <EI-Txxx|EI-Exxxx>` — **refactored 2026-10-02**: keyed by a Zephyr
   test case/execution, not a JIRA ticket. It fixes the failure, writes a
-  Problem/Solution/Remarks comment onto the Zephyr execution, and writes `Fixed <date>` into
+  Problem/Solution/Remarks comment onto the Zephyr execution, and writes `Bug fixed <date>` into
   column J of the shared Google Sheet (`python gsheet_sync.py --fixed <Execution.Key>`). The
   command file is authoritative for it and it never touches JIRA; the JIRA-ticket-oriented
   sections below apply to `/zephyr-bug-fix-mine` only.

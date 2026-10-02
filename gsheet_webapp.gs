@@ -1,8 +1,8 @@
 // Web app for gsheet_sync.py. Deploy: Execute as = Me, Who has access = Anyone.
-// Writes ONLY column I (result: text + font color + background) or column J (fix note: text only, u.col = 10)
+// Writes ONLY column I (result: text + font color + background) or column J (fix note: text + font color + background, u.col = 10)
 // of the tab with the given gid, and only when the row's Execution.Key in column B matches. The token below
 // must match GSHEET_TOKEN in .env.local.
-var VERSION = 3;
+var VERSION = 4;
 var TOKEN = '8lMLAUhm2zPG-_HmpjxJseV-3_lPYrYF';
 
 function doGet() {
@@ -22,7 +22,7 @@ function doPost(e) {
       if (String(sheet.getRange(u.row, 2).getValue()).trim() !== u.key) { mismatched.push(u.row + ':' + u.key); return; }
       var col = u.col === 10 ? 10 : 9;  // anything else falls back to the result column
       var cell = sheet.getRange(u.row, col).setValue(u.text);
-      if (col === 9) cell.setFontColor(u.color).setBackground(u.background);  // null background clears the fill
+      if (u.color !== undefined) cell.setFontColor(u.color).setBackground(u.background);  // null background clears the fill
       cells.push([u.row, col]);
     });
     SpreadsheetApp.flush();
