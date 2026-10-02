@@ -15,8 +15,12 @@ This task does **not** resolve/close the ticket — only a human should make tha
 fails, that's logged honestly too (see "Logging" below), not silently hidden.
 
 Scope: one ticket per invocation. Two ways to pick which one:
-- `/zephyr-bug-fix-one` — walks `BUG_TICKET_LOGS`, the record of tickets
-  [[zephyr-bug-tickets]] itself created.
+- `/zephyr-bug-fix-one <EI-Txxx|EI-Exxxx>` — **refactored 2026-10-02**: keyed by a Zephyr
+  test case/execution, not a JIRA ticket. It fixes the failure, writes a
+  Problem/Solution/Remarks comment onto the Zephyr execution, and writes `Fixed <date>` into
+  column J of the shared Google Sheet (`python gsheet_sync.py --fixed <Execution.Key>`). The
+  command file is authoritative for it and it never touches JIRA; the JIRA-ticket-oriented
+  sections below apply to `/zephyr-bug-fix-mine` only.
 - `/zephyr-bug-fix-mine` — walks the JIRA board directly (`status = "BUG - Blocked by
   Defect"`, `assignee = me`), for tickets in that column regardless of how they got
   there (including ones created manually, outside [[zephyr-bug-tickets]] entirely).

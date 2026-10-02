@@ -10,6 +10,7 @@ and skips rows already showing the same result. Safe to re-run.
   python gsheet_sync.py --reformat # re-apply colors to rows already written (text/date kept)
   python gsheet_sync.py --redate   # fix dates on rows already written to match the log's commit dates
   python gsheet_sync.py EI-E1033   # only that Execution.Key
+  python gsheet_sync.py --fixed EI-E1033  # write "Fixed <today>" into column J of that row (used by /zephyr-bug-fix-one)
 
 Setup (one time): pip install requests; paste gsheet_webapp.gs into the sheet (Extensions ->
 Apps Script), deploy it as a web app (Execute as: Me, Access: Anyone) and put the URL in
@@ -34,8 +35,8 @@ import requests
 ROOT = Path(__file__).resolve().parent
 # (font color, background) per result: black text on a green / red fill (matches the hand-made cells)
 STYLE = {"Passed": ("#000000", "#00ff00"), "Failed": ("#000000", "#ff0000")}
-WEBAPP_VERSION = 2  # must match VERSION in gsheet_webapp.gs
-KEY_COL, STATUS_COL = 1, 8  # zero-based: column B, column I
+WEBAPP_VERSION = 3  # must match VERSION in gsheet_webapp.gs
+KEY_COL, STATUS_COL, FIX_COL = 1, 8, 9  # zero-based: column B, column I, column J
 
 
 def load_env():
@@ -122,6 +123,13 @@ class Sheet:
         body = {"token": self.token, "gid": int(self.gid), "updates": [
             {"row": row, "key": key, "text": text, "color": fg, "background": bg}
             for row, key, text, (fg, bg) in updates]}
+        return self.post(body)
+
+    def write_fixed(self, row, key, text):  # column J: text only, no styling
+        return self.post({"token": self.token, "gid": int(self.gid),
+                          "updates": [{"row": row, "key": key, "text": text, "col": 10}]})
+
+    def post(self, body):
         r = requests.post(self.url, data=json.dumps(body), timeout=300)
         r.raise_for_status()
         try:
@@ -173,7 +181,7 @@ def sync(sheet, log_path, only=None, dry=False, reformat=False, redate=False):
         sheet.check_webapp()
         resp = sheet.write([(r, k, t, c) for r, t, c, k in p["write"]])
         # verify from the web app's own read-back of each cell, not just its ok flag
-        got = {int(r): v for r, v in resp.get("values", {}).items()}
+        got = {int(r.split(":")[0]): v for r, v in resp.get("values", {}).items()}
         bad = [k for r, t, _, k in p["write"] if got.get(r) != t]
         if resp.get("mismatched"):
             print("skipped (row no longer matches key):", resp["mismatched"])
@@ -181,9 +189,27 @@ def sync(sheet, log_path, only=None, dry=False, reformat=False, redate=False):
     return p
 
 
+def mark_fixed(sheet, key, dry=False):
+    """Write "Fixed M/D/YYYY" (today) into column J of the row whose column B is `key`. Column I is untouched."""
+    rows = sheet.read()
+    n = next((i for i, r in enumerate(rows, 1) if len(r) > KEY_COL and r[KEY_COL].strip() == key), None)
+    if n is None:
+        sys.exit(f"{key} is not in the sheet (column B).")
+    today = datetime.date.today()
+    text = f"Fixed {today.month}/{today.day}/{today.year}"
+    cur = (rows[n - 1][FIX_COL] if len(rows[n - 1]) > FIX_COL else "").strip()
+    print(f"{key}: row {n}, column J {cur!r} -> {text!r}")
+    if dry or cur == text:
+        return
+    sheet.check_webapp()
+    got = sheet.write_fixed(n, key, text).get("values", {}).get(f"{n}:10")
+    print("verified" if got == text else f"VERIFY FAILED: cell reads {got!r}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("key", nargs="?", help="only this Execution.Key")
+    ap.add_argument("--fixed", action="store_true", help='write "Fixed <today>" into column J for KEY instead of syncing results')
     ap.add_argument("--watch", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--reformat", action="store_true", help="re-apply colors to already-set rows (text unchanged)")
@@ -195,6 +221,10 @@ def main():
     log = Path(env["CSV_LOGS"])
     log = log if log.is_absolute() else ROOT / log
     sheet = Sheet(env)
+    if args.fixed:
+        if not args.key:
+            sys.exit("--fixed needs an Execution.Key")
+        return mark_fixed(sheet, args.key, args.dry_run)
     sync(sheet, log, args.key, args.dry_run, args.reformat, args.redate)
     if not args.watch:
         return

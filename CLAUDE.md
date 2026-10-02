@@ -23,7 +23,7 @@ row needs a fresh test, one gets written/run there following that repo's own con
 |---|---|---|---|
 | Sync Zephyr executions with JIRA | `.claude/tasks/zephyr-jira-sync.md` | `/zephyr-sync-one` (one row), `/zephyr-sync-all` | `zephyr-jira-sync-runner` |
 | Turn `FAILED` rows into JIRA bug tickets | `.claude/tasks/zephyr-bug-tickets.md` | `/zephyr-bug-one [key]` (one ticket), `/zephyr-bug-bulk` | `zephyr-bug-ticket-runner` |
-| Fix a bug ticket's underlying defect | `.claude/tasks/zephyr-bug-fixes.md` | `/zephyr-bug-fix-one [key]` (via `BUG_TICKET_LOGS`), `/zephyr-bug-fix-mine [key]` (via JIRA: status `"BUG - Blocked by Defect"` + assignee = me) | *(none yet)* |
+| Fix a bug ticket's underlying defect | `.claude/tasks/zephyr-bug-fixes.md` | `/zephyr-bug-fix-one <EI-Txxx or EI-Exxxx>` (a Zephyr test case; comments Problem/Solution/Remarks on it, marks gsheet column J `Fixed <date>`), `/zephyr-bug-fix-mine [key]` (via JIRA: status `"BUG - Blocked by Defect"` + assignee = me) | *(none yet)* |
 
 Each task is downstream of the one before it: bug-ticket creation only *reads* `CSV_LOGS`
 (never mutates it or re-runs anything from the sync spec) and only acts on rows the sync
