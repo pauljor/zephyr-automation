@@ -61,29 +61,29 @@ EI-E840,Negative_Teacher_Classes,EI-T172,Fetching a class roster with an excessi
 EI-E841,Negative_Teacher_Classes,EI-T171,Fetching a class roster with the class identifier omitted is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
 EI-E842,Negative_Teacher_Classes,EI-T153,Fetching all classes with non-numeric and out-of-range pagination values is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
 EI-E843,Negative_Teacher_Classes,EI-T157,Fetching class announcements with a malformed class identifier is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
-EI-E844,Negative_Teacher_Classes,EI-T159,Fetching class announcements with an excessively long or unknown class identifier is rejected,No,
-EI-E845,Negative_Teacher_Classes,EI-T158,Fetching class announcements with the class identifier omitted is rejected,No,
+EI-E844,Negative_Teacher_Classes,EI-T159,Fetching class announcements with an excessively long or unknown class identifier is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
+EI-E845,Negative_Teacher_Classes,EI-T158,Fetching class announcements with the class identifier omitted is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
 EI-E846,Negative_Teacher_Classes,EI-T204,Fetching class assignments with a malformed class identifier is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
-EI-E847,Negative_Teacher_Classes,EI-T206,Fetching class assignments with an excessively long or unknown class identifier is rejected,No,
-EI-E848,Negative_Teacher_Classes,EI-T205,Fetching class assignments with the class identifier omitted is rejected,No,
+EI-E847,Negative_Teacher_Classes,EI-T206,Fetching class assignments with an excessively long or unknown class identifier is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
+EI-E848,Negative_Teacher_Classes,EI-T205,Fetching class assignments with the class identifier omitted is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
 EI-E849,Negative_Teacher_Classes,EI-T163,Posting a class announcement with a malformed class identifier is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
-EI-E850,Negative_Teacher_Classes,EI-T162,Posting a class announcement with an empty or over-length content value is rejected,No,
-EI-E851,Negative_Teacher_Classes,EI-T161,Posting a class announcement with content supplied as the wrong data type is rejected,No,
-EI-E852,Negative_Teacher_Classes,EI-T160,Posting a class announcement without the required content field is rejected,No,
+EI-E850,Negative_Teacher_Classes,EI-T162,Posting a class announcement with an empty or over-length content value is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
+EI-E851,Negative_Teacher_Classes,EI-T161,Posting a class announcement with content supplied as the wrong data type is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
+EI-E852,Negative_Teacher_Classes,EI-T160,Posting a class announcement without the required content field is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
 EI-E853,Negative_Teacher_Classes,EI-T197,EI-T197,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
-EI-E854,Negative_Teacher_Classes,EI-T199,Removing a student from a class with an excessively long or unknown student identifier is rejected,No,
-EI-E855,Negative_Teacher_Classes,EI-T198,Removing a student from a class with the student identifier omitted is rejected,No,
+EI-E854,Negative_Teacher_Classes,EI-T199,Removing a student from a class with an excessively long or unknown student identifier is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
+EI-E855,Negative_Teacher_Classes,EI-T198,Removing a student from a class with the student identifier omitted is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
 EI-E856,Negative_Teacher_Classes,EI-T191,Restoring a soft-deleted class with a malformed class identifier is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
-EI-E857,Negative_Teacher_Classes,EI-T193,Restoring a soft-deleted class with an excessively long or unknown class identifier is rejected,No,
-EI-E858,Negative_Teacher_Classes,EI-T192,Restoring a soft-deleted class with the class identifier omitted is rejected,No,
+EI-E857,Negative_Teacher_Classes,EI-T193,Restoring a soft-deleted class with an excessively long or unknown class identifier is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
+EI-E858,Negative_Teacher_Classes,EI-T192,Restoring a soft-deleted class with the class identifier omitted is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
 EI-E859,Negative_Teacher_Classes,EI-T187,Updating a class cover photo with a malformed class identifier is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
-EI-E860,Negative_Teacher_Classes,EI-T186,Updating a class cover photo with an empty file and with an oversized file is rejected,No,
-EI-E861,Negative_Teacher_Classes,EI-T185,Updating a class cover photo with an unsupported file type is rejected,No,
-EI-E862,Negative_Teacher_Classes,EI-T184,Updating a class cover photo with no file attached is rejected,No,
+EI-E860,Negative_Teacher_Classes,EI-T186,Updating a class cover photo with an empty file and with an oversized file is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
+EI-E861,Negative_Teacher_Classes,EI-T185,Updating a class cover photo with an unsupported file type is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
+EI-E862,Negative_Teacher_Classes,EI-T184,Updating a class cover photo with no file attached is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
 EI-E863,Negative_Teacher_Classes,EI-T176,Updating class details with a malformed class identifier is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
-EI-E864,Negative_Teacher_Classes,EI-T175,Updating class details with an unsupported semester value is rejected,No,
-EI-E865,Negative_Teacher_Classes,EI-T174,Updating class details with section supplied as the wrong data type is rejected,No,
-EI-E866,Negative_Teacher_Classes,EI-T173,Updating class details without the required title field is rejected,No,
+EI-E864,Negative_Teacher_Classes,EI-T175,Updating class details with an unsupported semester value is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
+EI-E865,Negative_Teacher_Classes,EI-T174,Updating class details with section supplied as the wrong data type is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
+EI-E866,Negative_Teacher_Classes,EI-T173,Updating class details without the required title field is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes_part3.py
 EI-E867,Negative_Teacher_Question,EI-T223,Clearing question filters with malformed request parameters returns no server error,Yes,service/tests/question/test_zephyr_negative_question_bank.py
 EI-E868,Negative_Teacher_Question,EI-T211,Creating a question with an empty payload and with an oversized payload is rejected,Yes,service/tests/question/test_zephyr_negative_question_bank.py
 EI-E869,Negative_Teacher_Question,EI-T210,Creating a question with the answer options supplied as the wrong data type is rejected,Yes,service/tests/question/test_zephyr_negative_question_bank.py
@@ -126,9 +126,9 @@ EI-E905,Negative_Teacher_Assignments,EI-T283,Adding a comment on a student answe
 EI-E906,Negative_Teacher_Assignments,EI-T282,Adding a comment on a student answer with an empty or over-length comment value is rejected,No,
 EI-E907,Negative_Teacher_Assignments,EI-T281,Adding a comment on a student answer with comment supplied as the wrong data type is rejected,No,
 EI-E908,Negative_Teacher_Assignments,EI-T280,Adding a comment on a student answer without the required comment field is rejected,No,
-EI-E909,Negative_Teacher_Assignments,EI-T296,Approving a late submission with a malformed submission identifier is rejected,No,
-EI-E910,Negative_Teacher_Assignments,EI-T295,Approving a late submission with late_penalty outside its accepted range is rejected,No,
-EI-E911,Negative_Teacher_Assignments,EI-T294,Approving a late submission with late_penalty supplied as the wrong data type is rejected,No,
+EI-E909,Negative_Teacher_Assignments,EI-T296,Approving a late submission with a malformed submission identifier is rejected,Yes,service/tests/assignment/test_EI_R11_negative_late_submission_approve.py
+EI-E910,Negative_Teacher_Assignments,EI-T295,Approving a late submission with late_penalty outside its accepted range is rejected,Yes,service/tests/assignment/test_EI_R11_negative_late_submission_approve.py
+EI-E911,Negative_Teacher_Assignments,EI-T294,Approving a late submission with late_penalty supplied as the wrong data type is rejected,Yes,service/tests/assignment/test_EI_R11_negative_late_submission_approve.py
 EI-E912,Negative_Teacher_Assignments,EI-T253,Creating a staff assignment with an unsupported type value is rejected,No,
 EI-E913,Negative_Teacher_Assignments,EI-T252,Creating a staff assignment with questions supplied as the wrong data type is rejected,No,
 EI-E914,Negative_Teacher_Assignments,EI-T251,Creating a staff assignment without the required description field is rejected,No,
@@ -212,17 +212,17 @@ EI-E991,Negative_Teacher_Features,EI-T313,Fetching a teacher district plan with 
 EI-E992,Negative_Teacher_Features,EI-T307,Fetching teacher feature flags with malformed request parameters returns no server error,No,
 EI-E993,Negative_Teacher_Features,EI-T311,Fetching teacher organisation details with malformed request parameters returns no server error,No,
 EI-E994,Negative_Teacher_Features,EI-T312,Fetching teacher school details with malformed request parameters returns no server error,No,
-EI-E995,Negative_Student_Accounts,EI-T322,Adding a student profile picture with an empty file and with an oversized file is rejected,No,
-EI-E996,Negative_Student_Accounts,EI-T321,Adding a student profile picture with an unsupported file type is rejected,No,
-EI-E997,Negative_Student_Accounts,EI-T320,Adding a student profile picture with no file attached is rejected,No,
-EI-E998,Negative_Student_Accounts,EI-T329,Changing a student password with an empty or over-length new_password value is rejected,No,
-EI-E999,Negative_Student_Accounts,EI-T328,Changing a student password with new_password supplied as the wrong data type is rejected,No,
-EI-E1000,Negative_Student_Accounts,EI-T327,Changing a student password without the required current_password field is rejected,No,
+EI-E995,Negative_Student_Accounts,EI-T322,Adding a student profile picture with an empty file and with an oversized file is rejected,Yes,service/tests/account/test_EI_T322_empty_and_oversized_file_add_profile_picture.py
+EI-E996,Negative_Student_Accounts,EI-T321,Adding a student profile picture with an unsupported file type is rejected,Yes,service/tests/account/test_EI_T321_unsupported_file_type_add_profile_picture.py
+EI-E997,Negative_Student_Accounts,EI-T320,Adding a student profile picture with no file attached is rejected,Yes,service/tests/account/test_EI_T320_missing_file_add_profile_picture.py;service/utils/image_factory.py
+EI-E998,Negative_Student_Accounts,EI-T329,Changing a student password with an empty or over-length new_password value is rejected,Yes,service/tests/account/test_EI_T329_empty_and_overlength_new_password_update_password.py;service/utils/data_factory.py;service/utils/student_password.py
+EI-E999,Negative_Student_Accounts,EI-T328,Changing a student password with new_password supplied as the wrong data type is rejected,Yes,service/tests/account/test_EI_T328_wrong_type_new_password_update_password.py;service/utils/data_factory.py
+EI-E1000,Negative_Student_Accounts,EI-T327,Changing a student password without the required current_password field is rejected,Yes,service/tests/account/test_EI_T327_missing_current_password_update_password.py;service/utils/data_factory.py;service/utils/student_password.py
 EI-E1001,Negative_Student_Accounts,EI-T326,Deleting a student profile picture with malformed request parameters returns no server error,Yes,service/tests/account/test_EI_T326_malformed_params_delete_profile_picture.py
-EI-E1002,Negative_Student_Accounts,EI-T315,Fetching a student account with a malformed id value is rejected,No,
+EI-E1002,Negative_Student_Accounts,EI-T315,Fetching a student account with a malformed id value is rejected,Yes,service/tests/account/test_EI_T315_malformed_id_fetch_account.py;service/utils/data_factory.py
 EI-E1003,Negative_Student_Accounts,EI-T316,Searching for teachers with non-numeric and out-of-range pagination values is rejected,Yes,service/tests/account/test_EI_T316_pagination_bounds_teacher_search.py
-EI-E1004,Negative_Student_Accounts,EI-T325,Updating a student profile picture with an empty file and with an oversized file is rejected,No,
-EI-E1005,Negative_Student_Accounts,EI-T324,Updating a student profile picture with an unsupported file type is rejected,No,
+EI-E1004,Negative_Student_Accounts,EI-T325,Updating a student profile picture with an empty file and with an oversized file is rejected,Yes,service/tests/account/test_EI_T325_empty_and_oversized_file_update_profile_picture.py;service/utils/image_factory.py
+EI-E1005,Negative_Student_Accounts,EI-T324,Updating a student profile picture with an unsupported file type is rejected,Yes,service/tests/account/test_EI_T324_unsupported_file_type_update_profile_picture.py
 EI-E1006,Negative_Student_Accounts,EI-T323,Updating a student profile picture with no file attached is rejected,Yes,service/tests/account/test_EI_R14_negative_student_accounts.py
 EI-E1007,Negative_Student_Accounts,EI-T319,Updating student contact person details with an empty or over-length first_name value is rejected,Yes,service/tests/account/test_EI_R14_negative_student_accounts.py
 EI-E1008,Negative_Student_Accounts,EI-T318,Updating student contact person details with phone_number supplied as the wrong data type is rejected,Yes,service/tests/account/test_EI_R14_negative_student_accounts.py
@@ -262,9 +262,9 @@ EI-E1041,Negative_Student_Assignments,EI-T360,Fetching an assignment as a studen
 EI-E1042,Negative_Student_Assignments,EI-T362,Fetching assignment questions with a malformed assignment identifier is rejected,No,
 EI-E1043,Negative_Student_Assignments,EI-T364,Fetching assignment questions with an excessively long or unknown assignment identifier is rejected,No,
 EI-E1044,Negative_Student_Assignments,EI-T363,Fetching assignment questions with the assignment identifier omitted is rejected,No,
-EI-E1045,Negative_Student_Assignments,EI-T353,Fetching class assignments as a student with a malformed class code is rejected,No,
-EI-E1046,Negative_Student_Assignments,EI-T355,Fetching class assignments as a student with an excessively long or unknown class code is rejected,No,
-EI-E1047,Negative_Student_Assignments,EI-T354,Fetching class assignments as a student with the class code omitted is rejected,No,
+EI-E1045,Negative_Student_Assignments,EI-T353,Fetching class assignments as a student with a malformed class code is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1046,Negative_Student_Assignments,EI-T355,Fetching class assignments as a student with an excessively long or unknown class code is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1047,Negative_Student_Assignments,EI-T354,Fetching class assignments as a student with the class code omitted is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
 EI-E1048,Negative_Student_Assignments,EI-T375,Reporting a lockdown violation with a malformed assignment identifier is rejected,No,
 EI-E1049,Negative_Student_Assignments,EI-T374,Reporting a lockdown violation with an empty or over-length type value is rejected,No,
 EI-E1050,Negative_Student_Assignments,EI-T373,Reporting a lockdown violation with type supplied as the wrong data type is rejected,No,
@@ -652,7 +652,7 @@ EI-E1525,Edge_Shared_Assignments,EI-T765,[Assignments] Omitting the required fie
 EI-E1526,Edge_Shared_Assignments,EI-T762,[Assignments] Script payload in 'assignment_id' is neutralised when attempting to answer assignment,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1527,Edge_Shared_Assignments,EI-T754,[Assignments] Script payload in 'semester' is neutralised when attempting to create new assignment,No,
 EI-E1528,Edge_Shared_Assignments,EI-T774,[Assignments] Script payload in 'semester' is neutralised when attempting to update assignment details,No,
-EI-E1529,Edge_Shared_Assignments,EI-T768,[Assignments] Script payload in 'type' is neutralised when attempting to share assignment,No,
+EI-E1529,Edge_Shared_Assignments,EI-T768,[Assignments] Script payload in 'type' is neutralised when attempting to share assignment,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1530,Edge_Shared_Assignments,EI-T776,[Assignments] Unknown assignment identifier returns not found when attempting to delete assignment by ID,No,
 EI-E1531,Edge_Shared_Assignments,EI-T756,[Assignments] Unknown assignment identifier returns not found when attempting to get specific assignment by ID,No,
 EI-E1532,Edge_Shared_Assignments,EI-T758,[Assignments] Unknown assignment identifier returns not found when attempting to retrieve adoptive Next Item,No,
