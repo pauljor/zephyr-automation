@@ -642,7 +642,7 @@ EI-E1515,Edge_Shared_Assignments,EI-T767,[Assignments] Expired bearer token is r
 EI-E1516,Edge_Shared_Assignments,EI-T773,[Assignments] Expired bearer token is rejected when attempting to update assignment details,Yes,service/tests/account/test_zephyr_edge_expired_bearer_sweep_2.py
 EI-E1517,Edge_Shared_Assignments,EI-T775,[Assignments] Malformed assignment identifier is rejected when attempting to delete assignment by ID,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1518,Edge_Shared_Assignments,EI-T755,[Assignments] Malformed assignment identifier is rejected when attempting to get specific assignment by ID,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
-EI-E1519,Edge_Shared_Assignments,EI-T757,[Assignments] Malformed assignment identifier is rejected when attempting to retrieve adoptive Next Item,No,
+EI-E1519,Edge_Shared_Assignments,EI-T757,[Assignments] Malformed assignment identifier is rejected when attempting to retrieve adoptive Next Item,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_gaps.py
 EI-E1520,Edge_Shared_Assignments,EI-T769,[Assignments] Malformed assignment identifier is rejected when attempting to show assignment analytics,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1521,Edge_Shared_Assignments,EI-T763,[Assignments] Malformed submission identifier is rejected when attempting to review submission,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1522,Edge_Shared_Assignments,EI-T759,[Assignments] Omitting the required field 'assignment_id' is rejected when attempting to answer assignment,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
@@ -650,15 +650,15 @@ EI-E1523,Edge_Shared_Assignments,EI-T751,[Assignments] Omitting the required fie
 EI-E1524,Edge_Shared_Assignments,EI-T771,[Assignments] Omitting the required field 'semester' is rejected when attempting to update assignment details,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1525,Edge_Shared_Assignments,EI-T765,[Assignments] Omitting the required field 'type' is rejected when attempting to share assignment,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1526,Edge_Shared_Assignments,EI-T762,[Assignments] Script payload in 'assignment_id' is neutralised when attempting to answer assignment,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
-EI-E1527,Edge_Shared_Assignments,EI-T754,[Assignments] Script payload in 'semester' is neutralised when attempting to create new assignment,No,
-EI-E1528,Edge_Shared_Assignments,EI-T774,[Assignments] Script payload in 'semester' is neutralised when attempting to update assignment details,No,
+EI-E1527,Edge_Shared_Assignments,EI-T754,[Assignments] Script payload in 'semester' is neutralised when attempting to create new assignment,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_gaps.py
+EI-E1528,Edge_Shared_Assignments,EI-T774,[Assignments] Script payload in 'semester' is neutralised when attempting to update assignment details,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_gaps.py
 EI-E1529,Edge_Shared_Assignments,EI-T768,[Assignments] Script payload in 'type' is neutralised when attempting to share assignment,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
-EI-E1530,Edge_Shared_Assignments,EI-T776,[Assignments] Unknown assignment identifier returns not found when attempting to delete assignment by ID,No,
-EI-E1531,Edge_Shared_Assignments,EI-T756,[Assignments] Unknown assignment identifier returns not found when attempting to get specific assignment by ID,No,
-EI-E1532,Edge_Shared_Assignments,EI-T758,[Assignments] Unknown assignment identifier returns not found when attempting to retrieve adoptive Next Item,No,
-EI-E1533,Edge_Shared_Assignments,EI-T770,[Assignments] Unknown assignment identifier returns not found when attempting to show assignment analytics,No,
-EI-E1534,Edge_Shared_Assignments,EI-T772,[Assignments] Unknown assignment identifier returns not found when attempting to update assignment details,No,
-EI-E1535,Edge_Shared_Assignments,EI-T764,[Assignments] Unknown submission identifier returns not found when attempting to review submission,No,
+EI-E1530,Edge_Shared_Assignments,EI-T776,[Assignments] Unknown assignment identifier returns not found when attempting to delete assignment by ID,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_gaps.py
+EI-E1531,Edge_Shared_Assignments,EI-T756,[Assignments] Unknown assignment identifier returns not found when attempting to get specific assignment by ID,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_gaps.py
+EI-E1532,Edge_Shared_Assignments,EI-T758,[Assignments] Unknown assignment identifier returns not found when attempting to retrieve adoptive Next Item,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_gaps.py
+EI-E1533,Edge_Shared_Assignments,EI-T770,[Assignments] Unknown assignment identifier returns not found when attempting to show assignment analytics,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_gaps.py
+EI-E1534,Edge_Shared_Assignments,EI-T772,[Assignments] Unknown assignment identifier returns not found when attempting to update assignment details,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_gaps.py
+EI-E1535,Edge_Shared_Assignments,EI-T764,[Assignments] Unknown submission identifier returns not found when attempting to review submission,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_gaps.py
 EI-E1536,Positive_Auth_Login,EI-T1,User authenticates with valid email and password and receives an access token,Yes,service/tests/account/test_zephyr_positive_auth_login_profile.py
 EI-E1537,Positive_Auth_Session,EI-T2,Session is rotated using the httpOnly refresh-token cookie,Yes,service/tests/account/test_EI_T2_session_rotation_refresh_token_cookie.py
 EI-E1538,Positive_Auth_Session,EI-T3,User logs out and the refresh token is revoked with session cookies cleared,Yes,service/tests/account/test_EI_T3_logout_revokes_refresh_token_clears_cookies.py
