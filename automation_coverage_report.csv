@@ -1,13 +1,13 @@
 Execution.Key,Test Cycle.Name,Test Case.Key,Test Case.Name,Automated,Files
-EI-E782,Negative_Auth_Login,EI-T124,Authenticating with credentials with an empty or over-length email value is rejected,No,
-EI-E783,Negative_Auth_Login,EI-T123,Authenticating with credentials with password supplied as the wrong data type is rejected,No,
-EI-E784,Negative_Auth_Login,EI-T122,Authenticating with credentials without the required email field is rejected,No,
-EI-E785,Negative_Auth_Session,EI-T126,Logging out with malformed request parameters returns no server error,No,
+EI-E782,Negative_Auth_Login,EI-T124,Authenticating with credentials with an empty or over-length email value is rejected,Yes,service/tests/account/test_EI_R2_negative_auth_login_gaps.py
+EI-E783,Negative_Auth_Login,EI-T123,Authenticating with credentials with password supplied as the wrong data type is rejected,Yes,service/tests/account/test_EI_R2_negative_auth_login_gaps.py
+EI-E784,Negative_Auth_Login,EI-T122,Authenticating with credentials without the required email field is rejected,Yes,service/tests/account/test_EI_R2_negative_auth_login_gaps.py
+EI-E785,Negative_Auth_Session,EI-T126,Logging out with malformed request parameters returns no server error,Yes,service/tests/account/test_EI_R3_negative_auth_session_gaps.py
 EI-E786,Negative_Auth_Session,EI-T125,Rotating the session with malformed request parameters returns no server error,Yes,service/tests/account/test_zephyr_negative_password_image_session.py
 EI-E787,Negative_Auth_Profile,EI-T127,Fetching the current user profile with malformed request parameters returns no server error,Yes,service/tests/account/test_zephyr_edge_auth_profile_malformed_params.py
-EI-E788,Negative_Auth_Password Reset,EI-T130,Requesting a password reset with an empty or over-length email value is rejected,No,
-EI-E789,Negative_Auth_Password Reset,EI-T129,Requesting a password reset with email supplied as the wrong data type is rejected,No,
-EI-E790,Negative_Auth_Password Reset,EI-T128,Requesting a password reset without the required email field is rejected,No,
+EI-E788,Negative_Auth_Password Reset,EI-T130,Requesting a password reset with an empty or over-length email value is rejected,Yes,service/tests/password/test_EI_R5_negative_auth_password_reset_gaps.py
+EI-E789,Negative_Auth_Password Reset,EI-T129,Requesting a password reset with email supplied as the wrong data type is rejected,Yes,service/tests/password/test_EI_R5_negative_auth_password_reset_gaps.py
+EI-E790,Negative_Auth_Password Reset,EI-T128,Requesting a password reset without the required email field is rejected,Yes,service/tests/password/test_EI_R5_negative_auth_password_reset_gaps.py
 EI-E791,Negative_Teacher_Account,EI-T134,Adding a teacher profile picture with an empty file and with an oversized file is rejected,Yes,service/tests/account/test_EI_R6_negative_teacher_accounts.py
 EI-E792,Negative_Teacher_Account,EI-T133,Adding a teacher profile picture with an unsupported file type is rejected,Yes,service/tests/account/test_EI_R6_negative_teacher_accounts.py
 EI-E793,Negative_Teacher_Account,EI-T132,Adding a teacher profile picture with no file attached is rejected,Yes,service/tests/account/test_EI_R6_negative_teacher_accounts.py
@@ -300,29 +300,29 @@ EI-E1079,Edge_System_Health,EI-T419,[Health] Health probe reflects a downstream 
 EI-E1080,Edge_System_Health,EI-T421,[Health] Health probe reflects a downstream dependency outage (2),Yes,service/tests/health/test_zephyr_edge_health_readiness.py
 EI-E1081,Edge_System_Health,EI-T420,[Health] Health probe responds without credentials and discloses no environment detail,Yes,service/tests/health/test_zephyr_edge_health_disclosure.py
 EI-E1082,Edge_System_Health,EI-T422,[Health] Health probe responds without credentials and discloses no environment detail (2),Yes,service/tests/health/test_zephyr_edge_health_disclosure.py
-EI-E1083,Edge_System_Webhooks,EI-T781,[Webhooks] Auth0 user-sync event with an incorrect shared secret is rejected,No,
-EI-E1084,Edge_System_Webhooks,EI-T780,[Webhooks] Auth0 user-sync event without a shared secret header is rejected,No,
+EI-E1083,Edge_System_Webhooks,EI-T781,[Webhooks] Auth0 user-sync event with an incorrect shared secret is rejected,Yes,service/tests/security/test_EI_R21_edge_system_webhooks.py
+EI-E1084,Edge_System_Webhooks,EI-T780,[Webhooks] Auth0 user-sync event without a shared secret header is rejected,Yes,service/tests/security/test_EI_R21_edge_system_webhooks.py
 EI-E1085,Edge_System_Webhooks,EI-T778,[Webhooks] Malformed Auth0 event payload is rejected without partial profile writes,No,
 EI-E1086,Edge_System_Webhooks,EI-T779,[Webhooks] Replayed Auth0 user-sync event is processed idempotently,No,
 EI-E1087,Edge_Auth_Authentication,EI-T434,[Authentication] Cleared session cookies carry the correct security attributes,Yes,service/tests/account/test_zephyr_edge_cookies_and_uploads.py
 EI-E1088,Edge_Auth_Authentication,EI-T436,[Authentication] Empty result set is returned correctly when attempting to get current user profile,Yes,service/tests/account/test_zephyr_edge_auth_me_envelope.py
-EI-E1089,Edge_Auth_Authentication,EI-T435,[Authentication] Expired bearer token is rejected when attempting to get current user profile,No,
-EI-E1090,Edge_Auth_Authentication,EI-T427,[Authentication] Expired or tampered refresh token is rejected during rotation,No,
-EI-E1091,Edge_Auth_Authentication,EI-T431,[Authentication] Expired or tampered refresh token is rejected during rotation (2),No,
+EI-E1089,Edge_Auth_Authentication,EI-T435,[Authentication] Expired bearer token is rejected when attempting to get current user profile,Yes,service/tests/account/test_EI_R22_edge_auth_authentication_gaps.py
+EI-E1090,Edge_Auth_Authentication,EI-T427,[Authentication] Expired or tampered refresh token is rejected during rotation,Yes,service/tests/account/test_EI_R22_edge_auth_authentication_gaps.py
+EI-E1091,Edge_Auth_Authentication,EI-T431,[Authentication] Expired or tampered refresh token is rejected during rotation (2),Yes,service/tests/account/test_EI_R22_edge_auth_authentication_gaps.py
 EI-E1092,Edge_Auth_Authentication,EI-T438,[Authentication] High-volume result set stays complete and performant when attempting to get current user profile,Yes,service/tests/account/test_zephyr_edge_auth_me_envelope.py
-EI-E1093,Edge_Auth_Authentication,EI-T437,[Authentication] Missing Authorization header is rejected when attempting to get current user profile,No,
-EI-E1094,Edge_Auth_Authentication,EI-T423,[Authentication] Omitting the required field 'email' is rejected when attempting to login with email and password,No,
-EI-E1095,Edge_Auth_Authentication,EI-T439,[Authentication] Omitting the required field 'email' is rejected when attempting to request a password reset email,No,
+EI-E1093,Edge_Auth_Authentication,EI-T437,[Authentication] Missing Authorization header is rejected when attempting to get current user profile,Yes,service/tests/account/test_EI_R22_edge_auth_authentication_gaps.py
+EI-E1094,Edge_Auth_Authentication,EI-T423,[Authentication] Omitting the required field 'email' is rejected when attempting to login with email and password,Yes,service/tests/account/test_EI_R22_edge_auth_authentication_gaps.py
+EI-E1095,Edge_Auth_Authentication,EI-T439,[Authentication] Omitting the required field 'email' is rejected when attempting to request a password reset email,Yes,service/tests/account/test_EI_R22_edge_auth_authentication_gaps.py
 EI-E1096,Edge_Auth_Authentication,EI-T426,[Authentication] Oversized 'email' value is handled safely when attempting to login with email and password,Yes,service/tests/account/test_zephyr_edge_auth_account_coverage.py
 EI-E1097,Edge_Auth_Authentication,EI-T442,[Authentication] Oversized 'email' value is handled safely when attempting to request a password reset email,Yes,service/tests/account/test_zephyr_edge_auth_account_coverage.py
-EI-E1098,Edge_Auth_Authentication,EI-T440,[Authentication] Password reset request for an unknown email does not enumerate accounts,No,
+EI-E1098,Edge_Auth_Authentication,EI-T440,[Authentication] Password reset request for an unknown email does not enumerate accounts,Yes,service/tests/account/test_EI_R22_edge_auth_authentication_gaps.py
 EI-E1099,Edge_Auth_Authentication,EI-T424,[Authentication] Repeated failed sign-in attempts are throttled without account enumeration,Yes,service/tests/account/test_zephyr_edge_login_throttle.py
 EI-E1100,Edge_Auth_Authentication,EI-T428,[Authentication] Reusing an already rotated refresh token is rejected,Yes,service/tests/account/test_zephyr_edge_refresh_rotation.py
 EI-E1101,Edge_Auth_Authentication,EI-T432,[Authentication] Reusing an already rotated refresh token is rejected (2),Yes,service/tests/account/test_zephyr_edge_refresh_rotation.py
-EI-E1102,Edge_Auth_Authentication,EI-T425,[Authentication] Script payload in 'email' is neutralised when attempting to login with email and password,No,
-EI-E1103,Edge_Auth_Authentication,EI-T441,[Authentication] Script payload in 'email' is neutralised when attempting to request a password reset email,No,
-EI-E1104,Edge_Auth_Authentication,EI-T429,[Authentication] Session rotation without a refresh-token cookie is rejected,No,
-EI-E1105,Edge_Auth_Authentication,EI-T433,[Authentication] Session rotation without a refresh-token cookie is rejected (2),No,
+EI-E1102,Edge_Auth_Authentication,EI-T425,[Authentication] Script payload in 'email' is neutralised when attempting to login with email and password,Yes,service/tests/account/test_EI_R22_edge_auth_authentication_gaps.py
+EI-E1103,Edge_Auth_Authentication,EI-T441,[Authentication] Script payload in 'email' is neutralised when attempting to request a password reset email,Yes,service/tests/account/test_EI_R22_edge_auth_authentication_gaps.py
+EI-E1104,Edge_Auth_Authentication,EI-T429,[Authentication] Session rotation without a refresh-token cookie is rejected,Yes,service/tests/account/test_EI_R22_edge_auth_authentication_gaps.py
+EI-E1105,Edge_Auth_Authentication,EI-T433,[Authentication] Session rotation without a refresh-token cookie is rejected (2),Yes,service/tests/account/test_EI_R22_edge_auth_authentication_gaps.py
 EI-E1106,Edge_Auth_Authentication,EI-T430,[Authentication] Simultaneous rotation requests issue only one valid session,Yes,service/tests/account/test_zephyr_edge_refresh_race.py
 EI-E1107,Edge_Teacher_Accounts,EI-T461,[Accounts] Duplicate submission does not create a duplicate account,No,
 EI-E1108,Edge_Teacher_Accounts,EI-T459,[Accounts] Empty update payload is handled correctly when attempting to update my account information,Yes,service/tests/account/test_zephyr_edge_auth_account_coverage.py; service/tests/account/test_zephyr_edge_student_identifiers.py; service/tests/features/test_zephyr_edge_student_feature_identifiers.py
