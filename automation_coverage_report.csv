@@ -23,10 +23,10 @@ EI-E802,Negative_Teacher_Account,EI-T142,Updating teacher account information wi
 EI-E803,Negative_Teacher_Account,EI-T141,Updating teacher account information with an empty payload and with an oversized payload is rejected,Yes,service/tests/account/test_EI_R6_negative_teacher_accounts.py
 EI-E804,Negative_Teacher_Account,EI-T140,Updating teacher account information with the email supplied as the wrong data type is rejected,Yes,service/tests/account/test_EI_R6_negative_teacher_accounts.py
 EI-E805,Negative_Teacher_Account,EI-T139,Updating teacher account information without the required first_name is rejected,Yes,service/tests/account/test_EI_R6_negative_teacher_accounts.py
-EI-E806,Negative_Teacher_Dashboard,EI-T148,Fetching assignment statistics with malformed request parameters returns no server error,No,
-EI-E807,Negative_Teacher_Dashboard,EI-T146,Fetching class statistics with malformed request parameters returns no server error,No,
-EI-E808,Negative_Teacher_Dashboard,EI-T147,Fetching student statistics with malformed request parameters returns no server error,No,
-EI-E809,Negative_Teacher_Dashboard,EI-T149,Fetching submission statistics with malformed request parameters returns no server error,No,
+EI-E806,Negative_Teacher_Dashboard,EI-T148,Fetching assignment statistics with malformed request parameters returns no server error,Yes,service/tests/dashboard/test_EI_R7_negative_teacher_dashboard_gaps.py
+EI-E807,Negative_Teacher_Dashboard,EI-T146,Fetching class statistics with malformed request parameters returns no server error,Yes,service/tests/dashboard/test_EI_R7_negative_teacher_dashboard_gaps.py
+EI-E808,Negative_Teacher_Dashboard,EI-T147,Fetching student statistics with malformed request parameters returns no server error,Yes,service/tests/dashboard/test_EI_R7_negative_teacher_dashboard_gaps.py
+EI-E809,Negative_Teacher_Dashboard,EI-T149,Fetching submission statistics with malformed request parameters returns no server error,Yes,service/tests/dashboard/test_EI_R7_negative_teacher_dashboard_gaps.py
 EI-E810,Negative_Teacher_Classes,EI-T194,Accepting a student join request with a malformed student identifier is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes.py
 EI-E811,Negative_Teacher_Classes,EI-T196,Accepting a student join request with an excessively long or unknown student identifier is rejected,Yes,service/tests/classes/test_EI_R8_negative_teacher_classes.py
 EI-E812,Negative_Teacher_Classes,EI-T195,Accepting a student join request with the student identifier omitted is rejected,Yes,service/tests/assignment/test_EI_R11_negative_teacher_assignments.py; service/tests/classes/test_EI_R8_negative_teacher_classes.py
@@ -345,14 +345,14 @@ EI-E1124,Edge_Teacher_Accounts,EI-T452,[Accounts] Script payload in 'file' is ne
 EI-E1125,Edge_Teacher_Accounts,EI-T443,"[Accounts] Unknown 'search' filter value returns no matches when attempting to search for users by name/email and role, or return current user account",No,
 EI-E1126,Edge_Teacher_Accounts,EI-T457,[Accounts] Unknown teacher identifier returns not found when attempting to update my account information,Yes,service/tests/account/test_zephyr_edge_auth_account_coverage.py; service/tests/account/test_zephyr_edge_student_identifiers.py; service/tests/features/test_zephyr_edge_student_feature_identifiers.py
 EI-E1127,Edge_Teacher_Accounts,EI-T454,[Accounts] Unknown teacherId identifier returns not found when attempting to delete my profile picture,Yes,service/services/teacher/account_service.py; service/tests/account/test_zephyr_edge_auth_account_coverage.py
-EI-E1128,Edge_Teacher_Dashboard,EI-T469,[Dashboard] Empty result set is returned correctly when attempting to fetch statistics for assignments,No,
+EI-E1128,Edge_Teacher_Dashboard,EI-T469,[Dashboard] Empty result set is returned correctly when attempting to fetch statistics for assignments,Yes,service/tests/dashboard/test_EI_edge_teacher_dashboard.py
 EI-E1129,Edge_Teacher_Dashboard,EI-T465,[Dashboard] Empty result set is returned correctly when attempting to fetch statistics for classes,No,
 EI-E1130,Edge_Teacher_Dashboard,EI-T467,[Dashboard] Empty result set is returned correctly when attempting to fetch statistics for students,No,
 EI-E1131,Edge_Teacher_Dashboard,EI-T471,[Dashboard] Empty result set is returned correctly when attempting to fetch statistics for submissions,No,
-EI-E1132,Edge_Teacher_Dashboard,EI-T468,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for assignments,No,
-EI-E1133,Edge_Teacher_Dashboard,EI-T464,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for classes,No,
-EI-E1134,Edge_Teacher_Dashboard,EI-T466,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for students,No,
-EI-E1135,Edge_Teacher_Dashboard,EI-T470,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for submissions,No,
+EI-E1132,Edge_Teacher_Dashboard,EI-T468,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for assignments,Yes,service/tests/dashboard/test_EI_edge_teacher_dashboard.py
+EI-E1133,Edge_Teacher_Dashboard,EI-T464,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for classes,Yes,service/tests/dashboard/test_EI_edge_teacher_dashboard.py
+EI-E1134,Edge_Teacher_Dashboard,EI-T466,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for students,Yes,service/tests/dashboard/test_EI_edge_teacher_dashboard.py
+EI-E1135,Edge_Teacher_Dashboard,EI-T470,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for submissions,Yes,service/tests/dashboard/test_EI_edge_teacher_dashboard.py
 EI-E1136,Edge_Teacher_Classes,EI-T473,[Classes] Duplicate submission does not create a duplicate classe,Yes,service/tests/classes/test_EI_T473_duplicate_class_submission.py
 EI-E1137,Edge_Teacher_Classes,EI-T516,[Classes] Expired bearer token is rejected when attempting to accept a student's request to join a class,Yes,service/tests/classes/test_EI_T516_expired_token_accept_join_request.py
 EI-E1138,Edge_Teacher_Classes,EI-T522,[Classes] Expired bearer token is rejected when attempting to accept a student's request to leave a class,Yes,service/tests/classes/test_EI_T522_expired_token_accept_leave_request.py
@@ -670,10 +670,10 @@ EI-E1543,Positive_Teacher_Accounts,EI-T9,Teacher deletes their profile picture u
 EI-E1544,Positive_Teacher_Accounts,EI-T6,Teacher searches for users by name or email filtered by role,Yes,service/services/teacher/account_service.py; service/tests/account/test_EI_R44_positive_teacher_accounts.py
 EI-E1545,Positive_Teacher_Accounts,EI-T8,Teacher updates an existing profile picture,Yes,service/tests/account/test_EI_R44_positive_teacher_accounts.py
 EI-E1546,Positive_Teacher_Accounts,EI-T10,Teacher updates their own account information,Yes,service/tests/account/test_EI_R44_positive_teacher_accounts.py
-EI-E1547,Positive_Teacher_Dashboard,EI-T14,Teacher fetches assignment statistics for the dashboard,No,
-EI-E1548,Positive_Teacher_Dashboard,EI-T12,Teacher fetches class statistics for the dashboard,No,
-EI-E1549,Positive_Teacher_Dashboard,EI-T13,Teacher fetches student statistics for the dashboard,No,
-EI-E1550,Positive_Teacher_Dashboard,EI-T15,Teacher fetches submission statistics for the dashboard,No,
+EI-E1547,Positive_Teacher_Dashboard,EI-T14,Teacher fetches assignment statistics for the dashboard,Yes,service/tests/dashboard/test_EI_R45_positive_teacher_dashboard_gaps.py
+EI-E1548,Positive_Teacher_Dashboard,EI-T12,Teacher fetches class statistics for the dashboard,Yes,service/tests/dashboard/test_EI_R45_positive_teacher_dashboard_gaps.py
+EI-E1549,Positive_Teacher_Dashboard,EI-T13,Teacher fetches student statistics for the dashboard,Yes,service/tests/dashboard/test_EI_R45_positive_teacher_dashboard_gaps.py
+EI-E1550,Positive_Teacher_Dashboard,EI-T15,Teacher fetches submission statistics for the dashboard,Yes,service/tests/dashboard/test_EI_R45_positive_teacher_dashboard_gaps.py
 EI-E1551,Positive_Teacher_Classes,EI-T30,Teacher accepts a student's request to join a class,No,
 EI-E1552,Positive_Teacher_Classes,EI-T32,Teacher approves a student's request to leave a class,No,
 EI-E1553,Positive_Teacher_Classes,EI-T20,Teacher creates a class announcement,No,
