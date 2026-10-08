@@ -442,11 +442,11 @@ EI-E1221,Edge_Teacher_Question-Import,EI-T563,[Question-Import] Malformed job id
 EI-E1222,Edge_Teacher_Question-Import,EI-T559,[Question-Import] Malformed job identifier is rejected when attempting to retrieve progress and per-row errors for an import job,Yes,service/tests/question-import/test_EI_edge_question_import.py
 EI-E1223,Edge_Teacher_Question-Import,EI-T561,[Question-Import] Malformed job identifier is rejected when attempting to retrieve proposed questions for review,Yes,service/tests/question-import/test_EI_edge_question_import.py
 EI-E1224,Edge_Teacher_Question-Import,EI-T551,[Question-Import] Omitting the required field 'question_type' is rejected when attempting to upload a question file and start an import job,Yes,service/tests/question-import/test_EI_edge_question_import.py
-EI-E1225,Edge_Teacher_Question-Import,EI-T555,"[Question-Import] Omitting the required field 'text' is rejected when attempting to add a single question by pasting it, and start an import job",No,
+EI-E1225,Edge_Teacher_Question-Import,EI-T555,"[Question-Import] Omitting the required field 'text' is rejected when attempting to add a single question by pasting it, and start an import job",Yes,service/tests/question-import/test_EI_R27_edge_question_import_gaps.py
 EI-E1226,Edge_Teacher_Question-Import,EI-T554,[Question-Import] Script payload in 'question_type' is neutralised when attempting to upload a question file and start an import job,Yes,service/tests/question-import/test_EI_edge_question_import.py
 EI-E1227,Edge_Teacher_Question-Import,EI-T558,"[Question-Import] Script payload in 'text' is neutralised when attempting to add a single question by pasting it, and start an import job",Yes,service/tests/question-import/test_EI_edge_question_import.py
 EI-E1228,Edge_Teacher_Question-Import,EI-T564,[Question-Import] Unknown job identifier returns not found when attempting to approve a reviewed import and create the questions,Yes,service/tests/question-import/test_EI_edge_question_import.py
-EI-E1229,Edge_Teacher_Question-Import,EI-T560,[Question-Import] Unknown job identifier returns not found when attempting to retrieve progress and per-row errors for an import job,No,
+EI-E1229,Edge_Teacher_Question-Import,EI-T560,[Question-Import] Unknown job identifier returns not found when attempting to retrieve progress and per-row errors for an import job,Yes,service/tests/question-import/test_EI_R27_edge_question_import_gaps.py
 EI-E1230,Edge_Teacher_Question-Import,EI-T562,[Question-Import] Unknown job identifier returns not found when attempting to retrieve proposed questions for review,Yes,service/tests/question-import/test_EI_edge_question_import.py
 EI-E1325,Edge_Teacher_Assignments,EI-T616,[Assignments] Another account's submission cannot be reached when attempting to approve a pending late submission,Yes,service/tests/assignment/test_EI_R29_edge_teacher_assignments.py
 EI-E1326,Edge_Teacher_Assignments,EI-T568,[Assignments] Duplicate submission does not create a duplicate assignment,Yes,service/tests/assignment/test_EI_R29_edge_teacher_assignments.py
@@ -692,16 +692,16 @@ EI-E1565,Positive_Teacher_Classes,EI-T27,Teacher replaces the cover photo on a c
 EI-E1566,Positive_Teacher_Classes,EI-T29,Teacher restores a soft-deleted class,No,
 EI-E1567,Positive_Teacher_Classes,EI-T24,Teacher updates the details of an existing class,Yes,service/tests/classes/test_teacher_class_update_details.py
 EI-E1568,Positive_Teacher_Classes,EI-T26,Teacher uploads a cover photo for a class card,Yes,service/tests/classes/test_teacher_class_photo_lifecycle.py
-EI-E1569,Positive_Teacher_Question,EI-T41,Teacher clears all applied question filters,No,
-EI-E1570,Positive_Teacher_Question,EI-T36,Teacher creates a new question in their question bank,No,
-EI-E1571,Positive_Teacher_Question,EI-T39,Teacher deletes a question from their bank,No,
-EI-E1572,Positive_Teacher_Question,EI-T37,Teacher fetches a specific question by its identifier,No,
-EI-E1573,Positive_Teacher_Question,EI-T34,Teacher fetches all accessible questions using catalogue filters,No,
-EI-E1574,Positive_Teacher_Question,EI-T35,Teacher fetches staff-authored questions using catalogue filters,No,
-EI-E1575,Positive_Teacher_Question,EI-T40,Teacher retrieves question filter options with result counts,No,
-EI-E1576,Positive_Teacher_Question,EI-T38,Teacher updates an existing question,No,
+EI-E1569,Positive_Teacher_Question,EI-T41,Teacher clears all applied question filters,Yes,service/tests/question/test_EI_R47_positive_teacher_question_gaps.py
+EI-E1570,Positive_Teacher_Question,EI-T36,Teacher creates a new question in their question bank,Yes,service/tests/question/test_EI_R47_positive_teacher_question_gaps.py
+EI-E1571,Positive_Teacher_Question,EI-T39,Teacher deletes a question from their bank,Yes,service/tests/question/test_EI_R47_positive_teacher_question_gaps.py
+EI-E1572,Positive_Teacher_Question,EI-T37,Teacher fetches a specific question by its identifier,Yes,service/tests/question/test_EI_R47_positive_teacher_question_gaps.py
+EI-E1573,Positive_Teacher_Question,EI-T34,Teacher fetches all accessible questions using catalogue filters,Yes,service/tests/question/test_EI_R47_positive_teacher_question_gaps.py
+EI-E1574,Positive_Teacher_Question,EI-T35,Teacher fetches staff-authored questions using catalogue filters,Yes,service/tests/question/test_EI_R47_positive_teacher_question_gaps.py
+EI-E1575,Positive_Teacher_Question,EI-T40,Teacher retrieves question filter options with result counts,Yes,service/tests/question/test_EI_R47_positive_teacher_question_gaps.py
+EI-E1576,Positive_Teacher_Question,EI-T38,Teacher updates an existing question,Yes,service/tests/question/test_EI_R47_positive_teacher_question_gaps.py
 EI-E1577,Positive_Teacher_Question,EI-T42,Teacher uploads an image to embed in a question,Yes,service/tests/questions/test_zephyr_positive_question_image_upload.py
-EI-E1578,Positive_Teacher_Question Impact,EI-T47,Teacher commits a reviewed import and the questions are created,No,
+EI-E1578,Positive_Teacher_Question Impact,EI-T47,Teacher commits a reviewed import and the questions are created,Yes,service/tests/question-import/test_EI_R48_positive_question_import_commit_gap.py
 EI-E1579,Positive_Teacher_Question Impact,EI-T44,Teacher pastes a single question and an import job is started,Yes,service/tests/question-import/test_EI_T43_upload_question_file_starts_import_job.py; service/tests/question-import/test_EI_T44_paste_single_question_starts_import_job.py
 EI-E1580,Positive_Teacher_Question Impact,EI-T45,Teacher polls the progress of a question import job,Yes,service/tests/question-import/test_EI_T45_poll_import_job_progress.py
 EI-E1581,Positive_Teacher_Question Impact,EI-T46,Teacher reviews the proposed questions from an import before anything is saved,Yes,service/tests/question-import/test_EI_T46_review_proposed_questions_before_save.py
