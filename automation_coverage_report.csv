@@ -197,13 +197,13 @@ EI-E976,Negative_Teacher_Assignments,EI-T414,Updating an assignment through the 
 EI-E977,Negative_Teacher_Assignments,EI-T263,Updating an assignment with a malformed assignment identifier is rejected,No,
 EI-E978,Negative_Teacher_Assignments,EI-T262,Updating an assignment with passing_grade outside its accepted range is rejected,No,
 EI-E979,Negative_Teacher_Assignments,EI-T261,Updating an assignment with questions supplied as the wrong data type is rejected,No,
-EI-E980,Negative_Teacher_Theme,EI-T303,Applying a teacher theme with an empty or over-length theme_id value is rejected,No,
-EI-E981,Negative_Teacher_Theme,EI-T302,Applying a teacher theme with color_mode supplied as the wrong data type is rejected,No,
-EI-E982,Negative_Teacher_Theme,EI-T301,Applying a teacher theme without the required theme_id field is rejected,No,
-EI-E983,Negative_Teacher_Theme,EI-T306,Deleting a teacher theme with malformed request parameters returns no server error,No,
-EI-E984,Negative_Teacher_Theme,EI-T300,Fetching a teacher theme with malformed request parameters returns no server error,No,
-EI-E985,Negative_Teacher_Theme,EI-T305,Updating teacher theme settings with an empty or over-length theme_name value is rejected,No,
-EI-E986,Negative_Teacher_Theme,EI-T304,Updating teacher theme settings with colors supplied as the wrong data type is rejected,No,
+EI-E980,Negative_Teacher_Theme,EI-T303,Applying a teacher theme with an empty or over-length theme_id value is rejected,Yes,service/tests/theme/test_EI_R12_negative_teacher_theme_gaps.py
+EI-E981,Negative_Teacher_Theme,EI-T302,Applying a teacher theme with color_mode supplied as the wrong data type is rejected,Yes,service/tests/theme/test_EI_R12_negative_teacher_theme_gaps.py
+EI-E982,Negative_Teacher_Theme,EI-T301,Applying a teacher theme without the required theme_id field is rejected,Yes,service/tests/theme/test_EI_R12_negative_teacher_theme_gaps.py
+EI-E983,Negative_Teacher_Theme,EI-T306,Deleting a teacher theme with malformed request parameters returns no server error,Yes,service/tests/theme/test_EI_R12_negative_teacher_theme_gaps.py
+EI-E984,Negative_Teacher_Theme,EI-T300,Fetching a teacher theme with malformed request parameters returns no server error,Yes,service/tests/theme/test_EI_R12_negative_teacher_theme_gaps.py
+EI-E985,Negative_Teacher_Theme,EI-T305,Updating teacher theme settings with an empty or over-length theme_name value is rejected,Yes,service/tests/theme/test_EI_R12_negative_teacher_theme_gaps.py
+EI-E986,Negative_Teacher_Theme,EI-T304,Updating teacher theme settings with colors supplied as the wrong data type is rejected,Yes,service/tests/theme/test_EI_R12_negative_teacher_theme_gaps.py
 EI-E987,Negative_Teacher_Features,EI-T308,Fetching a single feature status for a teacher with a malformed feature name is rejected,No,
 EI-E988,Negative_Teacher_Features,EI-T310,Fetching a single feature status for a teacher with an excessively long or unknown feature name is rejected,No,
 EI-E989,Negative_Teacher_Features,EI-T309,Fetching a single feature status for a teacher with the feature name omitted is rejected,No,
@@ -706,10 +706,10 @@ EI-E1579,Positive_Teacher_Question Impact,EI-T44,Teacher pastes a single questio
 EI-E1580,Positive_Teacher_Question Impact,EI-T45,Teacher polls the progress of a question import job,Yes,service/tests/question-import/test_EI_T45_poll_import_job_progress.py
 EI-E1581,Positive_Teacher_Question Impact,EI-T46,Teacher reviews the proposed questions from an import before anything is saved,Yes,service/tests/question-import/test_EI_T46_review_proposed_questions_before_save.py
 EI-E1582,Positive_Teacher_Question Impact,EI-T43,Teacher uploads a question file and an import job is started,Yes,service/tests/question-import/test_EI_T43_upload_question_file_starts_import_job.py
-EI-E1583,Positive_Teacher_Theme,EI-T49,Teacher applies a new theme to their profile,No,
-EI-E1584,Positive_Teacher_Theme,EI-T51,Teacher deletes their theme and reverts to the default,No,
-EI-E1585,Positive_Teacher_Theme,EI-T48,Teacher fetches their current profile theme,No,
-EI-E1586,Positive_Teacher_Theme,EI-T50,Teacher updates their current theme settings,No,
+EI-E1583,Positive_Teacher_Theme,EI-T49,Teacher applies a new theme to their profile,Yes,service/tests/theme/test_EI_R49_positive_teacher_theme_gaps.py
+EI-E1584,Positive_Teacher_Theme,EI-T51,Teacher deletes their theme and reverts to the default,Yes,service/tests/theme/test_EI_R49_positive_teacher_theme_gaps.py
+EI-E1585,Positive_Teacher_Theme,EI-T48,Teacher fetches their current profile theme,Yes,service/tests/theme/test_EI_R49_positive_teacher_theme_gaps.py
+EI-E1586,Positive_Teacher_Theme,EI-T50,Teacher updates their current theme settings,Yes,service/tests/theme/test_EI_R49_positive_teacher_theme_gaps.py
 EI-E1587,Positive_Teacher_Features,EI-T55,Teacher fetches the details of their school,No,
 EI-E1588,Positive_Teacher_Features,EI-T53,Teacher fetches the effective status of a single district feature,No,
 EI-E1589,Positive_Teacher_Features,EI-T57,Teacher fetches the teacher-made assignment quota for a class,No,
