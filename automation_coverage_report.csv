@@ -204,14 +204,14 @@ EI-E983,Negative_Teacher_Theme,EI-T306,Deleting a teacher theme with malformed r
 EI-E984,Negative_Teacher_Theme,EI-T300,Fetching a teacher theme with malformed request parameters returns no server error,Yes,service/tests/theme/test_EI_R12_negative_teacher_theme_gaps.py
 EI-E985,Negative_Teacher_Theme,EI-T305,Updating teacher theme settings with an empty or over-length theme_name value is rejected,Yes,service/tests/theme/test_EI_R12_negative_teacher_theme_gaps.py
 EI-E986,Negative_Teacher_Theme,EI-T304,Updating teacher theme settings with colors supplied as the wrong data type is rejected,Yes,service/tests/theme/test_EI_R12_negative_teacher_theme_gaps.py
-EI-E987,Negative_Teacher_Features,EI-T308,Fetching a single feature status for a teacher with a malformed feature name is rejected,No,
-EI-E988,Negative_Teacher_Features,EI-T310,Fetching a single feature status for a teacher with an excessively long or unknown feature name is rejected,No,
-EI-E989,Negative_Teacher_Features,EI-T309,Fetching a single feature status for a teacher with the feature name omitted is rejected,No,
-EI-E990,Negative_Teacher_Features,EI-T314,Fetching a teacher assignment quota with a malformed class_code value is rejected,No,
-EI-E991,Negative_Teacher_Features,EI-T313,Fetching a teacher district plan with malformed request parameters returns no server error,No,
-EI-E992,Negative_Teacher_Features,EI-T307,Fetching teacher feature flags with malformed request parameters returns no server error,No,
-EI-E993,Negative_Teacher_Features,EI-T311,Fetching teacher organisation details with malformed request parameters returns no server error,No,
-EI-E994,Negative_Teacher_Features,EI-T312,Fetching teacher school details with malformed request parameters returns no server error,No,
+EI-E987,Negative_Teacher_Features,EI-T308,Fetching a single feature status for a teacher with a malformed feature name is rejected,Yes,service/tests/features/test_EI_R13_negative_teacher_features_gaps.py
+EI-E988,Negative_Teacher_Features,EI-T310,Fetching a single feature status for a teacher with an excessively long or unknown feature name is rejected,Yes,service/tests/features/test_EI_R13_negative_teacher_features_gaps.py
+EI-E989,Negative_Teacher_Features,EI-T309,Fetching a single feature status for a teacher with the feature name omitted is rejected,Yes,service/tests/features/test_EI_R13_negative_teacher_features_gaps.py
+EI-E990,Negative_Teacher_Features,EI-T314,Fetching a teacher assignment quota with a malformed class_code value is rejected,Yes,service/tests/features/test_EI_R13_negative_teacher_features_gaps.py
+EI-E991,Negative_Teacher_Features,EI-T313,Fetching a teacher district plan with malformed request parameters returns no server error,Yes,service/tests/features/test_EI_R13_negative_teacher_features_gaps.py
+EI-E992,Negative_Teacher_Features,EI-T307,Fetching teacher feature flags with malformed request parameters returns no server error,Yes,service/tests/features/test_EI_R13_negative_teacher_features_gaps.py
+EI-E993,Negative_Teacher_Features,EI-T311,Fetching teacher organisation details with malformed request parameters returns no server error,Yes,service/tests/features/test_EI_R13_negative_teacher_features_gaps.py
+EI-E994,Negative_Teacher_Features,EI-T312,Fetching teacher school details with malformed request parameters returns no server error,Yes,service/tests/features/test_EI_R13_negative_teacher_features_gaps.py
 EI-E995,Negative_Student_Accounts,EI-T322,Adding a student profile picture with an empty file and with an oversized file is rejected,Yes,service/tests/account/test_EI_T322_empty_and_oversized_file_add_profile_picture.py
 EI-E996,Negative_Student_Accounts,EI-T321,Adding a student profile picture with an unsupported file type is rejected,Yes,service/tests/account/test_EI_T321_unsupported_file_type_add_profile_picture.py
 EI-E997,Negative_Student_Accounts,EI-T320,Adding a student profile picture with no file attached is rejected,Yes,service/tests/account/test_EI_T320_missing_file_add_profile_picture.py;service/utils/image_factory.py
@@ -710,12 +710,12 @@ EI-E1583,Positive_Teacher_Theme,EI-T49,Teacher applies a new theme to their prof
 EI-E1584,Positive_Teacher_Theme,EI-T51,Teacher deletes their theme and reverts to the default,Yes,service/tests/theme/test_EI_R49_positive_teacher_theme_gaps.py
 EI-E1585,Positive_Teacher_Theme,EI-T48,Teacher fetches their current profile theme,Yes,service/tests/theme/test_EI_R49_positive_teacher_theme_gaps.py
 EI-E1586,Positive_Teacher_Theme,EI-T50,Teacher updates their current theme settings,Yes,service/tests/theme/test_EI_R49_positive_teacher_theme_gaps.py
-EI-E1587,Positive_Teacher_Features,EI-T55,Teacher fetches the details of their school,No,
-EI-E1588,Positive_Teacher_Features,EI-T53,Teacher fetches the effective status of a single district feature,No,
-EI-E1589,Positive_Teacher_Features,EI-T57,Teacher fetches the teacher-made assignment quota for a class,No,
-EI-E1590,Positive_Teacher_Features,EI-T56,Teacher fetches their district subscription plan,No,
-EI-E1591,Positive_Teacher_Features,EI-T52,Teacher fetches their effective feature flags,No,
-EI-E1592,Positive_Teacher_Features,EI-T54,Teacher fetches their school and district plan information,No,
+EI-E1587,Positive_Teacher_Features,EI-T55,Teacher fetches the details of their school,Yes,service/tests/features/test_EI_R50_positive_teacher_features_gaps.py
+EI-E1588,Positive_Teacher_Features,EI-T53,Teacher fetches the effective status of a single district feature,Yes,service/tests/features/test_EI_R50_positive_teacher_features_gaps.py
+EI-E1589,Positive_Teacher_Features,EI-T57,Teacher fetches the teacher-made assignment quota for a class,Yes,service/tests/features/test_EI_R50_positive_teacher_features_gaps.py
+EI-E1590,Positive_Teacher_Features,EI-T56,Teacher fetches their district subscription plan,Yes,service/tests/features/test_EI_R50_positive_teacher_features_gaps.py
+EI-E1591,Positive_Teacher_Features,EI-T52,Teacher fetches their effective feature flags,Yes,service/tests/features/test_EI_R50_positive_teacher_features_gaps.py
+EI-E1592,Positive_Teacher_Features,EI-T54,Teacher fetches their school and district plan information,Yes,service/tests/features/test_EI_R50_positive_teacher_features_gaps.py
 EI-E1593,Positive_Teacher_Assignments,EI-T119,Analytics are returned for a specific assignment,No,
 EI-E1594,Positive_Teacher_Assignments,EI-T120,Assignment details are updated through the shared assignments service,No,
 EI-E1595,Positive_Teacher_Assignments,EI-T121,Assignment is deleted through the shared assignments service,No,
