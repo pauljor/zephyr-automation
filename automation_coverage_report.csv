@@ -346,9 +346,9 @@ EI-E1125,Edge_Teacher_Accounts,EI-T443,"[Accounts] Unknown 'search' filter value
 EI-E1126,Edge_Teacher_Accounts,EI-T457,[Accounts] Unknown teacher identifier returns not found when attempting to update my account information,Yes,service/tests/account/test_zephyr_edge_auth_account_coverage.py; service/tests/account/test_zephyr_edge_student_identifiers.py; service/tests/features/test_zephyr_edge_student_feature_identifiers.py
 EI-E1127,Edge_Teacher_Accounts,EI-T454,[Accounts] Unknown teacherId identifier returns not found when attempting to delete my profile picture,Yes,service/services/teacher/account_service.py; service/tests/account/test_zephyr_edge_auth_account_coverage.py
 EI-E1128,Edge_Teacher_Dashboard,EI-T469,[Dashboard] Empty result set is returned correctly when attempting to fetch statistics for assignments,Yes,service/tests/dashboard/test_EI_edge_teacher_dashboard.py
-EI-E1129,Edge_Teacher_Dashboard,EI-T465,[Dashboard] Empty result set is returned correctly when attempting to fetch statistics for classes,No,
-EI-E1130,Edge_Teacher_Dashboard,EI-T467,[Dashboard] Empty result set is returned correctly when attempting to fetch statistics for students,No,
-EI-E1131,Edge_Teacher_Dashboard,EI-T471,[Dashboard] Empty result set is returned correctly when attempting to fetch statistics for submissions,No,
+EI-E1129,Edge_Teacher_Dashboard,EI-T465,[Dashboard] Empty result set is returned correctly when attempting to fetch statistics for classes,Yes,service/tests/dashboard/test_EI_R24_edge_teacher_dashboard_empty.py
+EI-E1130,Edge_Teacher_Dashboard,EI-T467,[Dashboard] Empty result set is returned correctly when attempting to fetch statistics for students,Yes,service/tests/dashboard/test_EI_R24_edge_teacher_dashboard_empty.py
+EI-E1131,Edge_Teacher_Dashboard,EI-T471,[Dashboard] Empty result set is returned correctly when attempting to fetch statistics for submissions,Yes,service/tests/dashboard/test_EI_R24_edge_teacher_dashboard_empty.py
 EI-E1132,Edge_Teacher_Dashboard,EI-T468,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for assignments,Yes,service/tests/dashboard/test_EI_edge_teacher_dashboard.py
 EI-E1133,Edge_Teacher_Dashboard,EI-T464,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for classes,Yes,service/tests/dashboard/test_EI_edge_teacher_dashboard.py
 EI-E1134,Edge_Teacher_Dashboard,EI-T466,[Dashboard] Expired bearer token is rejected when attempting to fetch statistics for students,Yes,service/tests/dashboard/test_EI_edge_teacher_dashboard.py
@@ -523,10 +523,10 @@ EI-E1396,Edge_Teacher_Students,EI-T635,[Students] Expired bearer token is reject
 EI-E1397,Edge_Teacher_Students,EI-T637,[Students] Missing Authorization header is rejected when attempting to submit student creation moved to Staff-Admin API,Yes,service/tests/backup/test_EI_edge_students_deprecated.py
 EI-E1398,Edge_Teacher_Students,EI-T638,[Students] Omitting the required field 'file' is rejected when attempting to bulk student creation moved to Staff-Admin API,Yes,service/tests/backup/test_EI_edge_students_deprecated.py
 EI-E1399,Edge_Teacher_Students,EI-T641,[Students] Script payload in 'file' is neutralised when attempting to bulk student creation moved to Staff-Admin API,Yes,service/tests/backup/test_EI_edge_students_deprecated.py
-EI-E1400,Edge_Teacher_Features,EI-T651,[Features] Empty result set is returned correctly when attempting to retrieve district subscription plan for the authenticated teacher,No,
-EI-E1401,Edge_Teacher_Features,EI-T643,[Features] Empty result set is returned correctly when attempting to retrieve effective feature flags for the authenticated teacher,No,
-EI-E1402,Edge_Teacher_Features,EI-T647,[Features] Empty result set is returned correctly when attempting to retrieve school and district plan for the authenticated teacher,No,
-EI-E1403,Edge_Teacher_Features,EI-T649,[Features] Empty result set is returned correctly when attempting to retrieve school details for the authenticated teacher,No,
+EI-E1400,Edge_Teacher_Features,EI-T651,[Features] Empty result set is returned correctly when attempting to retrieve district subscription plan for the authenticated teacher,Yes,service/tests/features/test_EI_R32_edge_teacher_features_empty.py
+EI-E1401,Edge_Teacher_Features,EI-T643,[Features] Empty result set is returned correctly when attempting to retrieve effective feature flags for the authenticated teacher,Yes,service/tests/features/test_EI_R32_edge_teacher_features_empty.py
+EI-E1402,Edge_Teacher_Features,EI-T647,[Features] Empty result set is returned correctly when attempting to retrieve school and district plan for the authenticated teacher,Yes,service/tests/features/test_EI_R32_edge_teacher_features_empty.py
+EI-E1403,Edge_Teacher_Features,EI-T649,[Features] Empty result set is returned correctly when attempting to retrieve school details for the authenticated teacher,Yes,service/tests/features/test_EI_R32_edge_teacher_features_empty.py
 EI-E1404,Edge_Teacher_Features,EI-T650,[Features] Expired bearer token is rejected when attempting to retrieve district subscription plan for the authenticated teacher,Yes,service/tests/features/test_EI_edge_teacher_features.py
 EI-E1405,Edge_Teacher_Features,EI-T642,[Features] Expired bearer token is rejected when attempting to retrieve effective feature flags for the authenticated teacher,Yes,service/tests/features/test_EI_edge_teacher_features.py
 EI-E1406,Edge_Teacher_Features,EI-T646,[Features] Expired bearer token is rejected when attempting to retrieve school and district plan for the authenticated teacher,Yes,service/tests/features/test_EI_edge_teacher_features.py
@@ -535,15 +535,15 @@ EI-E1408,Edge_Teacher_Features,EI-T652,[Features] Malformed class code identifie
 EI-E1409,Edge_Teacher_Features,EI-T644,[Features] Malformed feature name identifier is rejected when attempting to get effective status for a single feature,Yes,service/tests/features/test_EI_edge_teacher_features.py
 EI-E1410,Edge_Teacher_Features,EI-T653,[Features] Unknown class code identifier returns not found when attempting to retrieve teacher-made assignment creation quota per class,Yes,service/tests/features/test_EI_edge_teacher_features.py
 EI-E1411,Edge_Teacher_Features,EI-T645,[Features] Unknown feature name identifier returns not found when attempting to get effective status for a single feature,Yes,service/tests/features/test_EI_edge_teacher_features.py
-EI-E1412,Edge_Student_Accounts,EI-T674,[Accounts] Duplicate submission does not create a duplicate account (2),No,
+EI-E1412,Edge_Student_Accounts,EI-T674,[Accounts] Duplicate submission does not create a duplicate account (2),Yes,service/tests/account/test_EI_R33_edge_student_accounts.py
 EI-E1413,Edge_Student_Accounts,EI-T664,[Accounts] Expired bearer token is rejected when attempting to add a profile picture if I don't have one already (2),Yes,service/tests/account/test_zephyr_edge_student_expired_bearer.py; service/tests/unit/test_token_renewal_on_401.py
 EI-E1414,Edge_Student_Accounts,EI-T675,[Accounts] Expired bearer token is rejected when attempting to change my password by providing my current password (2),Yes,service/tests/account/test_zephyr_edge_student_expired_bearer.py
 EI-E1415,Edge_Student_Accounts,EI-T671,[Accounts] Expired bearer token is rejected when attempting to delete my profile picture (2),Yes,service/tests/account/test_zephyr_edge_student_expired_bearer.py
 EI-E1416,Edge_Student_Accounts,EI-T657,[Accounts] Expired bearer token is rejected when attempting to search for teachers,Yes,service/tests/account/test_zephyr_edge_student_expired_bearer.py; service/tests/unit/test_token_renewal_on_401.py; service/utils/renewable_token.py
 EI-E1417,Edge_Student_Accounts,EI-T660,[Accounts] Expired bearer token is rejected when attempting to update my contact person information,Yes,service/tests/account/test_zephyr_edge_student_expired_bearer.py
 EI-E1418,Edge_Student_Accounts,EI-T668,[Accounts] Expired bearer token is rejected when attempting to update my profile picture (2),Yes,service/tests/account/test_zephyr_edge_student_expired_bearer.py
-EI-E1419,Edge_Student_Accounts,EI-T663,[Accounts] Interrupted upload leaves no orphaned asset when attempting to add a profile picture if I don't have one already (2),No,
-EI-E1420,Edge_Student_Accounts,EI-T667,[Accounts] Interrupted upload leaves no orphaned asset when attempting to update my profile picture (2),No,
+EI-E1419,Edge_Student_Accounts,EI-T663,[Accounts] Interrupted upload leaves no orphaned asset when attempting to add a profile picture if I don't have one already (2),Yes,service/tests/account/test_EI_R33_edge_student_accounts.py
+EI-E1420,Edge_Student_Accounts,EI-T667,[Accounts] Interrupted upload leaves no orphaned asset when attempting to update my profile picture (2),Yes,service/tests/account/test_EI_R33_edge_student_accounts.py
 EI-E1421,Edge_Student_Accounts,EI-T654,[Accounts] Malformed account identifier is rejected when attempting to fetch my account data,Yes,service/tests/account/test_zephyr_edge_student_identifiers.py; service/tests/features/test_zephyr_edge_student_feature_identifiers.py
 EI-E1422,Edge_Student_Accounts,EI-T673,[Accounts] Omitting the required field 'current_password' is rejected when attempting to change my password by providing my current password (2),Yes,service/tests/account/test_zephyr_edge_student_missing_fields.py
 EI-E1423,Edge_Student_Accounts,EI-T662,[Accounts] Omitting the required field 'file' is rejected when attempting to add a profile picture if I don't have one already (2),Yes,service/tests/account/test_zephyr_edge_student_missing_fields.py
@@ -622,10 +622,10 @@ EI-E1495,Edge_Student_Theme,EI-T738,[Theme] Repeating the removal of an already 
 EI-E1496,Edge_Student_Theme,EI-T733,[Theme] Script payload in 'theme_id' is neutralised when attempting to apply a new theme to profile (2),Yes,service/tests/theme/test_EI_R37_edge_student_theme.py
 EI-E1497,Edge_Student_Theme,EI-T737,[Theme] Script payload in 'theme_name' is neutralised when attempting to update current theme settings (2),Yes,service/tests/theme/test_EI_R30_edge_teacher_theme.py; service/tests/theme/test_EI_R37_edge_student_theme.py
 EI-E1498,Edge_Student_Theme,EI-T735,[Theme] Simultaneous updates to one theme resolve deterministically (2),Yes,service/tests/assignment/test_EI_R29_edge_teacher_assignments.py; service/tests/theme/test_EI_R30_edge_teacher_theme.py; service/tests/theme/test_EI_R37_edge_student_theme.py
-EI-E1499,Edge_Student_Features,EI-T750,[Features] Empty result set is returned correctly when attempting to retrieve district subscription plan for the authenticated student,No,
+EI-E1499,Edge_Student_Features,EI-T750,[Features] Empty result set is returned correctly when attempting to retrieve district subscription plan for the authenticated student,Yes,service/tests/features/test_EI_R38_edge_student_features_empty.py
 EI-E1500,Edge_Student_Features,EI-T742,[Features] Empty result set is returned correctly when attempting to retrieve effective feature flags for the authenticated student,Yes,service/tests/unit/test_request_log_redaction.py
-EI-E1501,Edge_Student_Features,EI-T746,[Features] Empty result set is returned correctly when attempting to retrieve school and district plan for the authenticated student,No,
-EI-E1502,Edge_Student_Features,EI-T748,[Features] Empty result set is returned correctly when attempting to retrieve school details for the authenticated student,No,
+EI-E1501,Edge_Student_Features,EI-T746,[Features] Empty result set is returned correctly when attempting to retrieve school and district plan for the authenticated student,Yes,service/tests/features/test_EI_R38_edge_student_features_empty.py
+EI-E1502,Edge_Student_Features,EI-T748,[Features] Empty result set is returned correctly when attempting to retrieve school details for the authenticated student,Yes,service/tests/features/test_EI_R38_edge_student_features_empty.py
 EI-E1503,Edge_Student_Features,EI-T749,[Features] Expired bearer token is rejected when attempting to retrieve district subscription plan for the authenticated student,Yes,service/tests/features/test_zephyr_edge_student_features_expired_bearer.py
 EI-E1504,Edge_Student_Features,EI-T741,[Features] Expired bearer token is rejected when attempting to retrieve effective feature flags for the authenticated student,Yes,service/tests/features/test_zephyr_edge_student_features_expired_bearer.py
 EI-E1505,Edge_Student_Features,EI-T745,[Features] Expired bearer token is rejected when attempting to retrieve school and district plan for the authenticated student,Yes,service/tests/features/test_zephyr_edge_student_features_expired_bearer.py
@@ -741,13 +741,13 @@ EI-E1614,Positive_Teacher_Assignments,EI-T65,Teacher overrides a question's poin
 EI-E1615,Positive_Teacher_Assignments,EI-T75,Teacher rejects a pending late submission with a reason,Yes,service/tests/assignment/test_EI_R51_positive_teacher_assignments_gaps.py
 EI-E1616,Positive_Teacher_Assignments,EI-T64,Teacher updates an existing assignment's details,Yes,service/tests/assignment/test_EI_R51_positive_teacher_assignments_gaps.py
 EI-E1617,Positive_Teacher_Assignments,EI-T71,Teacher updates their existing comment on a student's answer,Yes,service/tests/assignment/test_EI_R51_positive_teacher_assignments_gaps.py
-EI-E1618,Positive_Student_Accounts,EI-T79,Student adds a profile picture when none exists,No,
-EI-E1619,Positive_Student_Accounts,EI-T82,Student changes their password by supplying the current password,No,
-EI-E1620,Positive_Student_Accounts,EI-T81,Student deletes their profile picture,No,
-EI-E1621,Positive_Student_Accounts,EI-T76,Student fetches their own account data,No,
-EI-E1622,Positive_Student_Accounts,EI-T77,Student searches for teachers by name with pagination,No,
-EI-E1623,Positive_Student_Accounts,EI-T80,Student updates an existing profile picture,No,
-EI-E1624,Positive_Student_Accounts,EI-T78,Student updates their contact person information,No,
+EI-E1618,Positive_Student_Accounts,EI-T79,Student adds a profile picture when none exists,Yes,service/tests/account/test_EI_R52_positive_student_accounts.py
+EI-E1619,Positive_Student_Accounts,EI-T82,Student changes their password by supplying the current password,Yes,service/tests/account/test_EI_R52_positive_student_accounts.py
+EI-E1620,Positive_Student_Accounts,EI-T81,Student deletes their profile picture,Yes,service/tests/account/test_EI_R52_positive_student_accounts.py
+EI-E1621,Positive_Student_Accounts,EI-T76,Student fetches their own account data,Yes,service/tests/account/test_EI_R52_positive_student_accounts.py
+EI-E1622,Positive_Student_Accounts,EI-T77,Student searches for teachers by name with pagination,Yes,service/tests/account/test_EI_R52_positive_student_accounts.py
+EI-E1623,Positive_Student_Accounts,EI-T80,Student updates an existing profile picture,Yes,service/tests/account/test_EI_R52_positive_student_accounts.py
+EI-E1624,Positive_Student_Accounts,EI-T78,Student updates their contact person information,Yes,service/tests/account/test_EI_R52_positive_student_accounts.py
 EI-E1625,Positive_Student_Dashboard,EI-T88,Student fetches assignment statistics for the dashboard,Yes,service/tests/dashboard/test_EI_R15_negative_student_dashboard_gaps.py
 EI-E1626,Positive_Student_Dashboard,EI-T87,Student fetches class statistics for the dashboard,Yes,service/tests/dashboard/test_student_dashboard_statistics.py
 EI-E1627,Positive_Student_Dashboard,EI-T89,Student fetches submission statistics for the dashboard,Yes,service/tests/dashboard/test_EI_R15_negative_student_dashboard_gaps.py
@@ -755,12 +755,12 @@ EI-E1628,Positive_Student_Dashboard,EI-T83,Student fetches their achievement bad
 EI-E1629,Positive_Student_Dashboard,EI-T84,Student fetches their grade distribution as histogram buckets,Yes,service/tests/dashboard/test_EI_R15_negative_student_dashboard_gaps.py
 EI-E1630,Positive_Student_Dashboard,EI-T85,Student fetches their overall and per-class GPA,Yes,service/tests/dashboard/test_EI_R15_negative_student_dashboard_gaps.py
 EI-E1631,Positive_Student_Dashboard,EI-T86,Student fetches upcoming assignments for the dashboard calendar,Yes,service/tests/dashboard/test_EI_R15_negative_student_dashboard_gaps.py
-EI-E1632,Positive_Student_Classes,EI-T94,Student cancels a pending request to join a class,No,
-EI-E1633,Positive_Student_Classes,EI-T90,Student fetches all classes they are enrolled in with pagination,No,
-EI-E1634,Positive_Student_Classes,EI-T91,Student fetches an enrolled class by its class code,No,
-EI-E1635,Positive_Student_Classes,EI-T95,Student fetches the announcements for a class they are enrolled in,No,
-EI-E1636,Positive_Student_Classes,EI-T92,Student joins a class using its class code,No,
-EI-E1637,Positive_Student_Classes,EI-T93,Student requests to leave a class,No,
+EI-E1632,Positive_Student_Classes,EI-T94,Student cancels a pending request to join a class,Yes,service/tests/classes/test_EI_R54_positive_student_classes.py
+EI-E1633,Positive_Student_Classes,EI-T90,Student fetches all classes they are enrolled in with pagination,Yes,service/tests/classes/test_EI_R54_positive_student_classes.py
+EI-E1634,Positive_Student_Classes,EI-T91,Student fetches an enrolled class by its class code,Yes,service/tests/classes/test_EI_R54_positive_student_classes.py
+EI-E1635,Positive_Student_Classes,EI-T95,Student fetches the announcements for a class they are enrolled in,Yes,service/tests/classes/test_EI_R54_positive_student_classes.py
+EI-E1636,Positive_Student_Classes,EI-T92,Student joins a class using its class code,Yes,service/tests/classes/test_EI_R54_positive_student_classes.py
+EI-E1637,Positive_Student_Classes,EI-T93,Student requests to leave a class,Yes,service/tests/classes/test_EI_R54_positive_student_classes.py
 EI-E1638,Positive_Student_Assignments,EI-T115,Next adaptive item is served based on the previous response,Yes,service/tests/assignment/test_next_adaptive_item_served.py
 EI-E1639,Positive_Student_Assignments,EI-T96,Student fetches all assignments issued to a class,Yes,service/tests/assignment/test_EI_R55_positive_student_assignments.py
 EI-E1640,Positive_Student_Assignments,EI-T98,Student fetches the details of a specific assignment,Yes,service/tests/assignment/test_EI_R55_positive_student_assignments.py
