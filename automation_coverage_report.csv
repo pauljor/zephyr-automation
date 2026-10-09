@@ -250,45 +250,45 @@ EI-E1029,Negative_Student_Classes,EI-T342,Joining a class with the class code om
 EI-E1030,Negative_Student_Classes,EI-T344,Requesting to leave a class with a malformed class code is rejected,Yes,service/tests/classes/test_EI_R16_negative_student_classes.py
 EI-E1031,Negative_Student_Classes,EI-T346,Requesting to leave a class with an excessively long or unknown class code is rejected,Yes,service/tests/classes/test_EI_R16_negative_student_classes.py
 EI-E1032,Negative_Student_Classes,EI-T345,Requesting to leave a class with the class code omitted is rejected,Yes,service/tests/classes/test_EI_R16_negative_student_classes.py
-EI-E1033,Negative_Student_Assignments,EI-T356,Fetching a class average grade with a malformed class code is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
+EI-E1033,Negative_Student_Assignments,EI-T356,Fetching a class average grade with a malformed class code is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
 EI-E1034,Negative_Student_Assignments,EI-T358,Fetching a class average grade with an excessively long or unknown class code is rejected,Yes,service/tests/classes/test_EI_R16_negative_student_classes.py
-EI-E1035,Negative_Student_Assignments,EI-T357,Fetching a class average grade with the class code omitted is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1036,Negative_Student_Assignments,EI-T376,Fetching a student submission for review with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1037,Negative_Student_Assignments,EI-T378,Fetching a student submission for review with an excessively long or unknown assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1038,Negative_Student_Assignments,EI-T377,Fetching a student submission for review with the assignment identifier omitted is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1039,Negative_Student_Assignments,EI-T359,Fetching an assignment as a student with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1040,Negative_Student_Assignments,EI-T361,Fetching an assignment as a student with an excessively long or unknown assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1041,Negative_Student_Assignments,EI-T360,Fetching an assignment as a student with the assignment identifier omitted is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1042,Negative_Student_Assignments,EI-T362,Fetching assignment questions with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1043,Negative_Student_Assignments,EI-T364,Fetching assignment questions with an excessively long or unknown assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1044,Negative_Student_Assignments,EI-T363,Fetching assignment questions with the assignment identifier omitted is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
+EI-E1035,Negative_Student_Assignments,EI-T357,Fetching a class average grade with the class code omitted is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1036,Negative_Student_Assignments,EI-T376,Fetching a student submission for review with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1037,Negative_Student_Assignments,EI-T378,Fetching a student submission for review with an excessively long or unknown assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1038,Negative_Student_Assignments,EI-T377,Fetching a student submission for review with the assignment identifier omitted is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1039,Negative_Student_Assignments,EI-T359,Fetching an assignment as a student with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1040,Negative_Student_Assignments,EI-T361,Fetching an assignment as a student with an excessively long or unknown assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1041,Negative_Student_Assignments,EI-T360,Fetching an assignment as a student with the assignment identifier omitted is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1042,Negative_Student_Assignments,EI-T362,Fetching assignment questions with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1043,Negative_Student_Assignments,EI-T364,Fetching assignment questions with an excessively long or unknown assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1044,Negative_Student_Assignments,EI-T363,Fetching assignment questions with the assignment identifier omitted is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
 EI-E1045,Negative_Student_Assignments,EI-T353,Fetching class assignments as a student with a malformed class code is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
 EI-E1046,Negative_Student_Assignments,EI-T355,Fetching class assignments as a student with an excessively long or unknown class code is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
 EI-E1047,Negative_Student_Assignments,EI-T354,Fetching class assignments as a student with the class code omitted is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
-EI-E1048,Negative_Student_Assignments,EI-T375,Reporting a lockdown violation with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1049,Negative_Student_Assignments,EI-T374,Reporting a lockdown violation with an empty or over-length type value is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1050,Negative_Student_Assignments,EI-T373,Reporting a lockdown violation with type supplied as the wrong data type is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1051,Negative_Student_Assignments,EI-T401,Requesting the next adaptive item with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1052,Negative_Student_Assignments,EI-T400,Requesting the next adaptive item with a malformed question_classification value is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1053,Negative_Student_Assignments,EI-T399,Requesting the next adaptive item without the required prev_difficulty parameter is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1054,Negative_Student_Assignments,EI-T368,Saving assignment answers with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1055,Negative_Student_Assignments,EI-T367,Saving assignment answers with an empty answers array is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1056,Negative_Student_Assignments,EI-T366,Saving assignment answers with answers supplied as the wrong data type is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
+EI-E1048,Negative_Student_Assignments,EI-T375,Reporting a lockdown violation with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1049,Negative_Student_Assignments,EI-T374,Reporting a lockdown violation with an empty or over-length type value is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1050,Negative_Student_Assignments,EI-T373,Reporting a lockdown violation with type supplied as the wrong data type is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1051,Negative_Student_Assignments,EI-T401,Requesting the next adaptive item with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1052,Negative_Student_Assignments,EI-T400,Requesting the next adaptive item with a malformed question_classification value is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1053,Negative_Student_Assignments,EI-T399,Requesting the next adaptive item without the required prev_difficulty parameter is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1054,Negative_Student_Assignments,EI-T368,Saving assignment answers with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1055,Negative_Student_Assignments,EI-T367,Saving assignment answers with an empty answers array is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1056,Negative_Student_Assignments,EI-T366,Saving assignment answers with answers supplied as the wrong data type is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
 EI-E1057,Negative_Student_Assignments,EI-T365,Saving assignment answers without the required answers field is rejected,Yes,service/tests/assignment/test_take_assignment_student_flow.py
-EI-E1058,Negative_Student_Assignments,EI-T404,Submitting an answer through the shared service with an empty answers array is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1059,Negative_Student_Assignments,EI-T403,Submitting an answer through the shared service with answers supplied as the wrong data type is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
+EI-E1058,Negative_Student_Assignments,EI-T404,Submitting an answer through the shared service with an empty answers array is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1059,Negative_Student_Assignments,EI-T403,Submitting an answer through the shared service with answers supplied as the wrong data type is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
 EI-E1060,Negative_Student_Assignments,EI-T402,Submitting an answer through the shared service without the required assignment_id field is rejected,Yes,service/tests/assignment/test_shared_answer_service_records_submission.py
-EI-E1061,Negative_Student_Assignments,EI-T372,Submitting assignment answers with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1062,Negative_Student_Assignments,EI-T371,Submitting assignment answers with an empty answers array is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
-EI-E1063,Negative_Student_Assignments,EI-T370,Submitting assignment answers with answers supplied as the wrong data type is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments_part2.py
+EI-E1061,Negative_Student_Assignments,EI-T372,Submitting assignment answers with a malformed assignment identifier is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1062,Negative_Student_Assignments,EI-T371,Submitting assignment answers with an empty answers array is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
+EI-E1063,Negative_Student_Assignments,EI-T370,Submitting assignment answers with answers supplied as the wrong data type is rejected,Yes,service/tests/assignment/test_EI_R17_negative_student_assignments.py
 EI-E1064,Negative_Student_Assignments,EI-T369,Submitting assignment answers without the required answers field is rejected,Yes,service/tests/assignment/test_take_assignment_submit_flow.py
 EI-E1065,Negative_Student_Theme,EI-T382,Applying a student theme with an empty or over-length theme_id value is rejected,Yes,service/tests/theme/test_student_theme_lifecycle.py
 EI-E1066,Negative_Student_Theme,EI-T381,Applying a student theme with color_mode supplied as the wrong data type is rejected,Yes,service/tests/theme/test_student_theme_lifecycle.py
-EI-E1067,Negative_Student_Theme,EI-T380,Applying a student theme without the required theme_id field is rejected,Yes,service/tests/theme/test_EI_R18_negative_student_theme_part2.py
-EI-E1068,Negative_Student_Theme,EI-T385,Deleting a student theme with malformed request parameters returns no server error,Yes,service/tests/theme/test_EI_R18_negative_student_theme_part2.py
+EI-E1067,Negative_Student_Theme,EI-T380,Applying a student theme without the required theme_id field is rejected,Yes,service/tests/theme/test_EI_R18_negative_student_theme.py
+EI-E1068,Negative_Student_Theme,EI-T385,Deleting a student theme with malformed request parameters returns no server error,Yes,service/tests/theme/test_EI_R18_negative_student_theme.py
 EI-E1069,Negative_Student_Theme,EI-T379,Fetching a student theme with malformed request parameters returns no server error,Yes,service/tests/theme/test_student_theme_lifecycle.py
-EI-E1070,Negative_Student_Theme,EI-T384,Updating student theme settings with an empty or over-length theme_name value is rejected,Yes,service/tests/theme/test_EI_R18_negative_student_theme_part2.py
-EI-E1071,Negative_Student_Theme,EI-T383,Updating student theme settings with colors supplied as the wrong data type is rejected,Yes,service/tests/theme/test_EI_R18_negative_student_theme_part2.py
+EI-E1070,Negative_Student_Theme,EI-T384,Updating student theme settings with an empty or over-length theme_name value is rejected,Yes,service/tests/theme/test_EI_R18_negative_student_theme.py
+EI-E1071,Negative_Student_Theme,EI-T383,Updating student theme settings with colors supplied as the wrong data type is rejected,Yes,service/tests/theme/test_EI_R18_negative_student_theme.py
 EI-E1072,Negative_Student_Features,EI-T387,Fetching a single feature status for a student with a malformed feature name is rejected,Yes,service/tests/features/test_EI_R19_negative_student_features.py
 EI-E1073,Negative_Student_Features,EI-T389,Fetching a single feature status for a student with an excessively long or unknown feature name is rejected,Yes,service/tests/features/test_EI_R19_negative_student_features.py
 EI-E1074,Negative_Student_Features,EI-T388,Fetching a single feature status for a student with the feature name omitted is rejected,Yes,service/tests/features/test_EI_R19_negative_student_features.py
@@ -642,7 +642,7 @@ EI-E1515,Edge_Shared_Assignments,EI-T767,[Assignments] Expired bearer token is r
 EI-E1516,Edge_Shared_Assignments,EI-T773,[Assignments] Expired bearer token is rejected when attempting to update assignment details,Yes,service/tests/account/test_zephyr_edge_expired_bearer_sweep_2.py
 EI-E1517,Edge_Shared_Assignments,EI-T775,[Assignments] Malformed assignment identifier is rejected when attempting to delete assignment by ID,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1518,Edge_Shared_Assignments,EI-T755,[Assignments] Malformed assignment identifier is rejected when attempting to get specific assignment by ID,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
-EI-E1519,Edge_Shared_Assignments,EI-T757,[Assignments] Malformed assignment identifier is rejected when attempting to retrieve adoptive Next Item,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_part2.py
+EI-E1519,Edge_Shared_Assignments,EI-T757,[Assignments] Malformed assignment identifier is rejected when attempting to retrieve adoptive Next Item,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1520,Edge_Shared_Assignments,EI-T769,[Assignments] Malformed assignment identifier is rejected when attempting to show assignment analytics,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1521,Edge_Shared_Assignments,EI-T763,[Assignments] Malformed submission identifier is rejected when attempting to review submission,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1522,Edge_Shared_Assignments,EI-T759,[Assignments] Omitting the required field 'assignment_id' is rejected when attempting to answer assignment,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
@@ -650,15 +650,15 @@ EI-E1523,Edge_Shared_Assignments,EI-T751,[Assignments] Omitting the required fie
 EI-E1524,Edge_Shared_Assignments,EI-T771,[Assignments] Omitting the required field 'semester' is rejected when attempting to update assignment details,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1525,Edge_Shared_Assignments,EI-T765,[Assignments] Omitting the required field 'type' is rejected when attempting to share assignment,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1526,Edge_Shared_Assignments,EI-T762,[Assignments] Script payload in 'assignment_id' is neutralised when attempting to answer assignment,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
-EI-E1527,Edge_Shared_Assignments,EI-T754,[Assignments] Script payload in 'semester' is neutralised when attempting to create new assignment,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_part2.py
-EI-E1528,Edge_Shared_Assignments,EI-T774,[Assignments] Script payload in 'semester' is neutralised when attempting to update assignment details,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_part2.py
+EI-E1527,Edge_Shared_Assignments,EI-T754,[Assignments] Script payload in 'semester' is neutralised when attempting to create new assignment,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
+EI-E1528,Edge_Shared_Assignments,EI-T774,[Assignments] Script payload in 'semester' is neutralised when attempting to update assignment details,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1529,Edge_Shared_Assignments,EI-T768,[Assignments] Script payload in 'type' is neutralised when attempting to share assignment,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
-EI-E1530,Edge_Shared_Assignments,EI-T776,[Assignments] Unknown assignment identifier returns not found when attempting to delete assignment by ID,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_part2.py
-EI-E1531,Edge_Shared_Assignments,EI-T756,[Assignments] Unknown assignment identifier returns not found when attempting to get specific assignment by ID,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_part2.py
-EI-E1532,Edge_Shared_Assignments,EI-T758,[Assignments] Unknown assignment identifier returns not found when attempting to retrieve adoptive Next Item,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_part2.py
-EI-E1533,Edge_Shared_Assignments,EI-T770,[Assignments] Unknown assignment identifier returns not found when attempting to show assignment analytics,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_part2.py
-EI-E1534,Edge_Shared_Assignments,EI-T772,[Assignments] Unknown assignment identifier returns not found when attempting to update assignment details,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_part2.py
-EI-E1535,Edge_Shared_Assignments,EI-T764,[Assignments] Unknown submission identifier returns not found when attempting to review submission,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments_part2.py
+EI-E1530,Edge_Shared_Assignments,EI-T776,[Assignments] Unknown assignment identifier returns not found when attempting to delete assignment by ID,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
+EI-E1531,Edge_Shared_Assignments,EI-T756,[Assignments] Unknown assignment identifier returns not found when attempting to get specific assignment by ID,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
+EI-E1532,Edge_Shared_Assignments,EI-T758,[Assignments] Unknown assignment identifier returns not found when attempting to retrieve adoptive Next Item,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
+EI-E1533,Edge_Shared_Assignments,EI-T770,[Assignments] Unknown assignment identifier returns not found when attempting to show assignment analytics,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
+EI-E1534,Edge_Shared_Assignments,EI-T772,[Assignments] Unknown assignment identifier returns not found when attempting to update assignment details,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
+EI-E1535,Edge_Shared_Assignments,EI-T764,[Assignments] Unknown submission identifier returns not found when attempting to review submission,Yes,service/tests/assignment/test_EI_R39_edge_shared_assignments.py
 EI-E1536,Positive_Auth_Login,EI-T1,User authenticates with valid email and password and receives an access token,Yes,service/tests/account/test_zephyr_positive_auth_login_profile.py
 EI-E1537,Positive_Auth_Session,EI-T2,Session is rotated using the httpOnly refresh-token cookie,Yes,service/tests/account/test_EI_T2_session_rotation_refresh_token_cookie.py
 EI-E1538,Positive_Auth_Session,EI-T3,User logs out and the refresh token is revoked with session cookies cleared,Yes,service/tests/account/test_EI_T3_logout_revokes_refresh_token_clears_cookies.py
@@ -771,10 +771,10 @@ EI-E1644,Positive_Student_Assignments,EI-T102,Student reports a browser-lockdown
 EI-E1645,Positive_Student_Assignments,EI-T100,Student saves their answers for an assignment in progress,Yes,service/tests/assignment/test_EI_R55_positive_student_assignments.py
 EI-E1646,Positive_Student_Assignments,EI-T116,Student submission is recorded through the shared answer service,Yes,service/tests/assignment/test_shared_answer_service_records_submission.py
 EI-E1647,Positive_Student_Assignments,EI-T101,Student submits their answers for an assignment,Yes,service/tests/assignment/test_EI_R55_positive_student_assignments.py
-EI-E1648,Positive_Student_Theme,EI-T105,Student applies a new theme to their profile,Yes,service/tests/theme/test_EI_R18_negative_student_theme_part2.py
+EI-E1648,Positive_Student_Theme,EI-T105,Student applies a new theme to their profile,Yes,service/tests/theme/test_EI_R18_negative_student_theme.py
 EI-E1649,Positive_Student_Theme,EI-T107,Student deletes their theme and reverts to the default,Yes,service/tests/theme/test_student_theme_lifecycle.py
 EI-E1650,Positive_Student_Theme,EI-T104,Student fetches their current profile theme,Yes,service/tests/theme/test_EI_T104_student_fetch_current_theme.py
-EI-E1651,Positive_Student_Theme,EI-T106,Student updates their current theme settings,Yes,service/tests/theme/test_EI_R18_negative_student_theme_part2.py
+EI-E1651,Positive_Student_Theme,EI-T106,Student updates their current theme settings,Yes,service/tests/theme/test_EI_R18_negative_student_theme.py
 EI-E1652,Positive_Student_Features,EI-T111,Student fetches the details of their school,Yes,service/tests/features/test_EI_R19_negative_student_features.py
 EI-E1653,Positive_Student_Features,EI-T109,Student fetches the effective status of a single district feature,Yes,service/tests/features/test_EI_R19_negative_student_features.py
 EI-E1654,Positive_Student_Features,EI-T112,Student fetches their district subscription plan,Yes,service/tests/features/test_EI_R19_negative_student_features.py
