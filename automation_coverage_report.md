@@ -169,20 +169,18 @@ From `automation_logs.txt` (one line per case and layer; the last line for a cas
 
 | Layer | Passed | Failed | API-only | Deferred | Existing test |
 |---|--:|--:|--:|--:|--:|
-| API (service suite) | 304 | 7 | 0 | 0 | 5 |
+| API (service suite) | 306 | 5 | 0 | 0 | 5 |
 | UI (client suite, Positive cases) | 76 | 0 | 19 | 0 | 0 |
 | Not automated (deferred) | 0 | 0 | 0 | 3 | 0 |
 
-### Automated cases that currently fail (7)
+### Automated cases that currently fail (5)
 
-Each fails because the application does not do what the Zephyr case expects. They stay red on purpose; no ticket has been raised.
+Each failed on its last run against QA because the application does not do what the Zephyr case expects. No ticket has been raised. A fix for each is prepared in `eruditiontx-services-mvp` (branch `fix/automation-defects-2026-10-09`, not committed or deployed yet); the tests go green once it is on QA. Two earlier 'defects' (EI-T130, EI-T374) turned out to be decisions the code already pins, so those tests now assert the real behaviour.
 
 - EI-T117 (api) - defect:400-review-of-a-valid-submitted-submission-answers-field-required
-- EI-T130 (api) - defect:200-over-length-email-accepted
 - EI-T262 (api) - defect:200-passing_grade-outside-0-100-accepted-on-update
 - EI-T265 (api) - defect:200-boolean-points-accepted-as-1
 - EI-T298 (api) - defect:200-empty-or-blank-reject-reason-accepted
-- EI-T374 (api) - defect:200-empty-violation-type-accepted
 - EI-T415 (api) - defect:200-passing_grade-outside-0-100-accepted-on-shared-update
 
 ### Deferred (3)
